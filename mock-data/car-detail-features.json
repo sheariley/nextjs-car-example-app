@@ -1,0 +1,43 @@
+[
+	{ "carDetailId": "1a2b3c4d-5e6f-47a8-9b0c-111111111111", "featureId": "d9b1c3a6-8f5b-4c2b-9a6a-1e4f2b8d0f01" },
+	{ "carDetailId": "1a2b3c4d-5e6f-47a8-9b0c-111111111111", "featureId": "b2f8d1c0-3f4b-4e6a-9c2a-5a6b7d8e9f02" },
+
+	{ "carDetailId": "2b3c4d5e-6f7a-48b9-0c1d-222222222222", "featureId": "d9b1c3a6-8f5b-4c2b-9a6a-1e4f2b8d0f01" },
+	{ "carDetailId": "2b3c4d5e-6f7a-48b9-0c1d-222222222222", "featureId": "c3e7a4b1-6d2f-45b8-8f3c-0b1a2d3e4f03" },
+
+	{ "carDetailId": "3c4d5e6f-7a8b-49c0-1d2e-333333333333", "featureId": "d9b1c3a6-8f5b-4c2b-9a6a-1e4f2b8d0f01" },
+	{ "carDetailId": "3c4d5e6f-7a8b-49c0-1d2e-333333333333", "featureId": "a4d6b2c3-9e1a-4f7b-8c5d-6e7f8a9b0c04" },
+	{ "carDetailId": "3c4d5e6f-7a8b-49c0-1d2e-333333333333", "featureId": "f5c2e3a4-1b6d-4a8c-9e2f-7b8c9d0e1f05" },
+
+	{ "carDetailId": "4d5e6f7a-8b9c-40d1-2e3f-444444444444", "featureId": "b2f8d1c0-3f4b-4e6a-9c2a-5a6b7d8e9f02" },
+	{ "carDetailId": "4d5e6f7a-8b9c-40d1-2e3f-444444444444", "featureId": "a4d6b2c3-9e1a-4f7b-8c5d-6e7f8a9b0c04" },
+
+	{ "carDetailId": "5e6f7a8b-9c0d-41e2-3f4a-555555555555", "featureId": "f5c2e3a4-1b6d-4a8c-9e2f-7b8c9d0e1f05" },
+	{ "carDetailId": "5e6f7a8b-9c0d-41e2-3f4a-555555555555", "featureId": "e6a3b4c5-2d7f-4b9e-8a3c-9d0e1f2a3b06" },
+
+	{ "carDetailId": "6f7a8b9c-0d1e-42f3-4a5b-666666666666", "featureId": "c3e7a4b1-6d2f-45b8-8f3c-0b1a2d3e4f03" },
+
+	{ "carDetailId": "7a8b9c0d-1e2f-43a4-5b6c-777777777777", "featureId": "a4d6b2c3-9e1a-4f7b-8c5d-6e7f8a9b0c04" },
+	{ "carDetailId": "7a8b9c0d-1e2f-43a4-5b6c-777777777777", "featureId": "e6a3b4c5-2d7f-4b9e-8a3c-9d0e1f2a3b06" },
+
+	{ "carDetailId": "8b9c0d1e-2f3a-44b5-6c7d-888888888888", "featureId": "d9b1c3a6-8f5b-4c2b-9a6a-1e4f2b8d0f01" },
+	{ "carDetailId": "8b9c0d1e-2f3a-44b5-6c7d-888888888888", "featureId": "f5c2e3a4-1b6d-4a8c-9e2f-7b8c9d0e1f05" },
+
+	{ "carDetailId": "9c0d1e2f-3a4b-45c6-7d8e-999999999999", "featureId": "d9b1c3a6-8f5b-4c2b-9a6a-1e4f2b8d0f01" },
+	{ "carDetailId": "9c0d1e2f-3a4b-45c6-7d8e-999999999999", "featureId": "b2f8d1c0-3f4b-4e6a-9c2a-5a6b7d8e9f02" },
+	{ "carDetailId": "9c0d1e2f-3a4b-45c6-7d8e-999999999999", "featureId": "c3e7a4b1-6d2f-45b8-8f3c-0b1a2d3e4f03" },
+	{ "carDetailId": "9c0d1e2f-3a4b-45c6-7d8e-999999999999", "featureId": "a4d6b2c3-9e1a-4f7b-8c5d-6e7f8a9b0c04" },
+
+	{ "carDetailId": "0d1e2f3a-4b5c-46d7-8e9f-000000000000", "featureId": "b2f8d1c0-3f4b-4e6a-9c2a-5a6b7d8e9f02" },
+
+	{ "carDetailId": "a1b2c3d4-e5f6-47a8-9b0c-aaaaaaaaaaaa", "featureId": "e6a3b4c5-2d7f-4b9e-8a3c-9d0e1f2a3b06" },
+
+	{ "carDetailId": "b2c3d4e5-f6a7-48b9-0c1d-bbbbbbbbbbbb", "featureId": "c3e7a4b1-6d2f-45b8-8f3c-0b1a2d3e4f03" },
+	{ "carDetailId": "b2c3d4e5-f6a7-48b9-0c1d-bbbbbbbbbbbb", "featureId": "f5c2e3a4-1b6d-4a8c-9e2f-7b8c9d0e1f05" },
+
+	{ "carDetailId": "c3d4e5f6-a7b8-49c0-1d2e-cccccccccccc", "featureId": "d9b1c3a6-8f5b-4c2b-9a6a-1e4f2b8d0f01" },
+	{ "carDetailId": "c3d4e5f6-a7b8-49c0-1d2e-cccccccccccc", "featureId": "a4d6b2c3-9e1a-4f7b-8c5d-6e7f8a9b0c04" },
+
+	{ "carDetailId": "d4e5f6a7-b8c9-40d1-2e3f-dddddddddddd", "featureId": "b2f8d1c0-3f4b-4e6a-9c2a-5a6b7d8e9f02" },
+	{ "carDetailId": "d4e5f6a7-b8c9-40d1-2e3f-dddddddddddd", "featureId": "e6a3b4c5-2d7f-4b9e-8a3c-9d0e1f2a3b06" }
+]

@@ -1,0 +1,26 @@
+[
+	{
+		"id": "d9b1c3a6-8f5b-4c2b-9a6a-1e4f2b8d0f01",
+		"name": "Air Conditioning"
+	},
+	{
+		"id": "b2f8d1c0-3f4b-4e6a-9c2a-5a6b7d8e9f02",
+		"name": "Sunroof"
+	},
+	{
+		"id": "c3e7a4b1-6d2f-45b8-8f3c-0b1a2d3e4f03",
+		"name": "Bluetooth"
+	},
+	{
+		"id": "a4d6b2c3-9e1a-4f7b-8c5d-6e7f8a9b0c04",
+		"name": "Cruise Control"
+	},
+	{
+		"id": "f5c2e3a4-1b6d-4a8c-9e2f-7b8c9d0e1f05",
+		"name": "Backup Camera"
+	},
+	{
+		"id": "e6a3b4c5-2d7f-4b9e-8a3c-9d0e1f2a3b06",
+		"name": "Heated Seats"
+	}
+]

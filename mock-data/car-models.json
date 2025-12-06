@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ce2552ac-f0d9-4301-b3f8-91d137588ab5",
+    "carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+    "name": "Silverado"
+  },
+  {
+    "id": "dc901726-84dc-456d-9177-b42a2971276c",
+    "carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+    "name": "Malibu"
+  },
+  {
+    "id": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+    "carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+    "name": "F-100"
+  },
+  {
+    "id": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+    "carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+    "name": "Focus"
+  },
+  {
+    "id": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+    "carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+    "name": "Tundra"
+  },
+  {
+    "id": "4e1e0902-f9cb-4820-a668-4d85ba69ba17",
+    "carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+    "name": "Corolla"
+  }
+]
