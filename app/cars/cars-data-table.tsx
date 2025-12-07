@@ -61,6 +61,7 @@ function carRowKeyGetter(row: CarDetail) {
   return row.id;
 }
 
+// custom renderer to use ShadCN's checkbox in the data-grid
 function DataTableCheckbox(props: RenderCheckboxProps) {  
   const {
     onChange,
