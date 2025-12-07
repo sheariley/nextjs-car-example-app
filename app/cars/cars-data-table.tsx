@@ -11,9 +11,9 @@ export default function CarsDataTable() {
   const dataClient = useCarDataApiClient()
   const [rows, setRows] = useState<CarDetail[]>([])
   const [selectedRows, setSelectedRows] = useState<ReadonlySet<string>>(new Set<string>())
-  const [filters, setFilters] = useState<Record<CarDetailFilterablePropKeys, Set<CarDetailFilterOptionKey>>>({
-    carMakeId: new Set<CarDetailFilterOptionKey>(),
-    carModelId: new Set<CarDetailFilterOptionKey>()
+  const [filters, setFilters] = useState<Record<CarDetailFilterablePropKeys, CarDetailFilterOptionKey[]>>({
+    carMakeId: [],
+    carModelId: []
   })
   const [columnOptions, setColumnOptions] = useState<Record<
     CarDetailFilterablePropKeys,
@@ -62,11 +62,11 @@ export default function CarsDataTable() {
   
   // apply basic client-side filters
   const filteredRows = React.useMemo(() => rows.filter(r => {
-    for (const [col, set] of Object.entries(filters)) {
-      if (!set || set.size === 0) continue
-      // map column key to actual CarDetail prop
+    for (const [col, optionKeys] of Object.entries(filters)) {
+      if (!optionKeys || optionKeys.length === 0) continue
+      // map column key to actual CarDetail property
       const value = col === 'makeId' ? r.carMakeId : col === 'modelId' ? r.carModelId : r[col as CarDetailFilterablePropKeys]
-      if (!set.has(String(value)) && !set.has(value)) return false
+      if (!optionKeys.includes(String(value)) && !optionKeys.includes(value)) return false
     }
     return true
   }), [filters, rows])
@@ -74,17 +74,20 @@ export default function CarsDataTable() {
   const columns = React.useMemo(() => columnsFactory({
     onToggleFilterOption: (columnKey: CarDetailFilterablePropKeys, optionKey: CarDetailFilterOptionKey) => {
       setFilters(prev => {
-        const next = { ...prev }
-        const setFor = next[columnKey] ? new Set(next[columnKey]) : new Set<CarDetailFilterOptionKey>()
-        const k = optionKey
-        if (setFor.has(k)) setFor.delete(k)
-        else setFor.add(k)
-        next[columnKey] = setFor
-        return next
+        let filterValues = prev[columnKey] || []
+        
+        // toggle logic
+        if (filterValues.includes(optionKey)) 
+          filterValues = filterValues.filter(ek => ek !== optionKey)
+        else 
+          filterValues = filterValues.concat([optionKey])
+
+        return { ...prev, [columnKey]: filterValues }
       })
     },
-    options: columnOptions
-  }), [columnOptions])
+    options: columnOptions,
+    selectedOptions: filters
+  }), [columnOptions, filters])
 
   return (
     <div className="container mx-auto py-10">
@@ -112,19 +115,25 @@ type ColumnsFactoryProps = {
     CarDetailFilterablePropKeys,
     DataGridListFilterOption<CarDetailFilterOptionKey>[]
   >
+  selectedOptions: Record<
+    CarDetailFilterablePropKeys,
+    CarDetailFilterOptionKey[]
+  >
 }
 
-function columnsFactory({ onToggleFilterOption, options }: ColumnsFactoryProps): Column<CarDetail>[] {
+function columnsFactory({ onToggleFilterOption, options, selectedOptions }: ColumnsFactoryProps): Column<CarDetail>[] {
   // header renderer factory that shows a filter icon and a popover with options
   const renderHeader = (columnKey: CarDetailFilterablePropKeys, columnName: string) => {
     const renderer = (renderProps: RenderHeaderCellProps<CarDetail>) => {
       const opts = options[columnKey] ?? []
+      const selOpts = selectedOptions[columnKey] ?? []
   
       return (
         <DataGridListFilter
           filterTitle={columnName}
           labelRenderer={() => renderHeaderCell(renderProps)}
           options={opts}
+          selectedOptions={selOpts}
           onToggleOption={oKey => onToggleFilterOption(columnKey, oKey)}
         />
       )

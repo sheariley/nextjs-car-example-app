@@ -12,6 +12,7 @@ export type DataGridListFilterProps<TKey extends DataGridListFilterOptionKeyValu
   filterTitle: string
   labelRenderer?: () => React.ReactNode
   options: DataGridListFilterOption<TKey>[]
+  selectedOptions: TKey[]
   onToggleOption?: (key: TKey) => void
 }
 
@@ -26,6 +27,7 @@ export type DataGridListFilterOption<TKey extends DataGridListFilterOptionKeyVal
 export default function DataGridListFilter<TKey extends DataGridListFilterOptionKeyValue = string>({
   filterTitle,
   options,
+  selectedOptions,
   className,
   labelRenderer,
   onToggleOption,
@@ -59,7 +61,11 @@ export default function DataGridListFilter<TKey extends DataGridListFilterOption
           <DropdownMenuSeparator />
           <div className="max-h-48 overflow-auto">
             {options.map(o => (
-              <DropdownMenuCheckboxItem key={String(o.key)} onClick={() => handleToggleOption(o.key)}>
+              <DropdownMenuCheckboxItem
+                key={String(o.key)}
+                onClick={() => handleToggleOption(o.key)}
+                checked={selectedOptions.includes(o.key)}
+              >
                 {o.label} <span className="ml-auto text-xs text-muted-foreground">{o.count}</span>
               </DropdownMenuCheckboxItem>
             ))}
