@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@import "./react-data-grid.css";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

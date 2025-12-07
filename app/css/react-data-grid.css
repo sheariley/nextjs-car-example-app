@@ -1,0 +1,21 @@
+@import "react-data-grid/lib/styles.css";
+
+:root {
+  --rdg-color-scheme: light;
+}
+
+.dark {
+  --rdg-color-scheme: dark;
+}
+
+.rdg {
+  --rdg-color-scheme: light;
+  --rdg-color: var(--foreground);
+  --rdg-background-color: var(--background);
+  --rdg-header-background-color: var(--background);
+}
+
+.dark .rdg,
+.dark.rdg {
+  --rdg-color-scheme: dark;
+}
