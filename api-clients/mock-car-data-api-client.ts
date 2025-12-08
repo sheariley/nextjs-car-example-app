@@ -14,7 +14,6 @@ import carModelRows from '@/mock-data/car-models.json'
 import { CarDataApiClient } from './car-data-api-client.type'
 
 async function getCarDetails(): Promise<CarDetail[]> {
-  // Fetch data from your API here.
   return (carDetailRows as CarDetail[]).map(carDetail => ({
     ...carDetail,
     CarMake: (carMakeRows as CarMake[]).find(make => make.id === carDetail.carMakeId),
@@ -28,19 +27,25 @@ async function getCarDetails(): Promise<CarDetail[]> {
   }))
 }
 
+async function getCarMakes() {
+  return carMakeRows as CarMake[]
+}
+
+async function getCarModels() {
+  return carModelRows as CarModel[]
+}
+
+async function getCarFeatures() {
+  return carFeatureRows as CarFeature[]
+}
+
 const useCarDataApiClient = (): CarDataApiClient => {
   // should never recompute the instance because its a mock client and has no config props
   return React.useMemo(() => ({
-    getCarDetails
-    ,
-    // Return all car makes from the mock JSON
-    async getCarMakes() {
-      return carMakeRows as CarMake[]
-    },
-    // Return all car models from the mock JSON
-    async getCarModels() {
-      return carModelRows as CarModel[]
-    }
+    getCarDetails,
+    getCarMakes,
+    getCarModels,
+    getCarFeatures
   }), [])
 }
 
