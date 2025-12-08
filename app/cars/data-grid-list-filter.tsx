@@ -4,14 +4,14 @@ import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Filter } from 'lucide-react';
-import React, { FormEvent, useEffect } from 'react';
+import React, { FormEvent, JSX, useEffect } from 'react';
 
 import { cn } from "@/lib/utils";
 import { DropdownMenuArrow } from '@radix-ui/react-dropdown-menu';
 
 export type DataGridListFilterProps<TKey extends DataGridListFilterOptionKeyValue = string> = React.ComponentPropsWithoutRef<'div'> & {
   filterTitle: string
-  labelRenderer?: () => React.ReactNode
+  labelRenderer?: () => string | JSX.Element
   options: DataGridListFilterOption<TKey>[]
   selectedOptions: TKey[]
   onToggleOption?: (key: TKey) => void

@@ -1,9 +1,12 @@
 'use client'
 
+import { ArrowRightCircle } from 'lucide-react'
+import Link from 'next/link'
 import React, { MouseEvent, useCallback, useEffect, useState } from 'react'
 import { Column, DataGrid, RenderCheckboxProps, renderHeaderCell, RenderHeaderCellProps, SelectColumn } from 'react-data-grid'
 
 import useCarDataApiClient from '@/api-clients/mock-car-data-api-client'
+import { Button } from '@/components/ui/button'
 import { Checkbox, CheckboxChangeHandler } from '@/components/ui/checkbox'
 import { CarDetail } from '@/types/car-detail'
 import { CarFeature } from '@/types/car-feature'
@@ -242,18 +245,26 @@ function columnsFactory({
   return [
     SelectColumn,
     {
+      name: 'Model',
+      key: 'modelId',
+      renderCell: props => (
+        <Button asChild
+          variant="link"
+          className="w-full flex justify-between"
+          title="View Details"
+        >
+          <Link href={`/cars/${props.row.id}`}>{props.row.CarModel?.name} <ArrowRightCircle /></Link>
+        </Button>
+      ),
+      sortable: true,
+      renderHeaderCell: renderListFilterHeader('carModelId', 'Model')
+    },
+    {
       name: 'Make',
       key: 'makeId',
       renderCell: props => props.row.CarMake?.name,
       sortable: true,
       renderHeaderCell: renderListFilterHeader('carMakeId', 'Make')
-    },
-    {
-      name: 'Model',
-      key: 'modelId',
-      renderCell: props => props.row.CarModel?.name,
-      sortable: true,
-      renderHeaderCell: renderListFilterHeader('carModelId', 'Model')
     },
     {
       name: 'Year',

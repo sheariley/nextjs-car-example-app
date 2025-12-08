@@ -27,6 +27,13 @@ async function getCarDetails(): Promise<CarDetail[]> {
   }))
 }
 
+async function getCarDetail(id: string) {
+  // logic will obviously be different when pulling from actual DB
+  const allCars = await getCarDetails()
+  const result = allCars.find(x => x.id === id)
+  return result
+}
+
 async function getCarMakes() {
   return carMakeRows as CarMake[]
 }
@@ -43,6 +50,7 @@ const useCarDataApiClient = (): CarDataApiClient => {
   // should never recompute the instance because its a mock client and has no config props
   return React.useMemo(() => ({
     getCarDetails,
+    getCarDetail,
     getCarMakes,
     getCarModels,
     getCarFeatures
