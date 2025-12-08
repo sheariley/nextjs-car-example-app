@@ -9,6 +9,7 @@
 - [ ] Update UI components to use new Supabase API client to fetch data
 - [ ] Modify car detail page to allow creating and editing cars
 - [ ] Modify data-grid to add a delete button for deleting cars
+- [ ] Optimize SSR (render as much as possible on server side)
 - [ ] Perform a11y audit and fix any a11y issues
 
 # Bonus
