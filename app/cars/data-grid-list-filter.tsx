@@ -3,7 +3,6 @@
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
-import debounce from 'lodash/debounce';
 import { Filter } from 'lucide-react';
 import React, { FormEvent, useEffect } from 'react';
 
@@ -35,40 +34,34 @@ export default function DataGridListFilter<TKey extends DataGridListFilterOption
   onToggleOption,
   ...props
 }: DataGridListFilterProps<TKey>) {
-  const inputRef = React.useRef<HTMLInputElement>(null)
   const [searchTerm, setSearchTerm] = React.useState('')
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = React.useState(searchTerm)
   const [searchFocused, setSearchFocused] = React.useState(false)
 
-  // We are using a debounced event handler, so we can't use a
-  // regular value binding to sync state. Otherwise, it will cause
-  // strange side-effects when the user types. This isn't really
-  // necessary, but I'm syncing it anyways because OCD and posterity.
   useEffect(() => {
-    if (inputRef.current && inputRef.current.value !== searchTerm) {
-      inputRef.current.value = searchTerm
-    }
+    const handle = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm)
+    }, 650)
+
+    return () => clearTimeout(handle)
   }, [searchTerm])
 
   const handleToggleOption = React.useCallback((key: TKey) => {
     if (typeof onToggleOption === 'function') onToggleOption(key)
   }, [onToggleOption])
 
-  const updateSearchTerm = React.useMemo(() => debounce((value: string) => {
-    setSearchTerm(value)
-  }, 650), [])
-
   const handleSearchInput = React.useCallback((event: FormEvent<HTMLInputElement>) => {
     event.stopPropagation()
-    updateSearchTerm(event.currentTarget.value)
-  }, [updateSearchTerm])
+    setSearchTerm(event.currentTarget.value)
+  }, [])
 
   const filteredOptions = React.useMemo(() => {
-    if (!searchTerm.length) return options
+    if (!debouncedSearchTerm.length) return options
 
     // for case insensitivity
-    const searchRegex = new RegExp(searchTerm, 'i')
+    const searchRegex = new RegExp(debouncedSearchTerm, 'i')
     return options.filter(o => searchRegex.test(o.label))
-  }, [options, searchTerm])
+  }, [options, debouncedSearchTerm])
 
   const cancelPointerEventWhenSearchFocused = React.useCallback((event: React.PointerEvent) => {
     if (searchFocused) event.preventDefault()
@@ -85,7 +78,11 @@ export default function DataGridListFilter<TKey extends DataGridListFilterOption
       }
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="icon" aria-label={`Filter ${filterTitle}`}>
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label={`Filter ${filterTitle}`}
+          >
             <Filter className="size-4" />
           </Button>
         </DropdownMenuTrigger>
@@ -94,8 +91,9 @@ export default function DataGridListFilter<TKey extends DataGridListFilterOption
           <DropdownMenuLabel>Filter {filterTitle}</DropdownMenuLabel>
           <div className="py-1">
             <Input
-              ref={inputRef}
               placeholder={`Search ${filterTitle}`}
+              value={searchTerm}
+              type="search"
               onInput={handleSearchInput}
               onKeyDown={e => e.stopPropagation()}
               onFocus={() => setSearchFocused(true)}
