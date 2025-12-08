@@ -16,3 +16,4 @@
 - [ ] Add clear button to data-grid-list-filter
 - [ ] Use icons to represent car features in data-grid column
 - [ ] Add column sorting
+- [ ] Add inline editing to the data-grid
