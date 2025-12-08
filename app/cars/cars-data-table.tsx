@@ -76,7 +76,7 @@ export default function CarsDataTable() {
     for (const [col, optionKeys] of Object.entries(selectedListFilterOptions)) {
       if (!optionKeys || optionKeys.length === 0) continue
       // map column key to actual CarDetail property
-      const value = col === 'makeId' ? r.carMakeId : col === 'modelId' ? r.carModelId : r[col as CarDetailFilterablePropKeys]
+      const value = r[col as CarDetailFilterablePropKeys]
       if (!optionKeys.includes(String(value)) && !optionKeys.includes(value)) return false
     }
     if (typeof yearRangeFilter.min === 'number' && r.year < yearRangeFilter.min) {
