@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "gql-codegen": "graphql-codegen --config graphql.codegen.ts"
   },
   "dependencies": {
     "@apollo/client": "^4.0.9",
@@ -43,6 +44,14 @@
     "zod": "^4.1.13"
   },
   "devDependencies": {
+    "@eddeee888/gcg-typescript-resolver-files": "^0.14.1",
+    "@graphql-codegen/add": "^6.0.0",
+    "@graphql-codegen/cli": "^6.1.0",
+    "@graphql-codegen/gql-tag-operations": "^5.1.1",
+    "@graphql-codegen/import-types-preset": "^3.0.1",
+    "@graphql-codegen/typed-document-node": "^6.1.4",
+    "@graphql-codegen/typescript-operations": "^5.0.6",
+    "@parcel/watcher": "^2.5.1",
     "@tailwindcss/postcss": "^4",
     "@types/lodash": "^4.17.21",
     "@types/node": "^20",
@@ -51,6 +60,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.7",
+    "graphql-scalars": "^1.25.0",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "prisma": "^7.1.0",

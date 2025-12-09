@@ -16,11 +16,17 @@ export const CarDetailCreateInputSchema = z.object({
 
 export const CarDetailSchema = z.object({
   ...CarDetailCreateInputSchema.shape,
-  id: CarDetailCreateInputSchema.shape.id.nonoptional(),
+  id: CarDetailCreateInputSchema.shape.id
+    .nonoptional(),
 
   // nav props
-  CarMake: CarMakeSchema.optional(),
-  CarModel: CarModelSchema.optional(),
+  CarMake: CarMakeSchema
+    .nullable()
+    .optional(),
+  CarModel: CarModelSchema
+    .nullable()
+    .optional(),
   CarDetailFeatures: z.array(CarDetailFeatureSchema)
+    .nullable()
     .optional()
 })

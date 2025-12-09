@@ -1,0 +1,14 @@
+extend type Query {
+  carDetails: [CarDetail!]!
+  carDetail(id: ID!): CarDetail
+}
+
+type CarDetail {
+  id: ID!
+  year: Int!
+  carMakeId: ID!
+  carModelId: ID!
+  CarMake: CarMake
+  CarModel: CarModel
+  CarDetailFeatures: [CarDetailFeature!]
+}

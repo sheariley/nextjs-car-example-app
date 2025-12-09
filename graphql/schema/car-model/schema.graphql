@@ -1,0 +1,10 @@
+extend type Query {
+  carModels: [CarModel!]!
+}
+
+type CarModel {
+  id: ID!
+  name: String!
+  carMakeId: ID!
+  CarMake: CarMake
+}

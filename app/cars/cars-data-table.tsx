@@ -12,7 +12,7 @@ import {
   SelectColumn,
 } from 'react-data-grid'
 
-import useCarDataApiClient from '@/api-clients/mock-car-data-api-client'
+import useCarDataApiClient from '@/api-clients/car-data-api-client'
 import { Button } from '@/components/ui/button'
 import { Checkbox, CheckboxChangeHandler } from '@/components/ui/checkbox'
 import { CarDetail } from '@/types/car-detail'

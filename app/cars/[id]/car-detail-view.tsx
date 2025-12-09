@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import React from 'react'
 
-import useCarDataApiClient from '@/api-clients/mock-car-data-api-client'
+import useCarDataApiClient from '@/api-clients/car-data-api-client'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
