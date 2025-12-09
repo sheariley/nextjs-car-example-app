@@ -14,6 +14,7 @@
 - [ ] Perform a11y audit and fix any a11y issues
 
 # Bonus
+- [ ] Setup and use local containerized postgres instance
 - [ ] Add clear button to data-grid-list-filter
 - [ ] Use icons to represent car features in data-grid column
 - [ ] Add column sorting
