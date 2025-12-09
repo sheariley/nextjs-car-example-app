@@ -3,10 +3,11 @@
 - [x] Add filtering to data-grid
 - [x] Add car detail page with features
 - [x] Add navigation from data-grid to car detail page
-- [ ] Setup local Supabase
-- [ ] Write create-scripts for Supabase tables and policies and execute them
-- [ ] Add new API client for fetching cars from Supabase using GraphQL
-- [ ] Update UI components to use new Supabase API client to fetch data
+- [x] Setup Prisma ORM and Postgres DB
+- [x] Setup Apollo GraphQL server and client
+- [x] Setup TypeScript codegen for GraphQL types and operations
+- [x] Add new API client for fetching cars from GraphQL API
+- [x] Update UI components to use new Supabase API client to fetch data
 - [ ] Modify car detail page to allow creating and editing cars
 - [ ] Modify data-grid to add a delete button for deleting cars
 - [ ] Final styling polish
