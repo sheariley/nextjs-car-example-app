@@ -9,7 +9,7 @@ import { Filter, RotateCcw } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { PopoverArrow } from '@radix-ui/react-popover'
 
-export type DataGridNumberRangeValues = {
+export type DataGridNumberRangeFilterValues = {
   min?: number | null
   max?: number | null
 }
@@ -19,11 +19,11 @@ export type DataGridNumberRangeFilterProps = React.ComponentPropsWithoutRef<'div
   labelRenderer?: () => React.ReactNode
   minLabel?: string
   maxLabel?: string
-  rangeValues?: DataGridNumberRangeValues
+  rangeValues?: DataGridNumberRangeFilterValues
   step?: number
   placeholderMin?: string
   placeholderMax?: string
-  onChange?: (values: DataGridNumberRangeValues) => void
+  onChange?: (values: DataGridNumberRangeFilterValues) => void
 }
 
 export default function DataGridNumberRangeFilter({

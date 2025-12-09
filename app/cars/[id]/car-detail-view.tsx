@@ -30,10 +30,7 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
         const result = await dataClient.getCarDetail(carDetailId)
         if (!result) return notFound()
 
-        // TODO: Remove me. For testing only!
-        setTimeout(() => {
-          setCarDetail(result)
-        }, 3000)
+        setCarDetail(result)
       } catch (error) {
         const msg: string = coerceErrorMessage(error)
         setLoadError(msg)

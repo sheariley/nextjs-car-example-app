@@ -1,21 +1,29 @@
 'use client'
 
-import { Button } from '@/components/ui/button';
-import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { Input } from '@/components/ui/input';
-import { Filter } from 'lucide-react';
-import React, { FormEvent, JSX, useEffect } from 'react';
+import { DropdownMenuArrow } from '@radix-ui/react-dropdown-menu'
+import { Filter } from 'lucide-react'
+import React, { FormEvent, JSX, useEffect } from 'react'
 
-import { cn } from "@/lib/utils";
-import { DropdownMenuArrow } from '@radix-ui/react-dropdown-menu';
+import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import { Input } from '@/components/ui/input'
+import { cn } from '@/lib/utils'
 
-export type DataGridListFilterProps<TKey extends DataGridListFilterOptionKeyValue = string> = React.ComponentPropsWithoutRef<'div'> & {
-  filterTitle: string
-  labelRenderer?: () => string | JSX.Element
-  options: DataGridListFilterOption<TKey>[]
-  selectedOptions: TKey[]
-  onToggleOption?: (key: TKey) => void
-}
+export type DataGridListFilterProps<TKey extends DataGridListFilterOptionKeyValue = string> =
+  React.ComponentPropsWithoutRef<'div'> & {
+    filterTitle: string
+    labelRenderer?: () => string | JSX.Element
+    options: DataGridListFilterOption<TKey>[]
+    selectedOptions: TKey[]
+    onToggleOption?: (key: TKey) => void
+  }
 
 export type DataGridListFilterOptionKeyValue = string | number | Date
 
@@ -46,9 +54,12 @@ export default function DataGridListFilter<TKey extends DataGridListFilterOption
     return () => clearTimeout(handle)
   }, [searchTerm])
 
-  const handleToggleOption = React.useCallback((key: TKey) => {
-    if (typeof onToggleOption === 'function') onToggleOption(key)
-  }, [onToggleOption])
+  const handleToggleOption = React.useCallback(
+    (key: TKey) => {
+      if (typeof onToggleOption === 'function') onToggleOption(key)
+    },
+    [onToggleOption]
+  )
 
   const handleSearchInput = React.useCallback((event: FormEvent<HTMLInputElement>) => {
     event.stopPropagation()
@@ -63,26 +74,19 @@ export default function DataGridListFilter<TKey extends DataGridListFilterOption
     return options.filter(o => searchRegex.test(o.label))
   }, [options, debouncedSearchTerm])
 
-  const cancelPointerEventWhenSearchFocused = React.useCallback((event: React.PointerEvent) => {
-    if (searchFocused) event.preventDefault()
-  }, [searchFocused])
+  const cancelPointerEventWhenSearchFocused = React.useCallback(
+    (event: React.PointerEvent) => {
+      if (searchFocused) event.preventDefault()
+    },
+    [searchFocused]
+  )
 
   return (
-    <div className={cn(
-      'flex items-center gap-2',
-      className
-    )} {...props}>
-      { labelRenderer
-        ? labelRenderer()
-        : <span className="font-medium">{filterTitle}</span>
-      }
+    <div className={cn('flex items-center gap-2', className)} {...props}>
+      {labelRenderer ? labelRenderer() : <span className="font-medium">{filterTitle}</span>}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            aria-label={`Filter ${filterTitle}`}
-          >
+          <Button variant="ghost" size="icon" aria-label={`Filter ${filterTitle}`}>
             <Filter className="size-4" />
           </Button>
         </DropdownMenuTrigger>
@@ -111,7 +115,7 @@ export default function DataGridListFilter<TKey extends DataGridListFilterOption
                 onPointerLeave={cancelPointerEventWhenSearchFocused}
                 onPointerMove={cancelPointerEventWhenSearchFocused}
               >
-                {o.label} <span className="ml-auto text-xs text-muted-foreground">{o.count}</span>
+                {o.label} <span className="text-muted-foreground ml-auto text-xs">{o.count}</span>
               </DropdownMenuCheckboxItem>
             ))}
           </div>

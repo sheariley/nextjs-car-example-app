@@ -1,26 +1,19 @@
 'use client'
 
-import { ArrowRightCircle } from 'lucide-react'
-import Link from 'next/link'
 import React, { MouseEvent } from 'react'
-import {
-  Column,
-  DataGrid,
-  RenderCheckboxProps,
-  renderHeaderCell,
-  RenderHeaderCellProps,
-  SelectColumn,
-} from 'react-data-grid'
+import { DataGrid, RenderCheckboxProps } from 'react-data-grid'
 
 import useCarDataApiClient from '@/api-clients/car-data-api-client'
-import { Button } from '@/components/ui/button'
 import { Checkbox, CheckboxChangeHandler } from '@/components/ui/checkbox'
 import { CarDetail } from '@/types/car-detail'
 import { CarFeature } from '@/types/car-feature'
 import { CarMake } from '@/types/car-make'
 import { CarModel } from '@/types/car-model'
-import DataGridListFilter, { DataGridListFilterOption } from './data-grid-list-filter'
-import DataGridNumberRangeFilter, { DataGridNumberRangeValues } from './data-grid-number-range-filter'
+import { columnsFactory } from './cars-data-table-columns'
+import { filterCarsDataTableRows, provideListFilterOptions } from './cars-data-table-logic'
+import { CarDetailFilterablePropKeys, CarDetailFilterOptionKey } from './cars-data-table-types'
+import { DataGridListFilterOption } from './data-grid-list-filter'
+import { DataGridNumberRangeFilterValues } from './data-grid-number-range-filter'
 
 export default function CarsDataTable() {
   const dataClient = useCarDataApiClient()
@@ -36,7 +29,7 @@ export default function CarsDataTable() {
     carModelId: [],
     CarDetailFeatures: [],
   })
-  const [yearRangeFilter, setYearRangeFilter] = React.useState<DataGridNumberRangeValues>({})
+  const [yearRangeFilter, setYearRangeFilter] = React.useState<DataGridNumberRangeFilterValues>({})
 
   React.useEffect(() => {
     async function fetchCarMakes() {
@@ -77,69 +70,14 @@ export default function CarsDataTable() {
   // prefetch options for known columns (makeId, modelId, year)
   const listFilterOptions = React.useMemo<
     Record<CarDetailFilterablePropKeys, DataGridListFilterOption<CarDetailFilterOptionKey>[]>
-  >(() => {
-    const makeCounts = new Map<string, number>()
-    const modelCounts = new Map<string, number>()
-    const featureCounts = new Map<string, number>()
-
-    for (const r of rows) {
-      makeCounts.set(r.carMakeId, (makeCounts.get(r.carMakeId) ?? 0) + 1)
-      modelCounts.set(r.carModelId, (modelCounts.get(r.carModelId) ?? 0) + 1)
-      for (const f of r.CarDetailFeatures || []) {
-        featureCounts.set(f.featureId, (featureCounts.get(f.featureId) ?? 0) + 1)
-      }
-    }
-
-    const filterMakeIds = selectedListFilterOptions.carMakeId || []
-    const filteredModels = !filterMakeIds.length
-      ? allModels
-      : allModels.filter(m => filterMakeIds.includes(m.carMakeId))
-
-    return {
-      carMakeId: allMakes.map(m => ({
-        key: m.id,
-        label: m.name,
-        count: makeCounts.get(m.id) ?? 0,
-      })),
-      carModelId: filteredModels.map(m => ({
-        key: m.id,
-        label: m.name,
-        count: modelCounts.get(m.id) ?? 0,
-      })),
-      CarDetailFeatures: allFeatures.map(f => ({
-        key: f.id,
-        label: f.name,
-        count: featureCounts.get(f.id),
-      })),
-    }
-  }, [allMakes, allModels, allFeatures, rows, selectedListFilterOptions])
+  >(
+    () => provideListFilterOptions(allMakes, allModels, allFeatures, rows, selectedListFilterOptions),
+    [allMakes, allModels, allFeatures, rows, selectedListFilterOptions]
+  )
 
   // apply basic client-side filters
   const filteredRows = React.useMemo(
-    () =>
-      rows.filter(r => {
-        for (const [col, optionKeys] of Object.entries(selectedListFilterOptions)) {
-          if (!optionKeys || optionKeys.length === 0) continue
-
-          const colKey = col as CarDetailFilterablePropKeys
-          if (colKey === 'CarDetailFeatures') {
-            if (!r.CarDetailFeatures?.length) return false
-            const carFeatureIds = r.CarDetailFeatures.map(x => x.featureId)
-            if (!optionKeys.every(featureId => carFeatureIds.includes(featureId as string))) return false
-          } else {
-            // map column key to actual CarDetail property
-            const value = r[colKey]
-            if (!optionKeys.includes(String(value)) && !optionKeys.includes(value)) return false
-          }
-        }
-        if (typeof yearRangeFilter.min === 'number' && r.year < yearRangeFilter.min) {
-          return false
-        }
-        if (typeof yearRangeFilter.max === 'number' && r.year > yearRangeFilter.max) {
-          return false
-        }
-        return true
-      }),
+    () => filterCarsDataTableRows(rows, selectedListFilterOptions, yearRangeFilter),
     [rows, selectedListFilterOptions, yearRangeFilter]
   )
 
@@ -211,97 +149,6 @@ export default function CarsDataTable() {
       />
     </div>
   )
-}
-
-type CarDetailFilterablePropKeys = keyof Pick<CarDetail, 'carMakeId' | 'carModelId' | 'CarDetailFeatures'>
-
-type CarDetailFilterOptionKey = string | number
-
-type ColumnsFactoryProps = {
-  onToggleFilterOption: (columnKey: CarDetailFilterablePropKeys, optionKey: CarDetailFilterOptionKey) => void
-  listFilterOptions: Record<CarDetailFilterablePropKeys, DataGridListFilterOption<CarDetailFilterOptionKey>[]>
-  selectedListFilterOptions: Record<CarDetailFilterablePropKeys, CarDetailFilterOptionKey[]>
-  yearRangeFilter: DataGridNumberRangeValues
-  onYearRangeFilterChange: (range: DataGridNumberRangeValues) => void
-}
-
-function columnsFactory({
-  onToggleFilterOption,
-  listFilterOptions,
-  selectedListFilterOptions,
-  yearRangeFilter,
-  onYearRangeFilterChange,
-}: ColumnsFactoryProps): Column<CarDetail>[] {
-  // header renderer factory that shows a filter icon and a popover with options
-  const renderListFilterHeader = (columnKey: CarDetailFilterablePropKeys, columnName: string) => {
-    const renderer = (renderProps: RenderHeaderCellProps<CarDetail>) => {
-      const opts = listFilterOptions[columnKey] ?? []
-      const selOpts = selectedListFilterOptions[columnKey] ?? []
-
-      return (
-        <DataGridListFilter
-          filterTitle={columnName}
-          labelRenderer={() => renderHeaderCell(renderProps)}
-          options={opts}
-          selectedOptions={selOpts}
-          onToggleOption={oKey => onToggleFilterOption(columnKey, oKey)}
-        />
-      )
-    }
-    renderer.displayName = 'DataGridListColumnFilter'
-
-    return renderer
-  }
-
-  const renderYearFilterHeader = (renderProps: RenderHeaderCellProps<CarDetail>) => {
-    return (
-      <DataGridNumberRangeFilter
-        filterTitle="Year"
-        labelRenderer={() => renderHeaderCell(renderProps)}
-        rangeValues={yearRangeFilter}
-        onChange={onYearRangeFilterChange}
-      />
-    )
-  }
-  renderYearFilterHeader.displayName = 'DataGridNumberRangeColumnFilter'
-
-  return [
-    SelectColumn,
-    {
-      name: 'Model',
-      key: 'modelId',
-      renderCell: props => (
-        <Button asChild variant="link" className="flex w-full justify-between" title="View Details">
-          <Link href={`/cars/${props.row.id}`}>
-            {props.row.CarModel?.name} <ArrowRightCircle />
-          </Link>
-        </Button>
-      ),
-      sortable: true,
-      renderHeaderCell: renderListFilterHeader('carModelId', 'Model'),
-    },
-    {
-      name: 'Make',
-      key: 'makeId',
-      renderCell: props => props.row.CarMake?.name,
-      sortable: true,
-      renderHeaderCell: renderListFilterHeader('carMakeId', 'Make'),
-    },
-    {
-      name: 'Year',
-      key: 'year',
-      sortable: true,
-      renderHeaderCell: renderYearFilterHeader,
-    },
-    {
-      name: 'Features',
-      key: 'CarDetailFeatures',
-      renderCell: props =>
-        !props.row.CarDetailFeatures ? 'None' : props.row.CarDetailFeatures?.map(df => df.CarFeature!.name).join(', '),
-      sortable: false,
-      renderHeaderCell: renderListFilterHeader('CarDetailFeatures', 'Features'),
-    },
-  ]
 }
 
 function carRowKeyGetter(row: CarDetail) {
