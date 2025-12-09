@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  extensions = [pgcrypto]
+}
+
+
+model CarMake {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name String @db.VarChar(64)
+
+  CarModels CarModel[]
+  CarDetails CarDetail[]
+}
+
+model CarModel {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  carMakeId String @db.Uuid
+  name String @db.VarChar(128)
+
+  CarMake CarMake @relation(fields: [carMakeId], references: [id])
+  CarDetails CarDetail[]
+  @@index([carMakeId])
+}
+
+model CarFeature {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name String @db.VarChar(128)
+
+  CarDetailFeatures CarDetailFeature[]
+}
+
+model CarDetail {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  carMakeId String @db.Uuid
+  carModelId String @db.Uuid
+  year Int
+
+  CarMake CarMake @relation(fields: [carMakeId], references: [id])
+  CarModel CarModel @relation(fields: [carModelId], references: [id])
+  CarDetailFeatures CarDetailFeature[]
+
+  @@index([carMakeId])
+  @@index([carModelId])
+}
+
+model CarDetailFeature {
+  carDetailId String @db.Uuid
+  featureId String @db.Uuid
+
+  CarDetail CarDetail @relation(fields: [carDetailId], references: [id])
+  CarFeature CarFeature @relation(fields: [featureId], references: [id])
+
+  @@id([carDetailId, featureId])
+  @@index([featureId])
+}
+
