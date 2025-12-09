@@ -3,6 +3,12 @@ extend type Query {
   carDetail(id: ID!): CarDetail
 }
 
+extend type Mutation {
+  createCarDetail(id: ID, year: Int!, carMakeId: ID!, carModelId: ID!): CarDetail!
+  updateCarDetail(id: ID, year: Int, carMakeId: ID, carModelId: ID): CarDetail!
+  deleteCarDetail(id: ID!): Boolean!
+}
+
 type CarDetail {
   id: ID!
   year: Int!

@@ -1,15 +1,16 @@
 import 'server-only'
 
-import { PrismaClient } from '../app/generated/prisma/client'
 import { PrismaPg } from '@prisma/adapter-pg'
+
+import { PrismaClient } from '@/app/generated/prisma/client'
+import { CarDetailCreateInputSchema } from '@/validation/schemas/car-detail'
+import { CarDetailFeatureCreateInputSchema } from '@/validation/schemas/car-detail-feature'
+import { CarFeatureCreateInputSchema } from '@/validation/schemas/car-feature'
 import { CarMakeCreateInputSchema } from '@/validation/schemas/car-make'
 import { CarModelCreateInputSchema } from '@/validation/schemas/car-model'
-import { CarFeatureCreateInputSchema } from '@/validation/schemas/car-feature'
-import { CarDetailFeatureCreateInputSchema } from '@/validation/schemas/car-detail-feature'
-import { CarDetailCreateInputSchema } from '@/validation/schemas/car-detail'
 
 const globalForPrisma = global as unknown as {
-    prisma: PrismaClient
+  prisma: PrismaClient
 }
 
 const adapter = new PrismaPg({

@@ -1,11 +1,5 @@
-import { ApolloServer } from '@apollo/server'
-import { startServerAndCreateNextHandler } from '@as-integrations/next'
+import { createGraphQLServerHandler } from '@/graphql/server/server-handler'
 
-import { resolvers } from '@/app/generated/gql/resolvers.generated'
-import { typeDefs } from '@/app/generated/gql/typeDefs.generated'
-
-const server = new ApolloServer({ typeDefs, resolvers })
-
-const handler = startServerAndCreateNextHandler(server)
+const handler = createGraphQLServerHandler()
 
 export { handler as GET, handler as POST }

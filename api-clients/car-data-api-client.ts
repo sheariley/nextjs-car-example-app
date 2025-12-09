@@ -3,76 +3,35 @@ import React from 'react'
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
 import fetch from 'cross-fetch'
 
-import { graphql } from '@/app/generated/gql'
-import { CarDataApiClient } from './car-data-api-client.type'
-
-import { CarDetail } from '@/types/car-detail'
-import { CarFeature } from '@/types/car-feature'
-import { CarMake } from '@/types/car-make'
-import { CarModel } from '@/types/car-model'
-
-const GET_CAR_DETAILS = graphql(/* GraphQL */ `
-  query GetCarDetails {
-    carDetails {
-      id
-      year
-      carMakeId
-      carModelId
-      CarMake { id name }
-      CarModel { id name carMakeId }
-      CarDetailFeatures { carDetailId featureId CarFeature { id name } }
-    }
-  }
-`)
-
-const GET_CAR_DETAIL = graphql(/* GraphQL */ `
-  query GetCarDetail($id: ID!) {
-    carDetail(id: $id) {
-      id
-      year
-      carMakeId
-      carModelId
-      CarMake { id name }
-      CarModel { id name carMakeId }
-      CarDetailFeatures { carDetailId featureId CarFeature { id name } }
-    }
-  }
-`)
-
-const GET_CAR_MAKES = graphql(/* GraphQL */ `
-  query GetCarMakes { carMakes { id name } }
-`)
-
-const GET_CAR_MODELS = graphql(/* GraphQL */ `
-  query GetCarModels { carModels { id name carMakeId } }
-`)
-
-const GET_CAR_FEATURES = graphql(/* GraphQL */ `
-  query GetCarFeatures { carFeatures { id name } }
-`)
+import * as gqlOperations from '@/graphql/operations'
+import type { CarDetail } from '@/types/car-detail'
+import type { CarFeature } from '@/types/car-feature'
+import type { CarMake } from '@/types/car-make'
+import type { CarModel } from '@/types/car-model'
+import type { CarDataApiClient } from './car-data-api-client.type'
 
 async function getCarDetails(client: ApolloClient): Promise<CarDetail[]> {
-  const { data } = await client.query({ query: GET_CAR_DETAILS })
+  const { data } = await client.query({ query: gqlOperations.GET_CAR_DETAILS })
   return data?.carDetails || []
 }
 
 async function getCarDetail(client: ApolloClient, id: string): Promise<CarDetail | null | undefined> {
-  const { data } = await client.query({ query: GET_CAR_DETAIL, variables: { id } })
+  const { data } = await client.query({ query: gqlOperations.GET_CAR_DETAIL, variables: { id } })
   return data?.carDetail ?? null
 }
 
 async function getCarMakes(client: ApolloClient): Promise<CarMake[]> {
-  const { data } = await client.query({ query: GET_CAR_MAKES })
+  const { data } = await client.query({ query: gqlOperations.GET_CAR_MAKES })
   return data?.carMakes ?? []
 }
 
 async function getCarModels(client: ApolloClient): Promise<CarModel[]> {
-  const { data } = await client.query({ query: GET_CAR_MODELS })
+  const { data } = await client.query({ query: gqlOperations.GET_CAR_MODELS })
   return data?.carModels ?? []
 }
 
 async function getCarFeatures(client: ApolloClient): Promise<CarFeature[]> {
-  const { data } = await client.query({ query: GET_CAR_FEATURES })
+  const { data } = await client.query({ query: gqlOperations.GET_CAR_FEATURES })
   return data?.carFeatures ?? []
 }
 

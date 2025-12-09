@@ -1,8 +1,8 @@
-import prisma from '@/lib/prisma'
-import type { QueryResolvers } from './../../../../../app/generated/gql/types.generated'
+import type { QueryResolvers } from '@/graphql/generated/types.generated'
+import type { GQLServerContext } from '@/graphql/server/context.type'
 
-export const carDetails: NonNullable<QueryResolvers['carDetails']> = async () => {
-  const details = await prisma.carDetail.findMany({
+export const carDetails: NonNullable<QueryResolvers<GQLServerContext>['carDetails']> = async (_parent, _arg, _ctx) => {
+  const details = await _ctx.dbClient.carDetail.findMany({
     include: {
       CarMake: true,
       CarModel: true,

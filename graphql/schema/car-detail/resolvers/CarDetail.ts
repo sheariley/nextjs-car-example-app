@@ -1,4 +1,4 @@
-import type   { CarDetailResolvers } from './../../../../app/generated/gql/types.generated';
+import type   { CarDetailResolvers } from '@/graphql/generated/types.generated';
     export const CarDetail: CarDetailResolvers = {
     /* Implement CarDetail resolver logic here */
   };

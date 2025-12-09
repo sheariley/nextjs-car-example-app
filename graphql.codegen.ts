@@ -22,7 +22,7 @@ const config: CodegenConfig = {
   },
   generates: {
     // server config
-    'app/generated/gql': defineConfig({
+    'graphql/generated': defineConfig({
       add: {
         './types.generated.ts': { content: '/* eslint-disable */' },
         './resolvers.generated.ts': { content: '/* eslint-disable */' },
@@ -31,11 +31,11 @@ const config: CodegenConfig = {
     }),
 
     // client config
-    'app/generated/gql/': {
-      documents: ['api-clients/car-data-api-client.ts'],
+    'graphql/generated/client/': {
+      documents: ['graphql/operations/index.ts'],
       preset: 'client',
       presetConfig: {
-        typesPath: './types.generated.ts'
+        typesPath: 'graphql/generated/types.generated.ts'
       },
       plugins: [
         { add: { content: ['/* eslint-disable */'] } }
@@ -43,7 +43,7 @@ const config: CodegenConfig = {
     }
 
     // TODO: Try to get this to work to avoid duplicate generated types
-    // 'app/generated/gql/gql.ts': {
+    // 'graphql/generated/gql.ts': {
     //   documents: ['app/**/*.tsx', 'api-clients/car-data-api-client.ts'],
     //   preset: 'import-types',
     //   plugins: [

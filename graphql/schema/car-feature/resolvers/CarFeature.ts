@@ -1,4 +1,5 @@
-import type { CarFeatureResolvers } from './../../../../app/generated/gql/types.generated'
+import type { CarFeatureResolvers } from '@/graphql/generated/types.generated'
+
 export const CarFeature: CarFeatureResolvers = {
   /* Implement CarFeature resolver logic here */
 }
