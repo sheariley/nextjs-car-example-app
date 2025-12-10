@@ -1,17 +1,23 @@
 'use client'
 
-import { useQuery } from '@apollo/client/react'
+import { useMutation, useQuery } from '@apollo/client/react'
 import { RefreshCw, Trash2, TriangleAlert } from 'lucide-react'
 import React, { MouseEvent } from 'react'
 import { DataGrid, RenderCheckboxProps } from 'react-data-grid'
 import { toast } from 'sonner'
 
-import useCarDataApiClient from '@/api-clients/car-data-api-client'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Checkbox, CheckboxChangeHandler } from '@/components/ui/checkbox'
 import { Skeleton } from '@/components/ui/skeleton'
-import { GET_CAR_DETAILS, GET_CAR_FEATURES, GET_CAR_MAKES, GET_CAR_MODELS } from '@/graphql/operations'
+import {
+  DELETE_CAR_DETAILS,
+  GET_CAR_DETAILS,
+  GET_CAR_FEATURES,
+  GET_CAR_MAKES,
+  GET_CAR_MODELS,
+} from '@/graphql/operations'
+import { isTruthy } from '@/lib/functional'
 import { useConfirmationDialog } from '@/lib/hooks'
 import { CarDetail } from '@/types/car-detail'
 import { columnsFactory } from './cars-data-table-columns'
@@ -21,13 +27,25 @@ import { DataGridListFilterOption } from './data-grid-list-filter'
 import { DataGridNumberRangeFilterValues } from './data-grid-number-range-filter'
 
 export default function CarsDataTable() {
-  const dataClient = useCarDataApiClient()
   const { loading: loadingMakes, error: makesLoadingError, data: allMakes } = useQuery(GET_CAR_MAKES)
   const { loading: loadingModels, error: modelsLoadingError, data: allModels } = useQuery(GET_CAR_MODELS)
   const { loading: loadingFeatures, error: featuresLoadingError, data: allFeatures } = useQuery(GET_CAR_FEATURES)
   const { loading: loadingCarDetails, error: carDetailsLoadingError, data: rows } = useQuery(GET_CAR_DETAILS)
   const loadingAnyData = loadingMakes || loadingModels || loadingFeatures || loadingCarDetails
   const anyLoadingError = !!(makesLoadingError || modelsLoadingError || featuresLoadingError || carDetailsLoadingError)
+  const [deleteCarDetails, { loading: deletingCarDetails }] = useMutation(DELETE_CAR_DETAILS, {
+    update(cache, result) {
+      if (result.data?.deleteCarDetails === selectedRows.size) {
+        const normalizedIds = selectedRows
+          .values()
+          .toArray()
+          .map(id => cache.identify({ id, __typename: 'CarDetail' }))
+          .filter(isTruthy) as string[]
+        normalizedIds.forEach(id => cache.evict({ id }))
+        cache.gc()
+      }
+    },
+  })
 
   const [selectedRows, setSelectedRows] = React.useState<ReadonlySet<string>>(new Set<string>())
   const [selectedListFilterOptions, setSelectedListFilterOptions] = React.useState<
@@ -123,15 +141,18 @@ export default function CarsDataTable() {
       })
       if (dialogResult === 'confirm') {
         const selectedIds = selectedRows.values().toArray()
+        const loadingToastId = toast.loading(`Attempting to delete ${selectedIds.length} cars...`)
         try {
-          const result = await dataClient.deleteCarDetails(selectedIds)
-          if (result === 0) {
+          const result = await deleteCarDetails({ variables: { ids: selectedIds } })
+          toast.dismiss(loadingToastId)
+          const deletedCount = result.data?.deleteCarDetails
+          if (deletedCount === 0) {
             toast.error('No cars were deleted!', {
               description: 'Failed to delete the selected car(s).',
             })
-          } else if (result !== selectedIds.length) {
+          } else if (deletedCount !== selectedIds.length) {
             toast.warning('Warning', {
-              description: `Only ${result} of the ${selectedIds.length} cars were deleted.`,
+              description: `Only ${deletedCount} of the ${selectedIds.length} cars were deleted.`,
             })
             setSelectedRows(new Set())
           } else {
@@ -143,12 +164,12 @@ export default function CarsDataTable() {
             })
             setSelectedRows(new Set())
           }
-
-          // await fetchCarDetails()
         } catch {
           toast.error('An error occurred!', {
             description: 'Failed to delete the selected car(s).',
           })
+        } finally {
+          if (toast.getToasts().some(x => x.id === loadingToastId)) toast.dismiss(loadingToastId)
         }
       }
     }
@@ -158,9 +179,9 @@ export default function CarsDataTable() {
     return (
       <div className="container mx-auto space-y-8 py-10">
         <div className="flex justify-end gap-4">
-          <Skeleton className="w-[150px] h-[36px]" />
+          <Skeleton className="h-[36px] w-[150px]" />
         </div>
-        <Skeleton className="w-full h-[350px]" />
+        <Skeleton className="h-[350px] w-full" />
       </div>
     )
   }
@@ -180,7 +201,7 @@ export default function CarsDataTable() {
           variant="destructive"
           aria-label="Delete Selected Cars"
           onClick={handleDeleteSelected}
-          disabled={!selectedRows?.size}
+          disabled={!selectedRows?.size || deletingCarDetails}
         >
           <Trash2 className="size-4" /> Delete Selected
         </Button>
@@ -192,7 +213,9 @@ export default function CarsDataTable() {
         selectedRows={selectedRows}
         onSelectedRowsChange={setSelectedRows}
         renderers={{
-          renderCheckbox: DataTableCheckbox,
+          renderCheckbox: ({ disabled, ...props }) => (
+            <DataTableCheckbox disabled={disabled || deletingCarDetails} {...props} />
+          ),
         }}
       />
     </div>
@@ -224,7 +247,7 @@ function DataLoadErrorAlert() {
   return (
     <Alert variant="destructive">
       <AlertTitle>
-        <div className="flex gap-2 items-center">
+        <div className="flex items-center gap-2">
           <TriangleAlert /> <span>An Error Occurred</span>
         </div>
       </AlertTitle>
@@ -232,12 +255,8 @@ function DataLoadErrorAlert() {
         <div className="w-full">
           We couldn&apos;t fetch the data needed for this page. Click Retry to reload the page.
         </div>
-        <div className="w-full flex justify-center">
-          <Button
-            variant="link"
-            size="sm"
-            onClick={() => window.location.reload()}
-          >
+        <div className="flex w-full justify-center">
+          <Button variant="link" size="sm" onClick={() => window.location.reload()}>
             <RefreshCw /> Retry
           </Button>
         </div>
