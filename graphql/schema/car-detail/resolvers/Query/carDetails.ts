@@ -1,7 +1,6 @@
 import type { QueryResolvers } from '@/graphql/generated/types.generated'
-import type { GQLServerContext } from '@/graphql/server/context.type'
 
-export const carDetails: NonNullable<QueryResolvers<GQLServerContext>['carDetails']> = async (_parent, _arg, _ctx) => {
+export const carDetails: NonNullable<QueryResolvers['carDetails']> = async (_parent, _arg, _ctx) => {
   const details = await _ctx.dbClient.carDetail.findMany({
     include: {
       CarMake: true,

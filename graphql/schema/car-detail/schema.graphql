@@ -4,8 +4,8 @@ extend type Query {
 }
 
 extend type Mutation {
-  createCarDetail(id: ID, year: Int!, carMakeId: ID!, carModelId: ID!): CarDetail!
-  updateCarDetail(id: ID, year: Int, carMakeId: ID, carModelId: ID): CarDetail!
+  createCarDetail(year: Int!, carMakeId: ID!, carModelId: ID!, featureIds: [ID!]): CarDetail!
+  updateCarDetail(id: ID!, year: Int, carMakeId: ID, carModelId: ID, featureIds: [ID!]): CarDetail!
   deleteCarDetail(id: ID!): Boolean!
 }
 

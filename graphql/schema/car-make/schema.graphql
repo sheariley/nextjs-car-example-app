@@ -5,5 +5,4 @@ extend type Query {
 type CarMake {
   id: ID!
   name: String!
-  CarModels: [CarModel!]
 }

@@ -6,3 +6,8 @@ type CarFeature {
   id: ID!
   name: String!
 }
+
+input CarFeatureCreateInput {
+  id: ID!
+  name: String!
+}

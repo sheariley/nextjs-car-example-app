@@ -8,7 +8,8 @@
 - [x] Setup TypeScript codegen for GraphQL types and operations
 - [x] Add new API client for fetching cars from GraphQL API
 - [x] Update UI components to use new GraphQL API client to fetch data
-- [ ] Add GraphQL mutations to schema and implement corresponding mutation resolvers
+- [x] Add GraphQL mutations to schema and implement corresponding mutation resolvers
+- [x] Add methods to GraphQL API client to facilitate making mutation requests
 - [ ] Modify car detail page to allow creating and editing cars
 - [ ] Modify data-grid to add a delete button for deleting cars
 - [ ] Final styling polish

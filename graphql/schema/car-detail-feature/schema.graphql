@@ -1,5 +1,11 @@
 type CarDetailFeature {
   carDetailId: ID!
   featureId: ID!
-  CarFeature: CarFeature!
+  CarFeature: CarFeature
 }
+
+input CarDetailFeatureCreateInput {
+  carDetailId: ID!
+  featureId: ID!
+}
+

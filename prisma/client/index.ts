@@ -2,7 +2,7 @@ import 'server-only'
 
 import { PrismaPg } from '@prisma/adapter-pg'
 
-import { PrismaClient } from '@/app/generated/prisma/client'
+import { PrismaClient } from '@/prisma/generated/client'
 import { CarDetailCreateInputSchema } from '@/validation/schemas/car-detail'
 import { CarDetailFeatureCreateInputSchema } from '@/validation/schemas/car-detail-feature'
 import { CarFeatureCreateInputSchema } from '@/validation/schemas/car-feature'

@@ -55,6 +55,14 @@ const useCarDataApiClient = (): CarDataApiClient => {
       getCarMakes,
       getCarModels,
       getCarFeatures,
+
+      // NOTE: Mutations are not mockable at this time
+      createCarDetail() {
+        throw new Error('Not implemented')
+      },
+      updateCarDetail() {
+        throw new Error('Not implemented')
+      }
     }),
     []
   )

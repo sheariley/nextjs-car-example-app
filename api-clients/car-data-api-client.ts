@@ -4,7 +4,7 @@ import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
 import fetch from 'cross-fetch'
 
 import * as gqlOperations from '@/graphql/operations'
-import type { CarDetail } from '@/types/car-detail'
+import type { CarDetail, CarDetailCreateInput, CarDetailUpdateInput } from '@/types/car-detail'
 import type { CarFeature } from '@/types/car-feature'
 import type { CarMake } from '@/types/car-make'
 import type { CarModel } from '@/types/car-model'
@@ -35,6 +35,22 @@ async function getCarFeatures(client: ApolloClient): Promise<CarFeature[]> {
   return data?.carFeatures ?? []
 }
 
+async function createCarDetail(client: ApolloClient, input: CarDetailCreateInput): Promise<CarDetail | null | undefined> {
+  const { data } = await client.query({
+    query: gqlOperations.CREATE_CAR_DETAIL,
+    variables: input
+  })
+  return data?.createCarDetail ?? null
+}
+
+async function updateCarDetail(client: ApolloClient, input: CarDetailUpdateInput): Promise<CarDetail | null | undefined> {
+  const { data } = await client.query({
+    query: gqlOperations.UPDATE_CAR_DETAIL,
+    variables: input
+  })
+  return data?.updateCarDetail ?? null
+}
+
 const useCarDataApiClient = (): CarDataApiClient => {
   // should never recompute the instance because its a mock client and has no config props
   return React.useMemo(() => {
@@ -48,7 +64,10 @@ const useCarDataApiClient = (): CarDataApiClient => {
       getCarDetail: (id: string) => getCarDetail(client, id),
       getCarMakes: () => getCarMakes(client),
       getCarModels: () => getCarModels(client),
-      getCarFeatures: () => getCarFeatures(client)
+      getCarFeatures: () => getCarFeatures(client),
+
+      createCarDetail: (input: CarDetailCreateInput) => createCarDetail(client, input),
+      updateCarDetail: (input: CarDetailUpdateInput) => updateCarDetail(client, input),
     }
   }, [])
 }

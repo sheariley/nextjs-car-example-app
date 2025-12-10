@@ -5,19 +5,24 @@ import { CarModelSchema } from './car-model'
 import { CarDetailFeatureSchema } from './car-detail-feature'
 
 export const CarDetailCreateInputSchema = z.object({
-  id: z.uuidv4().optional(),
   carMakeId: z.uuidv4(),
   carModelId: z.uuidv4(),
   year: z.number()
     .int()
     .min(1908)
-    .max(new Date().getFullYear())
+    .max(new Date().getFullYear()),
+  featureIds: z.array(z.string())
+    .nullable()
+    .optional()
+})
+
+export const CarDetailUpdateInputSchema = z.object({
+  ...CarDetailCreateInputSchema.shape,
+  id: z.uuidv4()
 })
 
 export const CarDetailSchema = z.object({
-  ...CarDetailCreateInputSchema.shape,
-  id: CarDetailCreateInputSchema.shape.id
-    .nonoptional(),
+  ...CarDetailUpdateInputSchema.omit({ featureIds: true }).shape,
 
   // nav props
   CarMake: CarMakeSchema

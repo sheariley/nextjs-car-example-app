@@ -11,5 +11,5 @@ export const CarDetailFeatureSchema = z.object({
   ...CarDetailFeatureCreateInputSchema.shape,
   
   // nav props
-  CarFeature: CarFeatureSchema.optional()
+  CarFeature: CarFeatureSchema.optional().nullable()
 })
