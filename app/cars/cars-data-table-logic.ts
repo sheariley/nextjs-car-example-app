@@ -3,7 +3,6 @@ import { CarFeature } from '@/types/car-feature'
 import { CarMake } from '@/types/car-make'
 import { CarModel } from '@/types/car-model'
 import { CarDetailFilterablePropKeys } from './cars-data-table-types'
-import { DataGridNumberRangeFilterValues } from './data-grid-number-range-filter'
 
 export function provideListFilterOptions(
   allMakes: CarMake[],
@@ -46,32 +45,32 @@ export function provideListFilterOptions(
   }
 }
 
-export function filterCarsDataTableRows(
-  rows: CarDetail[],
-  selectedListFilterOptions: Record<CarDetailFilterablePropKeys, string[]>,
-  yearRangeFilter: DataGridNumberRangeFilterValues
-) {
-  return rows.filter(r => {
-    for (const [col, optionKeys] of Object.entries(selectedListFilterOptions)) {
-      if (!optionKeys || optionKeys.length === 0) continue
+// export function filterCarsDataTableRows(
+//   rows: CarDetail[],
+//   selectedListFilterOptions: Record<CarDetailFilterablePropKeys, string[]>,
+//   yearRangeFilter: DataGridNumberRangeFilterValues
+// ) {
+//   return rows.filter(r => {
+//     for (const [col, optionKeys] of Object.entries(selectedListFilterOptions)) {
+//       if (!optionKeys || optionKeys.length === 0) continue
 
-      const colKey = col as CarDetailFilterablePropKeys
-      if (colKey === 'CarDetailFeatures') {
-        if (!r.CarDetailFeatures?.length) return false
-        const carFeatureIds = r.CarDetailFeatures.map(x => x.featureId)
-        if (!optionKeys.every(featureId => carFeatureIds.includes(featureId as string))) return false
-      } else {
-        // map column key to actual CarDetail property
-        const value = r[colKey]
-        if (!optionKeys.includes(String(value)) && !optionKeys.includes(value)) return false
-      }
-    }
-    if (typeof yearRangeFilter.min === 'number' && r.year < yearRangeFilter.min) {
-      return false
-    }
-    if (typeof yearRangeFilter.max === 'number' && r.year > yearRangeFilter.max) {
-      return false
-    }
-    return true
-  })
-}
+//       const colKey = col as CarDetailFilterablePropKeys
+//       if (colKey === 'CarDetailFeatures') {
+//         if (!r.CarDetailFeatures?.length) return false
+//         const carFeatureIds = r.CarDetailFeatures.map(x => x.featureId)
+//         if (!optionKeys.every(featureId => carFeatureIds.includes(featureId as string))) return false
+//       } else {
+//         // map column key to actual CarDetail property
+//         const value = r[colKey]
+//         if (!optionKeys.includes(String(value)) && !optionKeys.includes(value)) return false
+//       }
+//     }
+//     if (typeof yearRangeFilter.min === 'number' && r.year < yearRangeFilter.min) {
+//       return false
+//     }
+//     if (typeof yearRangeFilter.max === 'number' && r.year > yearRangeFilter.max) {
+//       return false
+//     }
+//     return true
+//   })
+// }

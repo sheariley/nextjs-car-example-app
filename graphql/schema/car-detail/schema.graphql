@@ -1,5 +1,10 @@
 extend type Query {
-  carDetails(page: Int, pageSize: Int, filter: CarDetailFilterInput): CarDetailPage!
+  carDetails(
+    page: Int,
+    pageSize: Int,
+    filter: CarDetailFilterInput,
+    sort: [ColumnSortInput!]
+  ): CarDetailPage!
   carDetail(id: ID!): CarDetail
 }
 

@@ -1,12 +1,13 @@
 import type { QueryResolvers } from '@/graphql/generated/types.generated'
-import type { CarDetailWhereInput, IntFilter } from '@/prisma/generated/internal/prismaNamespace'
+import type { CarDetailOrderByWithRelationInput, CarDetailWhereInput, IntFilter } from '@/prisma/generated/internal/prismaNamespace'
+import { CarDetailUpdateInputSchema } from '@/validation/schemas/car-detail'
 
 export const carDetails: NonNullable<QueryResolvers['carDetails']> = async (
   _parent,
   _arg,
   _ctx
 ) => {
-  const { page, pageSize, filter } = _arg ?? {}
+  const { page, pageSize, filter, sort } = _arg ?? {}
 
   const where: CarDetailWhereInput = {}
 
@@ -27,6 +28,25 @@ export const carDetails: NonNullable<QueryResolvers['carDetails']> = async (
     if (featureIds != null && Array.isArray(featureIds) && featureIds.length > 0) {
       where.CarDetailFeatures = { some: { featureId: { in: featureIds } } }
     }
+  }
+
+  // sorting
+  let orderBy: CarDetailOrderByWithRelationInput[] | undefined = undefined
+  if (Array.isArray(sort) && sort.length > 0) {
+    const carDetailFieldKeys = Object.keys(CarDetailUpdateInputSchema.shape).filter(k => k !== 'featureIds')
+    orderBy = sort
+      .filter(s => s && s.col && carDetailFieldKeys.includes(s.col))
+      .map(({ col, dir }) => ({ col, dir: (dir === 'DESC' ? 'desc' : 'asc') as 'asc' | 'desc' }))
+      .map(({ col, dir }) => {
+        switch (col) {
+          case 'CarMake':
+            return { CarMake: { name: dir } }
+          case 'CarModel':
+            return { CarModel: { name: dir } }
+          default:
+            return { [col]: dir }
+        }
+      })
   }
 
   // paging
@@ -50,6 +70,7 @@ export const carDetails: NonNullable<QueryResolvers['carDetails']> = async (
           include: { CarFeature: true },
         },
       },
+      ...(orderBy ? { orderBy } : {}),
       ...(skip !== undefined ? { skip } : {}),
       ...(take !== undefined ? { take } : {}),
     }),

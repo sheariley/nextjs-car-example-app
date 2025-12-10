@@ -82,7 +82,7 @@ export default function DataGridListFilter<TKey extends DataGridListFilterOption
   )
 
   return (
-    <div className={cn('flex items-center gap-2', className)} {...props}>
+    <div className={cn('flex justify-between items-center gap-2 *:first:gap-2 *:first:items-center', className)} {...props}>
       {labelRenderer ? labelRenderer() : <span className="font-medium">{filterTitle}</span>}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

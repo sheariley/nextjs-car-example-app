@@ -3,14 +3,14 @@
 import { useMutation, useQuery } from '@apollo/client/react'
 import { RefreshCw, Trash2, TriangleAlert } from 'lucide-react'
 import React, { MouseEvent } from 'react'
-import { DataGrid, RenderCheckboxProps } from 'react-data-grid'
+import { DataGrid, RenderCheckboxProps, SortColumn } from 'react-data-grid'
 import { toast } from 'sonner'
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Checkbox, CheckboxChangeHandler } from '@/components/ui/checkbox'
 import { Skeleton } from '@/components/ui/skeleton'
-import { CarDetailFilterInput } from '@/graphql/generated/client/graphql'
+import { CarDetailFilterInput, SortDirection } from '@/graphql/generated/client/graphql'
 import {
   DELETE_CAR_DETAILS,
   GET_CAR_DETAILS,
@@ -58,9 +58,11 @@ export default function CarsDataTable() {
   const { showDialog: showConfirmationDialog } = useConfirmationDialog()
 
   // pagination state (server-side)
+
   const [page, setPage] = React.useState<number>(1)
   const [pageSize, setPageSize] = React.useState<number>(20)
 
+  const [sortColumns, setSortColumns] = React.useState<SortColumn[]>([])
   // reset page to 1 when any filter changes
   React.useEffect(() => {
     setPage(1)
@@ -70,8 +72,12 @@ export default function CarsDataTable() {
   const requestFilter = React.useMemo(() => {
     const filterInput: CarDetailFilterInput = {}
 
-    filterInput.carMakeIds = selectedListFilterOptions.carMakeId.length ? selectedListFilterOptions.carMakeId : undefined
-    filterInput.carModelIds = selectedListFilterOptions.carModelId.length ? selectedListFilterOptions.carModelId : undefined
+    filterInput.carMakeIds = selectedListFilterOptions.carMakeId.length
+      ? selectedListFilterOptions.carMakeId
+      : undefined
+    filterInput.carModelIds = selectedListFilterOptions.carModelId.length
+      ? selectedListFilterOptions.carModelId
+      : undefined
     filterInput.featureIds = selectedListFilterOptions?.CarDetailFeatures
 
     if (yearRangeFilter) {
@@ -82,13 +88,24 @@ export default function CarsDataTable() {
     return Object.keys(filterInput).length ? filterInput : undefined
   }, [selectedListFilterOptions, yearRangeFilter])
 
-  // server query for car details
+  // server query for fetching car details
   const {
     loading: loadingCarDetails,
     error: carDetailsLoadingError,
     data: carDetailData,
   } = useQuery(GET_CAR_DETAILS, {
-    variables: { page, pageSize, filter: requestFilter },
+    variables: {
+      page,
+      pageSize,
+      filter: requestFilter,
+      sort:
+        sortColumns.length > 0
+          ? sortColumns.map(({ columnKey, direction }) => ({
+              col: columnKey,
+              dir: direction as SortDirection,
+            }))
+          : undefined,
+    },
   })
 
   // catch-alls for loading and error states
@@ -96,9 +113,7 @@ export default function CarsDataTable() {
   const anyLoadingError = !!(makesLoadingError || modelsLoadingError || featuresLoadingError || carDetailsLoadingError)
 
   // prefetch options for known columns (makeId, modelId, year)
-  const listFilterOptions = React.useMemo<
-    Record<CarDetailFilterablePropKeys, DataGridListFilterOption<string>[]>
-  >(
+  const listFilterOptions = React.useMemo<Record<CarDetailFilterablePropKeys, DataGridListFilterOption<string>[]>>(
     () =>
       provideListFilterOptions(
         allMakes?.carMakes || [],
@@ -239,10 +254,12 @@ export default function CarsDataTable() {
       </div>
       <DataGrid
         columns={columns}
-        rows={carDetailData?.carDetails?.items as CarDetail[] || []}
+        rows={(carDetailData?.carDetails?.items as CarDetail[]) || []}
         rowKeyGetter={carRowKeyGetter}
         selectedRows={selectedRows}
         onSelectedRowsChange={setSelectedRows}
+        sortColumns={sortColumns}
+        onSortColumnsChange={setSortColumns}
         renderers={{
           renderCheckbox: ({ disabled, ...props }) => (
             <DataTableCheckbox disabled={disabled || deletingCarDetails} {...props} />

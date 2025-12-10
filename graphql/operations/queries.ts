@@ -1,8 +1,8 @@
 import { graphql } from '@/graphql/generated/client'
 
 export const GET_CAR_DETAILS = graphql(/* GraphQL */ `
-  query GetCarDetails($page: Int, $pageSize: Int, $filter: CarDetailFilterInput) {
-    carDetails(page: $page, pageSize: $pageSize, filter: $filter) {
+  query GetCarDetails($page: Int, $pageSize: Int, $filter: CarDetailFilterInput, $sort: [ColumnSortInput!]) {
+    carDetails(page: $page, pageSize: $pageSize, filter: $filter, sort: $sort) {
       items {
         id
         year

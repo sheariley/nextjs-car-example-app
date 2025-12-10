@@ -1,2 +1,18 @@
 type Query
 type Mutation
+
+"""
+Sort direction for a column: ascending or descending.
+"""
+enum SortDirection {
+	ASC
+	DESC
+}
+
+"""
+Describes a column and optional sort direction for sorting.
+"""
+input ColumnSortInput {
+	col: String!
+	dir: SortDirection
+}

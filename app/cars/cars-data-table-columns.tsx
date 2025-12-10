@@ -60,7 +60,7 @@ export function columnsFactory({
     SelectColumn,
     {
       name: 'Model',
-      key: 'modelId',
+      key: 'CarModel',
       renderCell: props => (
         <Button asChild variant="link" className="flex w-full justify-between" title="View Details">
           <Link href={`/cars/${props.row.id}`}>
@@ -73,7 +73,7 @@ export function columnsFactory({
     },
     {
       name: 'Make',
-      key: 'makeId',
+      key: 'CarMake',
       renderCell: props => props.row.CarMake?.name,
       sortable: true,
       renderHeaderCell: renderListFilterHeader('carMakeId', 'Make'),
