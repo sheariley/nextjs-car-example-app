@@ -1,3 +1,4 @@
+import { CarsDataProvider } from '../cars-data-provider'
 import { CarDetailView } from './car-detail-view'
 
 type CarDetailViewProps = {
@@ -10,6 +11,8 @@ export default async function CarDetailPage({ params }: CarDetailViewProps) {
   const carId = (await params).id
 
   return (
-    <CarDetailView carDetailId={carId} />
+    <CarsDataProvider>
+      <CarDetailView carDetailId={carId} />
+    </CarsDataProvider>
   )
 }

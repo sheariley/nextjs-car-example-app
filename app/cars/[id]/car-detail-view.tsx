@@ -1,44 +1,33 @@
 'use client'
 
-import { Pencil, ImageIcon, TriangleAlert, ArrowLeftCircle } from 'lucide-react'
+import { useQuery } from '@apollo/client/react'
+import { ArrowLeftCircle, ImageIcon, Pencil, TriangleAlert } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import React from 'react'
 
-import useCarDataApiClient from '@/api-clients/car-data-api-client'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Skeleton } from '@/components/ui/skeleton'
-import coerceErrorMessage from '@/lib/coerceErrorMessage'
-import { cn } from '@/lib/utils'
-import { CarDetail } from '@/types/car-detail'
 import { Item, ItemGroup } from '@/components/ui/item'
+import { Skeleton } from '@/components/ui/skeleton'
+import { GET_CAR_DETAIL } from '@/graphql/operations'
+import { cn } from '@/lib/utils'
 
 export type CarDetailViewProps = React.ComponentProps<'div'> & {
   carDetailId: string
 }
 
 export function CarDetailView({ carDetailId, className, ...props }: CarDetailViewProps) {
-  const dataClient = useCarDataApiClient()
-  const [carDetail, setCarDetail] = React.useState<CarDetail | null | undefined>(null)
-  const [loadError, setLoadError] = React.useState<string | null>(null)
+  const { loading, error: loadError, data: { carDetail } = {} } = useQuery(GET_CAR_DETAIL, {
+    variables: { id: carDetailId }
+  })
   
   React.useEffect(() => {
-    async function loadCarDetail() {
-      try {
-        const result = await dataClient.getCarDetail(carDetailId)
-        if (!result) return notFound()
-
-        setCarDetail(result)
-      } catch (error) {
-        const msg: string = coerceErrorMessage(error)
-        setLoadError(msg)
-      }
+    if (!loading && !loadError && !carDetail) {
+      return notFound()
     }
-
-    loadCarDetail()
-  }, [carDetailId, dataClient])
+  }, [loading, loadError, carDetail])
 
   if (loadError) {
     return (
@@ -50,7 +39,7 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
             </div>
           </AlertTitle>
           <AlertDescription className="pl-8">
-            <div className="w-full">{loadError}</div>
+            <div className="w-full">{loadError.message}</div>
             <div className="w-full flex justify-center">
               <Button variant="link" size="sm" asChild>
                 <Link href="/cars"><ArrowLeftCircle /> Back to list</Link>
@@ -65,7 +54,7 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
   return (
     <div className={cn('container mx-auto space-y-6 py-8', className)} {...props}>
       <div className="flex items-start justify-between gap-4">
-        { !carDetail
+        { loading || !carDetail
           ? <div className="space-y-2">
               <Skeleton className="h-7 w-64" />
               <Skeleton className="h-4 w-32"/>
@@ -92,7 +81,7 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
             </CardHeader>
             <CardContent>
               {
-                !carDetail
+                loading || !carDetail
                 ? (<>
                   <Skeleton className="aspect-video w-full rounded-md bg-muted flex items-center justify-center text-sm text-muted-foreground" />
                 </>)
@@ -123,21 +112,21 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
                   <div className="text-sm text-muted-foreground">Make</div>
-                  { !carDetail
+                  { loading || !carDetail
                     ? <Skeleton className="h-6 w-full" />
                     : <div className="font-medium">{carDetail.CarMake?.name ?? 'Uknown Make'}</div>
                   }
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground">Model</div>
-                  { !carDetail
+                  { loading || !carDetail
                     ? <Skeleton className="h-6 w-full" />
                     : <div className="font-medium">{carDetail.CarModel?.name ?? 'Unknown Model'}</div>
                   }
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground">Year</div>
-                  { !carDetail
+                  { loading || !carDetail
                     ? <Skeleton className="h-6 w-full" />
                     : <div className="font-medium">{carDetail.year}</div>
                   }
@@ -153,7 +142,7 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
             </CardHeader>
             <CardContent>
               <ItemGroup className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                { !carDetail
+                { loading || !carDetail
                   ? (<>
                     <Skeleton className="h-[54px]" />
                     <Skeleton className="h-[54px]" />
