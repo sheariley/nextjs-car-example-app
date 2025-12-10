@@ -10,8 +10,8 @@
 - [x] Update UI components to use new GraphQL API client to fetch data
 - [x] Add GraphQL mutations to schema and implement corresponding mutation resolvers
 - [x] Add methods to GraphQL API client to facilitate making mutation requests
+- [x] Modify data-grid to add a delete button for deleting cars
 - [ ] Modify car detail page to allow creating and editing cars
-- [ ] Modify data-grid to add a delete button for deleting cars
 - [ ] Final styling polish
 - [ ] Optimize SSR (render as much as possible on server side)
 - [ ] Perform a11y audit and fix any a11y issues
