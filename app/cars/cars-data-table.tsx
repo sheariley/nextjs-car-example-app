@@ -9,6 +9,7 @@ import { toast } from 'sonner'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Checkbox, CheckboxChangeHandler } from '@/components/ui/checkbox'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Skeleton } from '@/components/ui/skeleton'
 import { CarDetailFilterInput, SortDirection } from '@/graphql/generated/client/graphql'
 import {
@@ -242,6 +243,7 @@ export default function CarsDataTable() {
 
   return (
     <div className="container mx-auto space-y-6 py-10">
+      {/* Action Buttons */}
       <div className="flex justify-start gap-4">
         <Button
           variant="destructive"
@@ -252,6 +254,8 @@ export default function CarsDataTable() {
           <Trash2 className="size-4" /> Delete Selected
         </Button>
       </div>
+
+      {/* Data Grid */}
       <DataGrid
         columns={columns}
         rows={(carDetailData?.carDetails?.items as CarDetail[]) || []}
@@ -266,28 +270,36 @@ export default function CarsDataTable() {
           ),
         }}
       />
-      <div className="flex items-center gap-2">
-        <Button variant="outline" size="sm" onClick={() => setPage(p => Math.max(1, p - 1))}>
+
+      {/* Paging */}
+      <div className="flex gap-3">
+        <Button variant="outline" onClick={() => setPage(p => Math.max(1, p - 1))}>
           Prev
         </Button>
-        <div className="px-2">Page {page}</div>
-        <Button variant="outline" size="sm" onClick={() => setPage(p => p + 1)}>
+        <div className="flex items-center px-2">Page {page}</div>
+        <Button className="mr-5" variant="outline" onClick={() => setPage(p => p + 1)}>
           Next
         </Button>
-        <select
-          value={pageSize}
-          onChange={e => {
-            const v = Number(e.target.value) || 20
+        <div className="hidden items-center sm:flex">Showing</div>
+        <Select
+          value={pageSize.toString()}
+          onValueChange={value => {
+            const v = Number(value) || 20
             setPageSize(Math.min(100, Math.max(1, v)))
             setPage(1)
           }}
-          className="ml-2 rounded border px-2 py-1 text-sm"
         >
-          <option value={10}>10</option>
-          <option value={20}>20</option>
-          <option value={50}>50</option>
-          <option value={100}>100</option>
-        </select>
+          <SelectTrigger>
+            <SelectValue placeholder="Page size"></SelectValue>
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="10">10</SelectItem>
+            <SelectItem value="20">20</SelectItem>
+            <SelectItem value="50">50</SelectItem>
+            <SelectItem value="100">100</SelectItem>
+          </SelectContent>
+        </Select>
+        <div className="flex items-center">per page</div>
       </div>
     </div>
   )
