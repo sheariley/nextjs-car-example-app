@@ -10,9 +10,25 @@
 
 .rdg {
   --rdg-color-scheme: light;
-  --rdg-color: var(--foreground);
+
+  /* Colors (map react-data-grid vars to app theme variables) */
   --rdg-background-color: var(--background);
-  --rdg-header-background-color: var(--background);
+  --rdg-color: var(--foreground);
+  --rdg-border-color: var(--border);
+  --rdg-summary-border-color: var(--border);
+  --rdg-header-background-color: var(--card);
+  --rdg-header-draggable-background-color: var(--muted);
+  --rdg-row-hover-background-color: var(--muted);
+  --rdg-row-selected-background-color: var(--secondary);
+  --rdg-row-selected-hover-background-color: color-mix(in srgb, var(--rdg-row-selected-background-color) 75%, black);
+  --rdg-selection-color: var(--primary);
+  --rdg-checkbox-focus-color: var(--primary);
+
+  /* Sizes / other sensible defaults (keep original fallbacks where appropriate) */
+  --rdg-selection-width: 2px;
+  --rdg-border-width: 1px;
+  --rdg-summary-border-width: calc(var(--rdg-border-width) * 2);
+  --rdg-cell-frozen-box-shadow: 2px 0 5px -2px rgba(136, 136, 136, 0.3);
 }
 
 .dark .rdg,
