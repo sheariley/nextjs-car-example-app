@@ -184,6 +184,7 @@ export default function CarsDataTable() {
           variant="destructive"
           aria-label="Delete Selected Cars"
           onClick={handleDeleteSelected}
+          disabled={!selectedRows?.size}
         >
           <Trash2 className="size-4" /> Delete Selected
         </Button>
