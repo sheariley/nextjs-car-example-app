@@ -1,7 +1,7 @@
 'use client'
 
 import { useMutation, useQuery } from '@apollo/client/react'
-import { RefreshCw, Trash2, TriangleAlert } from 'lucide-react'
+import { ChevronLeft, ChevronRight, RefreshCw, Trash2, TriangleAlert } from 'lucide-react'
 import React, { MouseEvent } from 'react'
 import { DataGrid, RenderCheckboxProps, SortColumn } from 'react-data-grid'
 import { toast } from 'sonner'
@@ -48,6 +48,8 @@ export default function CarsDataTable() {
   })
 
   const [selectedRows, setSelectedRows] = React.useState<ReadonlySet<string>>(new Set<string>())
+
+  // filter state
   const [selectedListFilterOptions, setSelectedListFilterOptions] = React.useState<
     Record<CarDetailFilterablePropKeys, string[]>
   >({
@@ -58,12 +60,13 @@ export default function CarsDataTable() {
   const [yearRangeFilter, setYearRangeFilter] = React.useState<DataGridNumberRangeFilterValues>({})
   const { showDialog: showConfirmationDialog } = useConfirmationDialog()
 
-  // pagination state (server-side)
-
+  // pagination state
   const [page, setPage] = React.useState<number>(1)
   const [pageSize, setPageSize] = React.useState<number>(20)
 
+  // sorting state
   const [sortColumns, setSortColumns] = React.useState<SortColumn[]>([])
+
   // reset page to 1 when any filter changes
   React.useEffect(() => {
     setPage(1)
@@ -108,6 +111,8 @@ export default function CarsDataTable() {
           : undefined,
     },
   })
+
+  const pageCount = Math.max((carDetailData?.carDetails.totalCount || 0) / pageSize, 1)
 
   // catch-alls for loading and error states
   const loadingAnyData = loadingMakes || loadingModels || loadingFeatures || loadingCarDetails
@@ -273,12 +278,14 @@ export default function CarsDataTable() {
 
       {/* Paging */}
       <div className="flex gap-3">
-        <Button variant="outline" onClick={() => setPage(p => Math.max(1, p - 1))}>
-          Prev
+        <Button disabled={page <= 1} variant="outline" onClick={() => setPage(p => Math.max(1, p - 1))}>
+          <ChevronLeft />
         </Button>
-        <div className="flex items-center px-2">Page {page}</div>
-        <Button className="mr-5" variant="outline" onClick={() => setPage(p => p + 1)}>
-          Next
+        <div className="flex items-center px-2">
+          Page {page} of {pageCount}
+        </div>
+        <Button disabled={page >= pageCount} className="mr-5" variant="outline" onClick={() => setPage(p => p + 1)}>
+          <ChevronRight />
         </Button>
         <div className="hidden items-center sm:flex">Showing</div>
         <Select
