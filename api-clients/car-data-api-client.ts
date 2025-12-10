@@ -9,6 +9,7 @@ import type { CarFeature } from '@/types/car-feature'
 import type { CarMake } from '@/types/car-make'
 import type { CarModel } from '@/types/car-model'
 import type { CarDataApiClient } from './car-data-api-client.type'
+import { isTruthy } from '@/lib/functional'
 
 async function getCarDetails(client: ApolloClient): Promise<CarDetail[]> {
   const { data } = await client.query({ query: gqlOperations.GET_CAR_DETAILS })
@@ -61,7 +62,17 @@ async function deleteCarDetails(client: ApolloClient, input: string[]): Promise<
   const { data } = await client.mutate({
     mutation: gqlOperations.DELETE_CAR_DETAILS,
     variables: { ids: input },
+    awaitRefetchQueries: true,
     refetchQueries: [{ query: gqlOperations.GET_CAR_DETAILS, fetchPolicy: 'network-only' }],
+    update(cache, result) {
+      if (result.data?.deleteCarDetails === input.length) {
+        const normalizedIds = input
+          .map(id => cache.identify({ id, __typename: 'CarDetail' }))
+          .filter(isTruthy) as string[]
+        normalizedIds.forEach(id => cache.evict({ id }))
+        cache.gc()
+      }
+    },
   })
   return data?.deleteCarDetails || 0
 }
