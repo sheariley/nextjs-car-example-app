@@ -42,7 +42,7 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
 
   if (loadError) {
     return (
-      <div className={cn('py-8', className)} {...props}>
+      <div className={cn('container m-auto py-8', className)} {...props}>
         <Alert variant="destructive">
           <AlertTitle>
             <div className="flex gap-2 items-center">
@@ -63,7 +63,7 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
   }
 
   return (
-    <div className={cn('space-y-6 py-8', className)} {...props}>
+    <div className={cn('container mx-auto space-y-6 py-8', className)} {...props}>
       <div className="flex items-start justify-between gap-4">
         { !carDetail
           ? <div className="space-y-2">

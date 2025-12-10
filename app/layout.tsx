@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
+import { ThemeProvider } from 'next-themes'
 import { Geist, Geist_Mono } from 'next/font/google'
-import './globals.css'
 
 import ConfirmationDialog from '@/components/confirmation-dialog'
-import StoreProvider from '@/lib/store/StoreProvider'
 import { Toaster } from '@/components/ui/sonner'
-import { ThemeProvider } from 'next-themes'
+import StoreProvider from '@/lib/store/StoreProvider'
+import './globals.css'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -34,7 +34,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="system">
           <StoreProvider>
-            <main className="min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <main className="min-h-screen max-w-7xl mx-auto flex flex-col px-4 sm:px-6 lg:px-8">
               {children}
             </main>
             <Toaster />
