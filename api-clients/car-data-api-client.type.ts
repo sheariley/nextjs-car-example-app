@@ -14,4 +14,5 @@ export type CarDataApiClient = {
   // mutations
   createCarDetail(input: CarDetailCreateInput): Promise<CarDetail | null | undefined>
   updateCarDetail(input: CarDetailUpdateInput): Promise<CarDetail | null | undefined>
+  deleteCarDetails(input: string[]): Promise<number>
 }

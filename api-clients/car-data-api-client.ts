@@ -35,20 +35,35 @@ async function getCarFeatures(client: ApolloClient): Promise<CarFeature[]> {
   return data?.carFeatures ?? []
 }
 
-async function createCarDetail(client: ApolloClient, input: CarDetailCreateInput): Promise<CarDetail | null | undefined> {
+async function createCarDetail(
+  client: ApolloClient,
+  input: CarDetailCreateInput
+): Promise<CarDetail | null | undefined> {
   const { data } = await client.query({
     query: gqlOperations.CREATE_CAR_DETAIL,
-    variables: input
+    variables: input,
   })
   return data?.createCarDetail ?? null
 }
 
-async function updateCarDetail(client: ApolloClient, input: CarDetailUpdateInput): Promise<CarDetail | null | undefined> {
+async function updateCarDetail(
+  client: ApolloClient,
+  input: CarDetailUpdateInput
+): Promise<CarDetail | null | undefined> {
   const { data } = await client.query({
     query: gqlOperations.UPDATE_CAR_DETAIL,
-    variables: input
+    variables: input,
   })
   return data?.updateCarDetail ?? null
+}
+
+async function deleteCarDetails(client: ApolloClient, input: string[]): Promise<number> {
+  const { data } = await client.mutate({
+    mutation: gqlOperations.DELETE_CAR_DETAILS,
+    variables: { ids: input },
+    refetchQueries: [{ query: gqlOperations.GET_CAR_DETAILS, fetchPolicy: 'network-only' }],
+  })
+  return data?.deleteCarDetails || 0
 }
 
 const useCarDataApiClient = (): CarDataApiClient => {
@@ -56,7 +71,7 @@ const useCarDataApiClient = (): CarDataApiClient => {
   return React.useMemo(() => {
     const client = new ApolloClient({
       link: new HttpLink({ uri: '/api/graphql', fetch }),
-      cache: new InMemoryCache()
+      cache: new InMemoryCache(),
     })
 
     return {
@@ -68,6 +83,7 @@ const useCarDataApiClient = (): CarDataApiClient => {
 
       createCarDetail: (input: CarDetailCreateInput) => createCarDetail(client, input),
       updateCarDetail: (input: CarDetailUpdateInput) => updateCarDetail(client, input),
+      deleteCarDetails: (input: string[]) => deleteCarDetails(client, input),
     }
   }, [])
 }

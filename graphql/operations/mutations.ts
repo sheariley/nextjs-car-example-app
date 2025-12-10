@@ -48,8 +48,8 @@ export const UPDATE_CAR_DETAIL = graphql(/* GraphQL */`
   }
 `)
 
-export const DELETE_CAR_DETAIL = graphql(/* GraphQL */`
-  mutation DeleteCarDetail($deleteCarDetailId: ID!) {
-    deleteCarDetail(id: $deleteCarDetailId)
+export const DELETE_CAR_DETAILS = graphql(/* GraphQL */`
+  mutation DeleteCarDetails($ids: [ID!]!) {
+    deleteCarDetails(ids: $ids)
   }
 `)

@@ -62,6 +62,9 @@ const useCarDataApiClient = (): CarDataApiClient => {
       },
       updateCarDetail() {
         throw new Error('Not implemented')
+      },
+      deleteCarDetails() {
+        throw new Error('Not implemented')
       }
     }),
     []

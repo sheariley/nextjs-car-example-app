@@ -1,10 +1,14 @@
 'use client'
 
+import { Trash2 } from 'lucide-react'
 import React, { MouseEvent } from 'react'
 import { DataGrid, RenderCheckboxProps } from 'react-data-grid'
+import { toast } from 'sonner'
 
 import useCarDataApiClient from '@/api-clients/car-data-api-client'
+import { Button } from '@/components/ui/button'
 import { Checkbox, CheckboxChangeHandler } from '@/components/ui/checkbox'
+import { useConfirmationDialog } from '@/lib/hooks'
 import { CarDetail } from '@/types/car-detail'
 import { CarFeature } from '@/types/car-feature'
 import { CarMake } from '@/types/car-make'
@@ -30,6 +34,7 @@ export default function CarsDataTable() {
     CarDetailFeatures: [],
   })
   const [yearRangeFilter, setYearRangeFilter] = React.useState<DataGridNumberRangeFilterValues>({})
+  const { showDialog: showConfirmationDialog } = useConfirmationDialog()
 
   React.useEffect(() => {
     async function fetchCarMakes() {
@@ -58,14 +63,15 @@ export default function CarsDataTable() {
     fetchCarFeatures()
   })
 
-  React.useEffect(() => {
-    async function fetchCarDetails() {
-      const data = await dataClient.getCarDetails()
-      setRows(data)
-    }
-
-    fetchCarDetails()
+  const fetchCarDetails = React.useCallback(async () => {
+    const data = await dataClient.getCarDetails()
+    setRows(data)
   }, [dataClient])
+
+  // load cars on first render
+  React.useEffect(() => {
+    fetchCarDetails()
+  }, [fetchCarDetails])
 
   // prefetch options for known columns (makeId, modelId, year)
   const listFilterOptions = React.useMemo<
@@ -135,8 +141,53 @@ export default function CarsDataTable() {
     [listFilterOptions, selectedListFilterOptions, toggleSelectedFilterMake, yearRangeFilter]
   )
 
+  const handleDeleteSelected = async () => {
+    if (selectedRows?.size) {
+      const dialogResult = await showConfirmationDialog({
+        title: 'Confirm Delete',
+        body: 'Are you sure you want to delete the selected car(s)?'
+      })
+      if (dialogResult === 'confirm') {
+        const selectedIds = selectedRows.values().toArray()
+        try {
+          const result = await dataClient.deleteCarDetails(selectedIds)
+          if (result === 0) {
+            toast.error('No cars were deleted!', {
+              description: 'Failed to delete the selected car(s).'
+            })
+          } else if (result !== selectedIds.length) {
+            toast.warning('Warning', {
+              description: `Only ${result} of the ${selectedIds.length} cars were deleted.`
+            })
+            setSelectedRows(new Set())
+          } else {
+            toast.success('Success!', {
+              description: selectedIds.length === 1 ? 'The selected car was deleted.' : `All ${result} selected cars were deleted.`
+            })
+            setSelectedRows(new Set())
+          }
+  
+          await fetchCarDetails()
+        } catch {
+          toast.error('An error occurred!', {
+            description: 'Failed to delete the selected car(s).'
+          })
+        }
+      }
+    }
+  }
+
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mx-auto py-10 space-y-8">
+      <div className="flex justify-end gap-4">
+        <Button
+          variant="destructive"
+          aria-label="Delete Selected Cars"
+          onClick={handleDeleteSelected}
+        >
+          <Trash2 className="size-4" /> Delete Selected
+        </Button>
+      </div>
       <DataGrid
         columns={columns}
         rows={filteredRows}
