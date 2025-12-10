@@ -10,6 +10,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Checkbox, CheckboxChangeHandler } from '@/components/ui/checkbox'
 import { Skeleton } from '@/components/ui/skeleton'
+import { CarDetailFilterInput } from '@/graphql/generated/client/graphql'
 import {
   DELETE_CAR_DETAILS,
   GET_CAR_DETAILS,
@@ -21,8 +22,8 @@ import { isTruthy } from '@/lib/functional'
 import { useConfirmationDialog } from '@/lib/hooks'
 import { CarDetail } from '@/types/car-detail'
 import { columnsFactory } from './cars-data-table-columns'
-import { filterCarsDataTableRows, provideListFilterOptions } from './cars-data-table-logic'
-import { CarDetailFilterablePropKeys, CarDetailFilterOptionKey } from './cars-data-table-types'
+import { provideListFilterOptions } from './cars-data-table-logic'
+import { CarDetailFilterablePropKeys } from './cars-data-table-types'
 import { DataGridListFilterOption } from './data-grid-list-filter'
 import { DataGridNumberRangeFilterValues } from './data-grid-number-range-filter'
 
@@ -30,9 +31,7 @@ export default function CarsDataTable() {
   const { loading: loadingMakes, error: makesLoadingError, data: allMakes } = useQuery(GET_CAR_MAKES)
   const { loading: loadingModels, error: modelsLoadingError, data: allModels } = useQuery(GET_CAR_MODELS)
   const { loading: loadingFeatures, error: featuresLoadingError, data: allFeatures } = useQuery(GET_CAR_FEATURES)
-  const { loading: loadingCarDetails, error: carDetailsLoadingError, data: rows } = useQuery(GET_CAR_DETAILS)
-  const loadingAnyData = loadingMakes || loadingModels || loadingFeatures || loadingCarDetails
-  const anyLoadingError = !!(makesLoadingError || modelsLoadingError || featuresLoadingError || carDetailsLoadingError)
+
   const [deleteCarDetails, { loading: deletingCarDetails }] = useMutation(DELETE_CAR_DETAILS, {
     update(cache, result) {
       if (result.data?.deleteCarDetails === selectedRows.size) {
@@ -49,7 +48,7 @@ export default function CarsDataTable() {
 
   const [selectedRows, setSelectedRows] = React.useState<ReadonlySet<string>>(new Set<string>())
   const [selectedListFilterOptions, setSelectedListFilterOptions] = React.useState<
-    Record<CarDetailFilterablePropKeys, CarDetailFilterOptionKey[]>
+    Record<CarDetailFilterablePropKeys, string[]>
   >({
     carMakeId: [],
     carModelId: [],
@@ -58,25 +57,57 @@ export default function CarsDataTable() {
   const [yearRangeFilter, setYearRangeFilter] = React.useState<DataGridNumberRangeFilterValues>({})
   const { showDialog: showConfirmationDialog } = useConfirmationDialog()
 
+  // pagination state (server-side)
+  const [page, setPage] = React.useState<number>(1)
+  const [pageSize, setPageSize] = React.useState<number>(20)
+
+  // reset page to 1 when any filter changes
+  React.useEffect(() => {
+    setPage(1)
+  }, [selectedListFilterOptions, yearRangeFilter])
+
+  // map local filter options to GraphQL filter input variables
+  const requestFilter = React.useMemo(() => {
+    const filterInput: CarDetailFilterInput = {}
+
+    filterInput.carMakeIds = selectedListFilterOptions.carMakeId.length ? selectedListFilterOptions.carMakeId : undefined
+    filterInput.carModelIds = selectedListFilterOptions.carModelId.length ? selectedListFilterOptions.carModelId : undefined
+    filterInput.featureIds = selectedListFilterOptions?.CarDetailFeatures
+
+    if (yearRangeFilter) {
+      if (yearRangeFilter.min != null) filterInput.yearMin = yearRangeFilter.min
+      if (yearRangeFilter.max != null) filterInput.yearMax = yearRangeFilter.max
+    }
+
+    return Object.keys(filterInput).length ? filterInput : undefined
+  }, [selectedListFilterOptions, yearRangeFilter])
+
+  // server query for car details
+  const {
+    loading: loadingCarDetails,
+    error: carDetailsLoadingError,
+    data: carDetailData,
+  } = useQuery(GET_CAR_DETAILS, {
+    variables: { page, pageSize, filter: requestFilter },
+  })
+
+  // catch-alls for loading and error states
+  const loadingAnyData = loadingMakes || loadingModels || loadingFeatures || loadingCarDetails
+  const anyLoadingError = !!(makesLoadingError || modelsLoadingError || featuresLoadingError || carDetailsLoadingError)
+
   // prefetch options for known columns (makeId, modelId, year)
   const listFilterOptions = React.useMemo<
-    Record<CarDetailFilterablePropKeys, DataGridListFilterOption<CarDetailFilterOptionKey>[]>
+    Record<CarDetailFilterablePropKeys, DataGridListFilterOption<string>[]>
   >(
     () =>
       provideListFilterOptions(
         allMakes?.carMakes || [],
         allModels?.carModels || [],
         allFeatures?.carFeatures || [],
-        rows?.carDetails || [],
+        carDetailData?.carDetails?.items || [],
         selectedListFilterOptions
       ),
-    [allMakes, allModels, allFeatures, rows, selectedListFilterOptions]
-  )
-
-  // apply basic client-side filters
-  const filteredRows = React.useMemo(
-    () => filterCarsDataTableRows(rows?.carDetails || [], selectedListFilterOptions, yearRangeFilter),
-    [rows, selectedListFilterOptions, yearRangeFilter]
+    [allMakes, allModels, allFeatures, carDetailData, selectedListFilterOptions]
   )
 
   const toggleSelectedFilterMake = React.useCallback(
@@ -108,7 +139,7 @@ export default function CarsDataTable() {
   const columns = React.useMemo(
     () =>
       columnsFactory({
-        onToggleFilterOption: (columnKey: CarDetailFilterablePropKeys, optionKey: CarDetailFilterOptionKey) => {
+        onToggleFilterOption: (columnKey: CarDetailFilterablePropKeys, optionKey: string) => {
           if (columnKey === 'carMakeId') {
             // use special toggler to avoid erroneous cascading state
             toggleSelectedFilterMake(optionKey as string)
@@ -195,8 +226,8 @@ export default function CarsDataTable() {
   }
 
   return (
-    <div className="container mx-auto space-y-8 py-10">
-      <div className="flex justify-end gap-4">
+    <div className="container mx-auto space-y-6 py-10">
+      <div className="flex justify-start gap-4">
         <Button
           variant="destructive"
           aria-label="Delete Selected Cars"
@@ -208,7 +239,7 @@ export default function CarsDataTable() {
       </div>
       <DataGrid
         columns={columns}
-        rows={filteredRows}
+        rows={carDetailData?.carDetails?.items as CarDetail[] || []}
         rowKeyGetter={carRowKeyGetter}
         selectedRows={selectedRows}
         onSelectedRowsChange={setSelectedRows}
@@ -218,6 +249,29 @@ export default function CarsDataTable() {
           ),
         }}
       />
+      <div className="flex items-center gap-2">
+        <Button variant="outline" size="sm" onClick={() => setPage(p => Math.max(1, p - 1))}>
+          Prev
+        </Button>
+        <div className="px-2">Page {page}</div>
+        <Button variant="outline" size="sm" onClick={() => setPage(p => p + 1)}>
+          Next
+        </Button>
+        <select
+          value={pageSize}
+          onChange={e => {
+            const v = Number(e.target.value) || 20
+            setPageSize(Math.min(100, Math.max(1, v)))
+            setPage(1)
+          }}
+          className="ml-2 rounded border px-2 py-1 text-sm"
+        >
+          <option value={10}>10</option>
+          <option value={20}>20</option>
+          <option value={50}>50</option>
+          <option value={100}>100</option>
+        </select>
+      </div>
     </div>
   )
 }

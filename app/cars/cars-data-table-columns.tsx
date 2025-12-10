@@ -4,14 +4,14 @@ import { Column, renderHeaderCell, RenderHeaderCellProps, SelectColumn } from 'r
 
 import { Button } from '@/components/ui/button'
 import { CarDetail } from '@/types/car-detail'
-import { CarDetailFilterablePropKeys, CarDetailFilterOptionKey } from './cars-data-table-types'
+import { CarDetailFilterablePropKeys } from './cars-data-table-types'
 import DataGridListFilter, { DataGridListFilterOption } from './data-grid-list-filter'
 import DataGridNumberRangeFilter, { DataGridNumberRangeFilterValues } from './data-grid-number-range-filter'
 
 export type ColumnsFactoryProps = {
-  onToggleFilterOption: (columnKey: CarDetailFilterablePropKeys, optionKey: CarDetailFilterOptionKey) => void
-  listFilterOptions: Record<CarDetailFilterablePropKeys, DataGridListFilterOption<CarDetailFilterOptionKey>[]>
-  selectedListFilterOptions: Record<CarDetailFilterablePropKeys, CarDetailFilterOptionKey[]>
+  onToggleFilterOption: (columnKey: CarDetailFilterablePropKeys, optionKey: string) => void
+  listFilterOptions: Record<CarDetailFilterablePropKeys, DataGridListFilterOption<string>[]>
+  selectedListFilterOptions: Record<CarDetailFilterablePropKeys, string[]>
   yearRangeFilter: DataGridNumberRangeFilterValues
   onYearRangeFilterChange: (range: DataGridNumberRangeFilterValues) => void
 }

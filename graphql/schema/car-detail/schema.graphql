@@ -1,5 +1,5 @@
 extend type Query {
-  carDetails: [CarDetail!]!
+  carDetails(page: Int, pageSize: Int, filter: CarDetailFilterInput): CarDetailPage!
   carDetail(id: ID!): CarDetail
 }
 
@@ -17,4 +17,17 @@ type CarDetail {
   CarMake: CarMake
   CarModel: CarModel
   CarDetailFeatures: [CarDetailFeature!]
+}
+
+input CarDetailFilterInput {
+  yearMin: Int
+  yearMax: Int
+  carMakeIds: [ID!]
+  carModelIds: [ID!]
+  featureIds: [ID!]
+}
+
+type CarDetailPage {
+  items: [CarDetail!]!
+  totalCount: Int!
 }

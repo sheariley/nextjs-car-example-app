@@ -1,15 +1,18 @@
 import { graphql } from '@/graphql/generated/client'
 
 export const GET_CAR_DETAILS = graphql(/* GraphQL */ `
-  query GetCarDetails {
-    carDetails {
-      id
-      year
-      carMakeId
-      carModelId
-      CarMake { id name }
-      CarModel { id name carMakeId }
-      CarDetailFeatures { carDetailId featureId CarFeature { id name } }
+  query GetCarDetails($page: Int, $pageSize: Int, $filter: CarDetailFilterInput) {
+    carDetails(page: $page, pageSize: $pageSize, filter: $filter) {
+      items {
+        id
+        year
+        carMakeId
+        carModelId
+        CarMake { id name }
+        CarModel { id name carMakeId }
+        CarDetailFeatures { carDetailId featureId CarFeature { id name } }
+      }
+      totalCount
     }
   }
 `)

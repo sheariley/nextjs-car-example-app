@@ -1,6 +1,7 @@
 import { PrismaPg } from '@prisma/adapter-pg'
 import 'dotenv/config'
-import { Prisma, PrismaClient } from '../app/generated/prisma/client'
+
+import { Prisma, PrismaClient } from '@/prisma/generated/client'
 
 import carDetailFeatureRows from '@/mock-data/car-detail-features.json'
 import carDetailRows from '@/mock-data/car-details.json'

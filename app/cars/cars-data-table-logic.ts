@@ -2,7 +2,7 @@ import { CarDetail } from '@/types/car-detail'
 import { CarFeature } from '@/types/car-feature'
 import { CarMake } from '@/types/car-make'
 import { CarModel } from '@/types/car-model'
-import { CarDetailFilterablePropKeys, CarDetailFilterOptionKey } from './cars-data-table-types'
+import { CarDetailFilterablePropKeys } from './cars-data-table-types'
 import { DataGridNumberRangeFilterValues } from './data-grid-number-range-filter'
 
 export function provideListFilterOptions(
@@ -10,7 +10,7 @@ export function provideListFilterOptions(
   allModels: CarModel[],
   allFeatures: CarFeature[],
   rows: CarDetail[],
-  selectedListFilterOptions: Record<CarDetailFilterablePropKeys, CarDetailFilterOptionKey[]>
+  selectedListFilterOptions: Record<CarDetailFilterablePropKeys, string[]>
 ) {
   const makeCounts = new Map<string, number>()
   const modelCounts = new Map<string, number>()
@@ -48,7 +48,7 @@ export function provideListFilterOptions(
 
 export function filterCarsDataTableRows(
   rows: CarDetail[],
-  selectedListFilterOptions: Record<CarDetailFilterablePropKeys, CarDetailFilterOptionKey[]>,
+  selectedListFilterOptions: Record<CarDetailFilterablePropKeys, string[]>,
   yearRangeFilter: DataGridNumberRangeFilterValues
 ) {
   return rows.filter(r => {
