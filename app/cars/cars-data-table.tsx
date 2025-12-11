@@ -12,21 +12,10 @@ import { Checkbox, CheckboxChangeHandler } from '@/components/ui/checkbox'
 import { Item, ItemContent, ItemMedia, ItemTitle } from '@/components/ui/item'
 import { Spinner } from '@/components/ui/spinner'
 import { SortDirection } from '@/graphql/generated/client/graphql'
-import {
-  DELETE_CAR_DETAILS,
-  GET_CAR_DETAILS,
-  GET_CAR_FEATURES,
-  GET_CAR_MAKES,
-  GET_CAR_MODELS,
-} from '@/graphql/operations'
+import { DELETE_CAR_DETAILS, GET_CAR_DETAILS, GET_CAR_MAKES, GET_CAR_MODELS } from '@/graphql/operations'
 import { isTruthy } from '@/lib/functional'
 import { useConfirmationDialog } from '@/lib/hooks'
-import {
-  carDataGridUIActions,
-  carDataGridUISelectors,
-  useAppDispatch,
-  useAppSelector
-} from '@/lib/store'
+import { carDataGridUIActions, carDataGridUISelectors, useAppDispatch, useAppSelector } from '@/lib/store'
 import { CarDetail } from '@/types/car-detail'
 import { DataLoadErrorAlert } from './cars-data-load-error-alert'
 import { columnsFactory } from './cars-data-table-columns'
@@ -38,7 +27,6 @@ export default function CarsDataTable() {
   const dispatch = useAppDispatch()
   const { loading: loadingMakes, error: makesLoadingError, data: allMakes } = useQuery(GET_CAR_MAKES)
   const { loading: loadingModels, error: modelsLoadingError, data: allModels } = useQuery(GET_CAR_MODELS)
-  const { loading: loadingFeatures, error: featuresLoadingError, data: allFeatures } = useQuery(GET_CAR_FEATURES)
 
   const { showDialog: showConfirmationDialog } = useConfirmationDialog()
   const [deleteCarDetails, { loading: deletingCarDetails }] = useMutation(DELETE_CAR_DETAILS, {
@@ -109,17 +97,16 @@ export default function CarsDataTable() {
   }, [carDetailData, totalResultCount, setTotalResultCount])
 
   // catch-alls for loading and error states
-  const loadingAnyData = loadingMakes || loadingModels || loadingFeatures || loadingCarDetails
-  const anyLoadingError = !!(makesLoadingError || modelsLoadingError || featuresLoadingError || carDetailsLoadingError)
+  const loadingAnyData = loadingMakes || loadingModels || loadingCarDetails
+  const anyLoadingError = !!(makesLoadingError || modelsLoadingError || carDetailsLoadingError)
 
   const columns = React.useMemo(
     () =>
       columnsFactory({
         allMakes: allMakes?.carMakes || [],
         allModels: allModels?.carModels || [],
-        allFeatures: allFeatures?.carFeatures || [],
       }),
-    [allModels, allMakes, allFeatures]
+    [allModels, allMakes]
   )
 
   const handleDeleteSelected = async () => {

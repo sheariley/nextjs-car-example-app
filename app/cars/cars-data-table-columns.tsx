@@ -1,5 +1,7 @@
-import { ArrowRightCircle } from 'lucide-react'
+import { useLazyQuery } from '@apollo/client/react'
+import { ArrowRightCircle, RefreshCw } from 'lucide-react'
 import Link from 'next/link'
+import React from 'react'
 import { Column, renderHeaderCell, RenderHeaderCellProps, SelectColumn } from 'react-data-grid'
 
 import { Button } from '@/components/ui/button'
@@ -13,18 +15,18 @@ import {
 import DataGridListFilter from './data-grid-list-filter'
 import DataGridNumberRangeFilter from './data-grid-number-range-filter'
 
+import { Spinner } from '@/components/ui/spinner'
+import { GET_CAR_FEATURES } from '@/graphql/operations'
 import { CarDetail } from '@/types/car-detail'
-import { CarFeature } from '@/types/car-feature'
 import { CarMake } from '@/types/car-make'
 import { CarModel } from '@/types/car-model'
 
 export type ColumnsFactoryProps = {
   allMakes: CarMake[]
   allModels: CarModel[]
-  allFeatures: CarFeature[]
 }
 
-export function columnsFactory({ allMakes, allModels, allFeatures }: ColumnsFactoryProps): Column<CarDetail>[] {
+export function columnsFactory({ allMakes, allModels }: ColumnsFactoryProps): Column<CarDetail>[] {
   return [
     SelectColumn,
     {
@@ -69,7 +71,7 @@ export function columnsFactory({ allMakes, allModels, allFeatures }: ColumnsFact
         )
       },
       sortable: false,
-      renderHeaderCell: cellHeaderProps => <CarFeatureColumnHeader allFeatures={allFeatures} {...cellHeaderProps} />,
+      renderHeaderCell: cellHeaderProps => <CarFeatureColumnHeader {...cellHeaderProps} />,
     },
   ]
 }
@@ -124,15 +126,37 @@ function CarMakeColumnHeader({
   )
 }
 
-function CarFeatureColumnHeader({
-  allFeatures,
-  ...cellHeaderProps
-}: RenderHeaderCellProps<CarDetail> & { allFeatures: CarFeature[] }) {
+function CarFeatureColumnHeader(cellHeaderProps: RenderHeaderCellProps<CarDetail>) {
   const dispatch = useAppDispatch()
+  const [loadOptions, { loading, error: loadError, data: allFeatures }] = useLazyQuery(GET_CAR_FEATURES)
   const selectedValues = useAppSelector(carDataGridUISelectors.selectFeatureFilterValues)
-  const filterOptions = allFeatures.map(mapFilterListOption)
-
+  const filterOptions = allFeatures?.carFeatures.map(mapFilterListOption) ?? []
   const onFilterChange = (values: string[]) => dispatch(carDataGridUIActions.setFeatureFilterValues(values))
+
+  React.useEffect(() => {
+    loadOptions()
+  }, [loadOptions])
+
+  if (loading || loadError) {
+    return (
+      <div className="flex items-center justify-between gap-2 *:first:items-center *:first:gap-2">
+        {renderHeaderCell(cellHeaderProps)}
+        {!loadError ? (
+          <Spinner />
+        ) : (
+          <Button
+            variant="destructive"
+            size="icon-sm"
+            className="size-6"
+            title="Retry Loading Filter"
+            onClick={() => loadOptions()}
+          >
+            <RefreshCw />
+          </Button>
+        )}
+      </div>
+    )
+  }
 
   return (
     <DataGridListFilter
