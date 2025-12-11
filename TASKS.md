@@ -20,6 +20,6 @@
 # Bonus
 - [ ] Add data-loaders to make GraphQL API more efficient
 - [ ] Setup and use local containerized postgres instance
-- [ ] Add clear button to data-grid-list-filter
+- [x] Add clear button to data-grid-list-filter
 - [ ] Use icons to represent car features in data-grid column
 - [ ] Add inline editing to the data-grid

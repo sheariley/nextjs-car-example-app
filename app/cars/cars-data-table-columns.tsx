@@ -16,11 +16,8 @@ export type ColumnsFactoryProps = {
   modelFilterValues: string[]
   featureFilterOptions: DataGridListFilterOption<string>[]
   featureFilterValues: string[]
-  // onToggleMakeFilter: (value: string) => void
   onMakeFilterChange: (values: string[]) => void
-  // onToggleModelFilter: (value: string) => void
   onModelFilterChange: (value: string[]) => void
-  // onToggleFeatureFilter: (value: string) => void
   onFeatureFilterChange: (value: string[]) => void
   yearRangeFilterValues: NumberRangeFilterValues
   onYearRangeFilterChange: (range: NumberRangeFilterValues) => void
@@ -36,7 +33,7 @@ export function columnsFactory({
   onMakeFilterChange,
   onModelFilterChange,
   onFeatureFilterChange,
-  yearRangeFilterValues: yearRangeFilter,
+  yearRangeFilterValues,
   onYearRangeFilterChange,
 }: ColumnsFactoryProps): Column<CarDetail>[] {
   return [
@@ -85,7 +82,7 @@ export function columnsFactory({
         <DataGridNumberRangeFilter
           filterTitle="Year"
           labelRenderer={() => renderHeaderCell(cellHeaderProps)}
-          rangeValues={yearRangeFilter}
+          rangeValues={yearRangeFilterValues}
           onChange={onYearRangeFilterChange}
         />
       ),
@@ -93,8 +90,14 @@ export function columnsFactory({
     {
       name: 'Features',
       key: 'CarDetailFeatures',
-      renderCell: props =>
-        !props.row.CarDetailFeatures ? 'None' : props.row.CarDetailFeatures?.map(df => df.CarFeature!.name).join(', '),
+      renderCell: props => {
+        const cellText = !props.row.CarDetailFeatures?.length ? 'None' : props.row.CarDetailFeatures?.map(df => df.CarFeature!.name).join(', ')
+        return (
+          <span className="inline-block truncate max-w-[200px]" title={cellText}>
+            {cellText}
+          </span>
+        )
+      },
       sortable: false,
       renderHeaderCell: cellHeaderProps => (
         <DataGridListFilter
