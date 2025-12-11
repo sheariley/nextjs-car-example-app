@@ -1,7 +1,7 @@
 'use client'
 
 import { useMutation, useQuery } from '@apollo/client/react'
-import { Trash2 } from 'lucide-react'
+import { PlusSquare, Trash2 } from 'lucide-react'
 import React, { MouseEvent } from 'react'
 import { DataGrid, RenderCheckboxProps, SortColumn } from 'react-data-grid'
 import { toast } from 'sonner'
@@ -30,6 +30,7 @@ import { CarDetail } from '@/types/car-detail'
 import { DataLoadErrorAlert } from './cars-data-load-error-alert'
 import { columnsFactory } from './cars-data-table-columns'
 import { CarDataTablePager } from './cars-data-table-pager'
+import Link from 'next/link'
 
 const TOAST_ID_DELETING_CAR = 'deleting-car'
 
@@ -219,6 +220,15 @@ export default function CarsDataTable() {
           disabled={!selectedRows?.size || deletingCarDetails || loadingAnyData}
         >
           <Trash2 className="size-4" /> Delete Selected
+        </Button>
+        <Button
+          asChild
+          aria-label="Add a Car"
+          disabled={!selectedRows?.size || deletingCarDetails || loadingAnyData}
+        >
+          <Link href="/cars/new">
+            <PlusSquare className="size-4" /> Add Car
+          </Link>
         </Button>
       </div>
 
