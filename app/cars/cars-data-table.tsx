@@ -63,6 +63,7 @@ export default function CarsDataTable() {
   // pagination state
   const [page, setPage] = React.useState<number>(1)
   const [pageSize, setPageSize] = React.useState<number>(20)
+  const [pageCount, setPageCount] = React.useState<number>(1)
 
   // sorting state
   const [sortColumns, setSortColumns] = React.useState<SortColumn[]>([])
@@ -70,6 +71,7 @@ export default function CarsDataTable() {
   // reset page to 1 when any filter changes
   React.useEffect(() => {
     setPage(1)
+    setPageCount(1)
   }, [selectedListFilterOptions, yearRangeFilter])
 
   // map local filter options to GraphQL filter input variables
@@ -112,7 +114,15 @@ export default function CarsDataTable() {
     },
   })
 
-  const pageCount = Math.max((carDetailData?.carDetails.totalCount || 0) / pageSize, 1)
+  React.useEffect(
+    () =>
+      setPageCount(prev =>
+        !carDetailData?.carDetails
+          ? prev
+          : Math.ceil(Math.max((carDetailData?.carDetails.totalCount || 0) / pageSize, 1))
+      ),
+    [carDetailData, pageSize]
+  )
 
   // catch-alls for loading and error states
   const loadingAnyData = loadingMakes || loadingModels || loadingFeatures || loadingCarDetails
@@ -227,24 +237,6 @@ export default function CarsDataTable() {
     }
   }
 
-  if (loadingAnyData) {
-    return (
-      <div className="container mx-auto space-y-8 py-10">
-        <div className="flex justify-end gap-4">
-          <Skeleton className="h-[36px] w-[150px]" />
-        </div>
-        <Skeleton className="h-[350px] w-full" />
-      </div>
-    )
-  }
-
-  if (anyLoadingError) {
-    return (
-      <div className="container m-auto">
-        <DataLoadErrorAlert />
-      </div>
-    )
-  }
 
   return (
     <div className="container mx-auto space-y-6 py-10">
@@ -254,37 +246,54 @@ export default function CarsDataTable() {
           variant="destructive"
           aria-label="Delete Selected Cars"
           onClick={handleDeleteSelected}
-          disabled={!selectedRows?.size || deletingCarDetails}
+          disabled={!selectedRows?.size || deletingCarDetails || loadingAnyData}
         >
           <Trash2 className="size-4" /> Delete Selected
         </Button>
       </div>
 
       {/* Data Grid */}
-      <DataGrid
-        columns={columns}
-        rows={(carDetailData?.carDetails?.items as CarDetail[]) || []}
-        rowKeyGetter={carRowKeyGetter}
-        selectedRows={selectedRows}
-        onSelectedRowsChange={setSelectedRows}
-        sortColumns={sortColumns}
-        onSortColumnsChange={setSortColumns}
-        renderers={{
-          renderCheckbox: ({ disabled, ...props }) => (
-            <DataTableCheckbox disabled={disabled || deletingCarDetails} {...props} />
-          ),
-        }}
-      />
+      {loadingCarDetails ? (
+        <Skeleton className="h-[350px] w-full" />
+      ) : anyLoadingError ? (
+        <div className="container m-auto">
+          <DataLoadErrorAlert />
+        </div>
+      ) : (
+        <DataGrid
+          columns={columns}
+          rows={(carDetailData?.carDetails?.items as CarDetail[]) || []}
+          rowKeyGetter={carRowKeyGetter}
+          selectedRows={selectedRows}
+          onSelectedRowsChange={setSelectedRows}
+          sortColumns={sortColumns}
+          onSortColumnsChange={setSortColumns}
+          renderers={{
+            renderCheckbox: ({ disabled, ...props }) => (
+              <DataTableCheckbox disabled={disabled || deletingCarDetails} {...props} />
+            ),
+          }}
+        />
+      )}
 
       {/* Paging */}
       <div className="flex gap-3">
-        <Button disabled={page <= 1} variant="outline" onClick={() => setPage(p => Math.max(1, p - 1))}>
+        <Button
+          disabled={loadingAnyData || page <= 1}
+          variant="outline"
+          onClick={() => setPage(p => Math.max(1, p - 1))}
+        >
           <ChevronLeft />
         </Button>
         <div className="flex items-center px-2">
-          Page {page} of {pageCount}
+          Page&nbsp;{page}&nbsp;of&nbsp;<span className="min-w-8">{pageCount}</span>
         </div>
-        <Button disabled={page >= pageCount} className="mr-5" variant="outline" onClick={() => setPage(p => p + 1)}>
+        <Button
+          disabled={loadingAnyData || page >= pageCount}
+          className="mr-5"
+          variant="outline"
+          onClick={() => setPage(p => p + 1)}
+        >
           <ChevronRight />
         </Button>
         <div className="hidden items-center sm:flex">Showing</div>
@@ -296,7 +305,7 @@ export default function CarsDataTable() {
             setPage(1)
           }}
         >
-          <SelectTrigger>
+          <SelectTrigger disabled={loadingAnyData}>
             <SelectValue placeholder="Page size"></SelectValue>
           </SelectTrigger>
           <SelectContent>
