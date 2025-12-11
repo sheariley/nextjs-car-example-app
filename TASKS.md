@@ -13,12 +13,11 @@
 - [x] Modify data-grid to add a delete button for deleting cars
 - [x] Add server-side paging, filtering, and sorting to data-grid
 - [x] Modify car detail page to allow creating and editing cars
-- [ ] Final styling polish
+- [x] Final styling polish
 - [ ] Optimize SSR (render as much as possible on server side)
 - [ ] Perform a11y audit and fix any a11y issues
 
 # Bonus
-- [ ] Add data-loaders to make GraphQL API more efficient
 - [ ] Setup and use local containerized postgres instance
 - [x] Add clear button to data-grid-list-filter
 - [ ] Use icons to represent car features in data-grid column
