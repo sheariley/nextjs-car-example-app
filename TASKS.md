@@ -14,10 +14,10 @@
 - [x] Add server-side paging, filtering, and sorting to data-grid
 - [x] Modify car detail page to allow creating and editing cars
 - [x] Final styling polish
-- [ ] Optimize SSR (render as much as possible on server side)
-- [ ] Perform a11y audit and fix any a11y issues
+- [x] Perform a11y audit and fix any a11y issues
 
 # Bonus
+- [ ] Optimize SSR (render as much as possible on server side)
 - [ ] Setup and use local containerized postgres instance
 - [x] Add clear button to data-grid-list-filter
 - [ ] Use icons to represent car features in data-grid column
