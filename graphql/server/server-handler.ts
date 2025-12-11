@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { ApolloServer } from '@apollo/server'
 import { startServerAndCreateNextHandler } from '@as-integrations/next'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/client'
