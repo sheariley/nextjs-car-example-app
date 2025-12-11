@@ -1,17 +1,15 @@
 'use client'
 
 import { useMutation, useQuery } from '@apollo/client/react'
-import { ChevronLeft, ChevronRight, RefreshCw, Trash2, TriangleAlert } from 'lucide-react'
+import { Trash2 } from 'lucide-react'
 import React, { MouseEvent } from 'react'
 import { DataGrid, RenderCheckboxProps, SortColumn } from 'react-data-grid'
 import { toast } from 'sonner'
 
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Checkbox, CheckboxChangeHandler } from '@/components/ui/checkbox'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Skeleton } from '@/components/ui/skeleton'
-import { CarDetailFilterInput, SortDirection } from '@/graphql/generated/client/graphql'
+import { SortDirection } from '@/graphql/generated/client/graphql'
 import {
   DELETE_CAR_DETAILS,
   GET_CAR_DETAILS,
@@ -21,18 +19,25 @@ import {
 } from '@/graphql/operations'
 import { isTruthy } from '@/lib/functional'
 import { useConfirmationDialog } from '@/lib/hooks'
+import {
+  carDataUIActions,
+  carDataUISelectors,
+  NumberRangeFilterValues,
+  useAppDispatch,
+  useAppSelector,
+} from '@/lib/store'
 import { CarDetail } from '@/types/car-detail'
+import { DataLoadErrorAlert } from './cars-data-load-error-alert'
 import { columnsFactory } from './cars-data-table-columns'
-import { provideListFilterOptions } from './cars-data-table-logic'
-import { CarDetailFilterablePropKeys } from './cars-data-table-types'
-import { DataGridListFilterOption } from './data-grid-list-filter'
-import { DataGridNumberRangeFilterValues } from './data-grid-number-range-filter'
+import { CarDataTablePager } from './cars-data-table-pager'
 
 export default function CarsDataTable() {
+  const dispatch = useAppDispatch()
   const { loading: loadingMakes, error: makesLoadingError, data: allMakes } = useQuery(GET_CAR_MAKES)
   const { loading: loadingModels, error: modelsLoadingError, data: allModels } = useQuery(GET_CAR_MODELS)
   const { loading: loadingFeatures, error: featuresLoadingError, data: allFeatures } = useQuery(GET_CAR_FEATURES)
 
+  const { showDialog: showConfirmationDialog } = useConfirmationDialog()
   const [deleteCarDetails, { loading: deletingCarDetails }] = useMutation(DELETE_CAR_DETAILS, {
     update(cache, result) {
       if (result.data?.deleteCarDetails === selectedRows.size) {
@@ -50,49 +55,29 @@ export default function CarsDataTable() {
   const [selectedRows, setSelectedRows] = React.useState<ReadonlySet<string>>(new Set<string>())
 
   // filter state
-  const [selectedListFilterOptions, setSelectedListFilterOptions] = React.useState<
-    Record<CarDetailFilterablePropKeys, string[]>
-  >({
-    carMakeId: [],
-    carModelId: [],
-    CarDetailFeatures: [],
-  })
-  const [yearRangeFilter, setYearRangeFilter] = React.useState<DataGridNumberRangeFilterValues>({})
-  const { showDialog: showConfirmationDialog } = useConfirmationDialog()
+  const makeFilterValues = useAppSelector(carDataUISelectors.selectMakeFilterValues)
+  const modelFilterValues = useAppSelector(carDataUISelectors.selectModelFilterValues)
+  const featureFilterValues = useAppSelector(carDataUISelectors.selectFeatureFilterValues)
+  const yearRangeFilterValues = useAppSelector(carDataUISelectors.selectYearRangeFilter)
+  const setYearRangeFilter = React.useCallback(
+    (values: NumberRangeFilterValues) => dispatch(carDataUIActions.setYearRangeFilter(values)),
+    [dispatch]
+  )
 
   // pagination state
-  const [page, setPage] = React.useState<number>(1)
-  const [pageSize, setPageSize] = React.useState<number>(20)
-  const [pageCount, setPageCount] = React.useState<number>(1)
+  const page = useAppSelector(carDataUISelectors.selectPage)
+  const pageSize = useAppSelector(carDataUISelectors.selectPageSize)
+  const totalResultCount = useAppSelector(carDataUISelectors.selectTotalResultCount)
+  const setTotalResultCount = React.useCallback(
+    (value: number) => dispatch(carDataUIActions.setTotalResultCount(value)),
+    [dispatch]
+  )
 
   // sorting state
   const [sortColumns, setSortColumns] = React.useState<SortColumn[]>([])
 
-  // reset page to 1 when any filter changes
-  React.useEffect(() => {
-    setPage(1)
-    setPageCount(1)
-  }, [selectedListFilterOptions, yearRangeFilter])
-
   // map local filter options to GraphQL filter input variables
-  const requestFilter = React.useMemo(() => {
-    const filterInput: CarDetailFilterInput = {}
-
-    filterInput.carMakeIds = selectedListFilterOptions.carMakeId.length
-      ? selectedListFilterOptions.carMakeId
-      : undefined
-    filterInput.carModelIds = selectedListFilterOptions.carModelId.length
-      ? selectedListFilterOptions.carModelId
-      : undefined
-    filterInput.featureIds = selectedListFilterOptions?.CarDetailFeatures
-
-    if (yearRangeFilter) {
-      if (yearRangeFilter.min != null) filterInput.yearMin = yearRangeFilter.min
-      if (yearRangeFilter.max != null) filterInput.yearMax = yearRangeFilter.max
-    }
-
-    return Object.keys(filterInput).length ? filterInput : undefined
-  }, [selectedListFilterOptions, yearRangeFilter])
+  const requestFilter = useAppSelector(carDataUISelectors.selectRequestFilter)
 
   // server query for fetching car details
   const {
@@ -114,85 +99,69 @@ export default function CarsDataTable() {
     },
   })
 
-  React.useEffect(
-    () =>
-      setPageCount(prev =>
-        !carDetailData?.carDetails
-          ? prev
-          : Math.ceil(Math.max((carDetailData?.carDetails.totalCount || 0) / pageSize, 1))
-      ),
-    [carDetailData, pageSize]
-  )
+  // keep result count in sync with data from server
+  React.useEffect(() => {
+    const { carDetails: { totalCount: newTotal } = {} } = carDetailData || {}
+    if (typeof newTotal !== 'undefined') {
+      if (newTotal !== totalResultCount) setTotalResultCount(newTotal)
+    }
+  }, [carDetailData, totalResultCount, setTotalResultCount])
 
   // catch-alls for loading and error states
   const loadingAnyData = loadingMakes || loadingModels || loadingFeatures || loadingCarDetails
   const anyLoadingError = !!(makesLoadingError || modelsLoadingError || featuresLoadingError || carDetailsLoadingError)
 
-  // prefetch options for known columns (makeId, modelId, year)
-  const listFilterOptions = React.useMemo<Record<CarDetailFilterablePropKeys, DataGridListFilterOption<string>[]>>(
-    () =>
-      provideListFilterOptions(
-        allMakes?.carMakes || [],
-        allModels?.carModels || [],
-        allFeatures?.carFeatures || [],
-        carDetailData?.carDetails?.items || [],
-        selectedListFilterOptions
-      ),
-    [allMakes, allModels, allFeatures, carDetailData, selectedListFilterOptions]
-  )
+  const featureFilterOptions = React.useMemo(() => {
+    if (!allFeatures) return []
+    return allFeatures.carFeatures.map(mapFilterListOption)
+  }, [allFeatures])
 
-  const toggleSelectedFilterMake = React.useCallback(
-    (makeId: string) => {
-      setSelectedListFilterOptions(prev => {
-        let filterMakeIds = prev.carMakeId || []
+  const makeFilterOptions = React.useMemo(() => {
+    if (!allMakes) return []
+    return allMakes.carMakes.map(mapFilterListOption)
+  }, [allMakes])
 
-        if (filterMakeIds.includes(makeId)) filterMakeIds = filterMakeIds.filter(f => f !== makeId)
-        else filterMakeIds = filterMakeIds.concat([makeId])
+  const modelFilterOptions = React.useMemo(() => {
+    if (!allModels) return []
 
-        // remove filter models that are outside the bounds of the selected make filters
-        let filterModelIds = prev.carModelId || []
-        if (filterModelIds.length && filterMakeIds.length) {
-          filterModelIds = (allModels?.carModels || [])
-            .filter(m => filterModelIds.includes(m.id) && filterMakeIds.includes(m.carMakeId))
-            .map(m => m.id)
-        }
+    if (!allMakes) return allModels.carModels.map(mapFilterListOption) // return unfiltered
 
-        return {
-          ...prev,
-          carMakeId: filterMakeIds,
-          carModelId: filterModelIds,
-        }
-      })
-    },
-    [allModels]
-  )
+    // filter options based on selected makes
+    const filteredModels = !makeFilterValues.length
+      ? allModels.carModels
+      : allModels.carModels.filter(m => makeFilterValues.includes(m.carMakeId))
+
+    return filteredModels.map(mapFilterListOption)
+  }, [allMakes, allModels, makeFilterValues])
 
   const columns = React.useMemo(
     () =>
       columnsFactory({
-        onToggleFilterOption: (columnKey: CarDetailFilterablePropKeys, optionKey: string) => {
-          if (columnKey === 'carMakeId') {
-            // use special toggler to avoid erroneous cascading state
-            toggleSelectedFilterMake(optionKey as string)
-          } else {
-            // use generic toggler
-            setSelectedListFilterOptions(prev => {
-              let filterValues = prev[columnKey] || []
-
-              // toggle logic
-              if (filterValues.includes(optionKey)) filterValues = filterValues.filter(ek => ek !== optionKey)
-              else filterValues = filterValues.concat([optionKey])
-
-              return { ...prev, [columnKey]: filterValues }
-            })
-          }
-        },
-        listFilterOptions,
-        selectedListFilterOptions,
-        yearRangeFilter,
+        makeFilterOptions,
+        makeFilterValues,
+        modelFilterOptions,
+        modelFilterValues,
+        featureFilterOptions,
+        featureFilterValues,
+        onToggleMakeFilter: makeId =>
+          dispatch(carDataUIActions.toggleSelectedCarMakeFilter({ allModels: allModels?.carModels || [], makeId })),
+        onToggleModelFilter: modelId => dispatch(carDataUIActions.toggleSelectedCarModelFilter(modelId)),
+        onToggleFeatureFilter: featureId => dispatch(carDataUIActions.toggleSelectedCarFeatureFilter(featureId)),
+        yearRangeFilterValues,
         onYearRangeFilterChange: rangeValues => setYearRangeFilter(rangeValues),
       }),
-    [listFilterOptions, selectedListFilterOptions, toggleSelectedFilterMake, yearRangeFilter]
+    [
+      allModels,
+      featureFilterOptions,
+      makeFilterOptions,
+      modelFilterOptions,
+      makeFilterValues,
+      modelFilterValues,
+      featureFilterValues,
+      yearRangeFilterValues,
+      setYearRangeFilter,
+      dispatch,
+    ]
   )
 
   const handleDeleteSelected = async () => {
@@ -237,7 +206,6 @@ export default function CarsDataTable() {
     }
   }
 
-
   return (
     <div className="container mx-auto space-y-6 py-10">
       {/* Action Buttons */}
@@ -277,46 +245,7 @@ export default function CarsDataTable() {
       )}
 
       {/* Paging */}
-      <div className="flex gap-3">
-        <Button
-          disabled={loadingAnyData || page <= 1}
-          variant="outline"
-          onClick={() => setPage(p => Math.max(1, p - 1))}
-        >
-          <ChevronLeft />
-        </Button>
-        <div className="flex items-center px-2">
-          Page&nbsp;{page}&nbsp;of&nbsp;<span className="min-w-8">{pageCount}</span>
-        </div>
-        <Button
-          disabled={loadingAnyData || page >= pageCount}
-          className="mr-5"
-          variant="outline"
-          onClick={() => setPage(p => p + 1)}
-        >
-          <ChevronRight />
-        </Button>
-        <div className="hidden items-center sm:flex">Showing</div>
-        <Select
-          value={pageSize.toString()}
-          onValueChange={value => {
-            const v = Number(value) || 20
-            setPageSize(Math.min(100, Math.max(1, v)))
-            setPage(1)
-          }}
-        >
-          <SelectTrigger disabled={loadingAnyData}>
-            <SelectValue placeholder="Page size"></SelectValue>
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="10">10</SelectItem>
-            <SelectItem value="20">20</SelectItem>
-            <SelectItem value="50">50</SelectItem>
-            <SelectItem value="100">100</SelectItem>
-          </SelectContent>
-        </Select>
-        <div className="flex items-center">per page</div>
-      </div>
+      <CarDataTablePager loading={loadingAnyData} />
     </div>
   )
 }
@@ -342,24 +271,9 @@ function DataTableCheckbox(props: RenderCheckboxProps) {
   )
 }
 
-function DataLoadErrorAlert() {
-  return (
-    <Alert variant="destructive">
-      <AlertTitle>
-        <div className="flex items-center gap-2">
-          <TriangleAlert /> <span>An Error Occurred</span>
-        </div>
-      </AlertTitle>
-      <AlertDescription className="pl-8">
-        <div className="w-full">
-          We couldn&apos;t fetch the data needed for this page. Click Retry to reload the page.
-        </div>
-        <div className="flex w-full justify-center">
-          <Button variant="link" size="sm" onClick={() => window.location.reload()}>
-            <RefreshCw /> Retry
-          </Button>
-        </div>
-      </AlertDescription>
-    </Alert>
-  )
+function mapFilterListOption(item: { id: string; name: string }) {
+  return {
+    key: item.id,
+    label: item.name,
+  }
 }

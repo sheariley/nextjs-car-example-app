@@ -1,61 +1,41 @@
 import { ArrowRightCircle } from 'lucide-react'
 import Link from 'next/link'
-import { Column, renderHeaderCell, RenderHeaderCellProps, SelectColumn } from 'react-data-grid'
+import { Column, renderHeaderCell, SelectColumn } from 'react-data-grid'
 
 import { Button } from '@/components/ui/button'
+import { NumberRangeFilterValues } from '@/lib/store'
 import { CarDetail } from '@/types/car-detail'
-import { CarDetailFilterablePropKeys } from './cars-data-table-types'
+
 import DataGridListFilter, { DataGridListFilterOption } from './data-grid-list-filter'
-import DataGridNumberRangeFilter, { DataGridNumberRangeFilterValues } from './data-grid-number-range-filter'
+import DataGridNumberRangeFilter from './data-grid-number-range-filter'
 
 export type ColumnsFactoryProps = {
-  onToggleFilterOption: (columnKey: CarDetailFilterablePropKeys, optionKey: string) => void
-  listFilterOptions: Record<CarDetailFilterablePropKeys, DataGridListFilterOption<string>[]>
-  selectedListFilterOptions: Record<CarDetailFilterablePropKeys, string[]>
-  yearRangeFilter: DataGridNumberRangeFilterValues
-  onYearRangeFilterChange: (range: DataGridNumberRangeFilterValues) => void
+  makeFilterOptions: DataGridListFilterOption<string>[]
+  makeFilterValues: string[]
+  modelFilterOptions: DataGridListFilterOption<string>[]
+  modelFilterValues: string[]
+  featureFilterOptions: DataGridListFilterOption<string>[]
+  featureFilterValues: string[]
+  onToggleMakeFilter: (value: string) => void
+  onToggleModelFilter: (value: string) => void
+  onToggleFeatureFilter: (value: string) => void
+  yearRangeFilterValues: NumberRangeFilterValues
+  onYearRangeFilterChange: (range: NumberRangeFilterValues) => void
 }
 
 export function columnsFactory({
-  onToggleFilterOption,
-  listFilterOptions,
-  selectedListFilterOptions,
-  yearRangeFilter,
+  makeFilterOptions,
+  makeFilterValues,
+  modelFilterOptions,
+  modelFilterValues,
+  featureFilterOptions,
+  featureFilterValues,
+  onToggleMakeFilter,
+  onToggleModelFilter,
+  onToggleFeatureFilter,
+  yearRangeFilterValues: yearRangeFilter,
   onYearRangeFilterChange,
 }: ColumnsFactoryProps): Column<CarDetail>[] {
-  // header renderer factory that shows a filter icon and a popover with options
-  const renderListFilterHeader = (columnKey: CarDetailFilterablePropKeys, columnName: string) => {
-    const renderer = (renderProps: RenderHeaderCellProps<CarDetail>) => {
-      const opts = listFilterOptions[columnKey] ?? []
-      const selOpts = selectedListFilterOptions[columnKey] ?? []
-
-      return (
-        <DataGridListFilter
-          filterTitle={columnName}
-          labelRenderer={() => renderHeaderCell(renderProps)}
-          options={opts}
-          selectedOptions={selOpts}
-          onToggleOption={oKey => onToggleFilterOption(columnKey, oKey)}
-        />
-      )
-    }
-    renderer.displayName = 'DataGridListColumnFilter'
-
-    return renderer
-  }
-
-  const renderYearFilterHeader = (renderProps: RenderHeaderCellProps<CarDetail>) => {
-    return (
-      <DataGridNumberRangeFilter
-        filterTitle="Year"
-        labelRenderer={() => renderHeaderCell(renderProps)}
-        rangeValues={yearRangeFilter}
-        onChange={onYearRangeFilterChange}
-      />
-    )
-  }
-  renderYearFilterHeader.displayName = 'DataGridNumberRangeColumnFilter'
-
   return [
     SelectColumn,
     {
@@ -69,20 +49,43 @@ export function columnsFactory({
         </Button>
       ),
       sortable: true,
-      renderHeaderCell: renderListFilterHeader('carModelId', 'Model'),
+      renderHeaderCell: cellHeaderProps => (
+        <DataGridListFilter
+          filterTitle="Model"
+          labelRenderer={() => renderHeaderCell(cellHeaderProps)}
+          options={modelFilterOptions}
+          selectedOptions={modelFilterValues}
+          onToggleOption={onToggleModelFilter}
+        />
+      ),
     },
     {
       name: 'Make',
       key: 'CarMake',
       renderCell: props => props.row.CarMake?.name,
       sortable: true,
-      renderHeaderCell: renderListFilterHeader('carMakeId', 'Make'),
+      renderHeaderCell: cellHeaderProps => (
+        <DataGridListFilter
+          filterTitle="Make"
+          labelRenderer={() => renderHeaderCell(cellHeaderProps)}
+          options={makeFilterOptions}
+          selectedOptions={makeFilterValues}
+          onToggleOption={onToggleMakeFilter}
+        />
+      ),
     },
     {
       name: 'Year',
       key: 'year',
       sortable: true,
-      renderHeaderCell: renderYearFilterHeader,
+      renderHeaderCell: cellHeaderProps => (
+        <DataGridNumberRangeFilter
+          filterTitle="Year"
+          labelRenderer={() => renderHeaderCell(cellHeaderProps)}
+          rangeValues={yearRangeFilter}
+          onChange={onYearRangeFilterChange}
+        />
+      ),
     },
     {
       name: 'Features',
@@ -90,7 +93,15 @@ export function columnsFactory({
       renderCell: props =>
         !props.row.CarDetailFeatures ? 'None' : props.row.CarDetailFeatures?.map(df => df.CarFeature!.name).join(', '),
       sortable: false,
-      renderHeaderCell: renderListFilterHeader('CarDetailFeatures', 'Features'),
+      renderHeaderCell: cellHeaderProps => (
+        <DataGridListFilter
+          filterTitle="Features"
+          labelRenderer={() => renderHeaderCell(cellHeaderProps)}
+          options={featureFilterOptions}
+          selectedOptions={featureFilterValues}
+          onToggleOption={onToggleFeatureFilter}
+        />
+      ),
     },
   ]
 }

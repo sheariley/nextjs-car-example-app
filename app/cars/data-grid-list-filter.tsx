@@ -16,7 +16,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
 
-export type DataGridListFilterProps<TKey extends DataGridListFilterOptionKeyValue = string> =
+export type DataGridListFilterProps<TKey extends DataGridListFilterOptionKey = string> =
   React.ComponentPropsWithoutRef<'div'> & {
     filterTitle: string
     labelRenderer?: () => string | JSX.Element
@@ -25,15 +25,14 @@ export type DataGridListFilterProps<TKey extends DataGridListFilterOptionKeyValu
     onToggleOption?: (key: TKey) => void
   }
 
-export type DataGridListFilterOptionKeyValue = string | number | Date
+export type DataGridListFilterOptionKey = string | number | Date
 
-export type DataGridListFilterOption<TKey extends DataGridListFilterOptionKeyValue = string> = {
+export type DataGridListFilterOption<TKey extends DataGridListFilterOptionKey = string> = {
   key: TKey
   label: string
-  count?: number
 }
 
-export default function DataGridListFilter<TKey extends DataGridListFilterOptionKeyValue = string>({
+export default function DataGridListFilter<TKey extends DataGridListFilterOptionKey = string>({
   filterTitle,
   options,
   selectedOptions,
@@ -115,7 +114,7 @@ export default function DataGridListFilter<TKey extends DataGridListFilterOption
                 onPointerLeave={cancelPointerEventWhenSearchFocused}
                 onPointerMove={cancelPointerEventWhenSearchFocused}
               >
-                {o.label} <span className="text-muted-foreground ml-auto text-xs">{o.count}</span>
+                {o.label}
               </DropdownMenuCheckboxItem>
             ))}
           </div>

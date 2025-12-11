@@ -1,29 +1,25 @@
 'use client'
 
+import { PopoverArrow } from '@radix-ui/react-popover'
+import { Filter, RotateCcw } from 'lucide-react'
 import * as React from 'react'
-import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover'
+
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Filter, RotateCcw } from 'lucide-react'
-
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { NumberRangeFilterValues } from '@/lib/store'
 import { cn } from '@/lib/utils'
-import { PopoverArrow } from '@radix-ui/react-popover'
-
-export type DataGridNumberRangeFilterValues = {
-  min?: number | null
-  max?: number | null
-}
 
 export type DataGridNumberRangeFilterProps = React.ComponentPropsWithoutRef<'div'> & {
   filterTitle?: string
   labelRenderer?: () => React.ReactNode
   minLabel?: string
   maxLabel?: string
-  rangeValues?: DataGridNumberRangeFilterValues
+  rangeValues?: NumberRangeFilterValues
   step?: number
   placeholderMin?: string
   placeholderMax?: string
-  onChange?: (values: DataGridNumberRangeFilterValues) => void
+  onChange?: (values: NumberRangeFilterValues) => void
 }
 
 export default function DataGridNumberRangeFilter({
