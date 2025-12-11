@@ -24,9 +24,8 @@ import { useConfirmationDialog } from '@/lib/hooks'
 import {
   carDataGridUIActions,
   carDataGridUISelectors,
-  NumberRangeFilterValues,
   useAppDispatch,
-  useAppSelector,
+  useAppSelector
 } from '@/lib/store'
 import { CarDetail } from '@/types/car-detail'
 import { DataLoadErrorAlert } from './cars-data-load-error-alert'
@@ -57,16 +56,6 @@ export default function CarsDataTable() {
   })
 
   const [selectedRows, setSelectedRows] = React.useState<ReadonlySet<string>>(new Set<string>())
-
-  // filter state
-  const makeFilterValues = useAppSelector(carDataGridUISelectors.selectMakeFilterValues)
-  const modelFilterValues = useAppSelector(carDataGridUISelectors.selectModelFilterValues)
-  const featureFilterValues = useAppSelector(carDataGridUISelectors.selectFeatureFilterValues)
-  const yearRangeFilterValues = useAppSelector(carDataGridUISelectors.selectYearRangeFilter)
-  const setYearRangeFilter = React.useCallback(
-    (values: NumberRangeFilterValues) => dispatch(carDataGridUIActions.setYearRangeFilter(values)),
-    [dispatch]
-  )
 
   // pagination state
   const page = useAppSelector(carDataGridUISelectors.selectPage)
@@ -123,57 +112,14 @@ export default function CarsDataTable() {
   const loadingAnyData = loadingMakes || loadingModels || loadingFeatures || loadingCarDetails
   const anyLoadingError = !!(makesLoadingError || modelsLoadingError || featuresLoadingError || carDetailsLoadingError)
 
-  const featureFilterOptions = React.useMemo(() => {
-    if (!allFeatures) return []
-    return allFeatures.carFeatures.map(mapFilterListOption)
-  }, [allFeatures])
-
-  const makeFilterOptions = React.useMemo(() => {
-    if (!allMakes) return []
-    return allMakes.carMakes.map(mapFilterListOption)
-  }, [allMakes])
-
-  const modelFilterOptions = React.useMemo(() => {
-    if (!allModels) return []
-
-    if (!allMakes) return allModels.carModels.map(mapFilterListOption) // return unfiltered
-
-    // filter options based on selected makes
-    const filteredModels = !makeFilterValues.length
-      ? allModels.carModels
-      : allModels.carModels.filter(m => makeFilterValues.includes(m.carMakeId))
-
-    return filteredModels.map(mapFilterListOption)
-  }, [allMakes, allModels, makeFilterValues])
-
   const columns = React.useMemo(
     () =>
       columnsFactory({
-        makeFilterOptions,
-        makeFilterValues,
-        modelFilterOptions,
-        modelFilterValues,
-        featureFilterOptions,
-        featureFilterValues,
-        onMakeFilterChange: values =>
-          dispatch(carDataGridUIActions.setMakeFilterValues({ values, allModels: allModels?.carModels || [] })),
-        onModelFilterChange: values => dispatch(carDataGridUIActions.setModelFilterValues(values)),
-        onFeatureFilterChange: values => dispatch(carDataGridUIActions.setFeatureFilterValues(values)),
-        yearRangeFilterValues,
-        onYearRangeFilterChange: rangeValues => setYearRangeFilter(rangeValues),
+        allMakes: allMakes?.carMakes || [],
+        allModels: allModels?.carModels || [],
+        allFeatures: allFeatures?.carFeatures || [],
       }),
-    [
-      allModels,
-      featureFilterOptions,
-      makeFilterOptions,
-      modelFilterOptions,
-      makeFilterValues,
-      modelFilterValues,
-      featureFilterValues,
-      yearRangeFilterValues,
-      setYearRangeFilter,
-      dispatch,
-    ]
+    [allModels, allMakes, allFeatures]
   )
 
   const handleDeleteSelected = async () => {
@@ -223,7 +169,7 @@ export default function CarsDataTable() {
     setSelectedRows(new Set())
     setSortColumns([])
   }
-  
+
   return (
     <div className="container mx-auto space-y-6 py-10">
       {/* Action Buttons */}
@@ -236,16 +182,13 @@ export default function CarsDataTable() {
         >
           <Trash2 className="size-4" /> Delete Selected
         </Button>
-        <Button
-          asChild
-          aria-label="Add a Car"
-        >
+        <Button asChild aria-label="Add a Car">
           <Link href="/cars/new">
             <PlusSquare className="size-4" /> Add Car
           </Link>
         </Button>
         <Button
-          className="justify-self-end ml-auto"
+          className="ml-auto justify-self-end"
           variant="secondary"
           aria-label="Clear Filters"
           onClick={handleClearFilters}
@@ -277,7 +220,7 @@ export default function CarsDataTable() {
             }}
           />
           {(loadingCarDetails || deletingCarDetails) && (
-            <div className="absolute inset-0 z-10 bg-muted/60 flex flex-col justify-center items-center [--radius:1rem]">
+            <div className="bg-muted/60 absolute inset-0 z-10 flex flex-col items-center justify-center [--radius:1rem]">
               <Item variant="outline" className="bg-background">
                 <ItemMedia>
                   <Spinner />
@@ -316,11 +259,4 @@ function DataTableCheckbox(props: RenderCheckboxProps) {
   return (
     <Checkbox checked={indeterminate ? 'indeterminate' : checked} onCheckedChange={changeHandler} {...commonProps} />
   )
-}
-
-function mapFilterListOption(item: { id: string; name: string }) {
-  return {
-    key: item.id,
-    label: item.name,
-  }
 }
