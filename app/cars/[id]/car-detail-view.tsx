@@ -13,6 +13,7 @@ import { validate as uuidValidate } from 'uuid'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Checkbox } from '@/components/ui/checkbox'
 import { Field, FieldContent, FieldError, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 import { Item, ItemGroup } from '@/components/ui/item'
@@ -34,9 +35,10 @@ export type CarDetailViewProps = React.ComponentProps<'div'> & {
   carDetailId: string
 }
 
+const TOAST_ID_SAVING = 'saving'
+
 export function CarDetailView({ carDetailId, className, ...props }: CarDetailViewProps) {
   const [isEditing, setIsEditing] = React.useState(false)
-  const [savingToastId, setSavingToastId] = React.useState<string | number | null>(null)
   const router = useRouter()
 
   const [fetchCarDetails, { loading: loadingDetails, error: loadError, data: { carDetail } = {} }] =
@@ -47,7 +49,6 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
   const [fetchFeatures, { loading: loadingFeatures, error: featuresLoadingError, data: allFeatures }] =
     useLazyQuery(GET_CAR_FEATURES)
 
-  const loadingAnyData = loadingDetails || loadingMakes || loadingModels || loadingFeatures
   const anyOptionsLoadingError = makesLoadingError || modelsLoadingError || featuresLoadingError
 
   const [createCarDetail, { loading: creatingCarDetail }] = useMutation(CREATE_CAR_DETAIL)
@@ -100,7 +101,7 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
     }
   }, [isEditing, allMakes, allModels, allFeatures, fetchMakes, fetchModels, fetchFeatures])
 
-  if (loadError) {
+  if (loadError || anyOptionsLoadingError) {
     return (
       <div className={cn('container m-auto py-8', className)} {...props}>
         <Alert variant="destructive">
@@ -110,7 +111,7 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
             </div>
           </AlertTitle>
           <AlertDescription className="pl-8">
-            <div className="w-full">{loadError.message}</div>
+            <div className="w-full">{(loadError || anyOptionsLoadingError)!.message}</div>
             <div className="flex w-full justify-center">
               <Button variant="link" size="sm" asChild>
                 <Link href="/cars">
@@ -125,18 +126,20 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
   }
 
   function dismissSavingIndicator() {
-    if (savingToastId) {
-      toast.dismiss(savingToastId)
-      setSavingToastId(null)
-    }
+    toast.dismiss(TOAST_ID_SAVING)
   }
 
   function showSavingIndicator() {
-    setSavingToastId(toast.loading('Saving car...'))
+    toast.loading('Saving car...', { id: TOAST_ID_SAVING })
   }
 
   function commitFormState(data: CarDetail) {
-    form.reset(data)
+    form.reset({
+      carMakeId: data.carMakeId,
+      carModelId: data.carModelId,
+      year: data.year,
+      featureIds: data.CarDetailFeatures?.map(x => x.featureId) || [],
+    })
   }
 
   function indicateSaveError(description = 'Failed to save the car.') {
@@ -260,12 +263,12 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
                   the form will submit when you click the edit button.
                 */}
                 {!isEditing ? (
-                  <Button key="btn-edit" type="button" variant="outline" onClick={toggleIsEditing}>
+                  <Button key="btn-edit" type="button" variant="outline" onClick={toggleIsEditing} disabled={saving}>
                     <Pencil className="size-4" />
                     Edit
                   </Button>
                 ) : (
-                  <Button key="btn-save" type="submit" disabled={!isDirty || !isValid}>
+                  <Button key="btn-save" type="submit" disabled={!isDirty || !isValid || saving}>
                     <SaveIcon />
                     Save
                   </Button>
@@ -389,32 +392,77 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
               <CardDescription>Available features for this car</CardDescription>
             </CardHeader>
             <CardContent>
-              <ItemGroup className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {loadingDetails || !carDetail ? (
-                  <>
-                    <Skeleton className="h-[54px]" />
-                    <Skeleton className="h-[54px]" />
-                    <Skeleton className="h-[54px]" />
-                    <Skeleton className="h-[54px]" />
-                  </>
+              {!isEditing ? (
+                loadingDetails || !carDetail ? (
+                  <FeaturesLoading />
+                ) : carDetail.CarDetailFeatures && carDetail.CarDetailFeatures.length > 0 ? (
+                  <ItemGroup className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    {carDetail.CarDetailFeatures.map((df, i) => (
+                      <Item key={i} variant="outline" className="font-medium">
+                        {df.CarFeature?.name ?? 'Unknown Feature'}
+                      </Item>
+                    ))}
+                  </ItemGroup>
                 ) : (
-                  <>
-                    {carDetail.CarDetailFeatures && carDetail.CarDetailFeatures.length > 0 ? (
-                      carDetail.CarDetailFeatures.map((df, i) => (
-                        <Item key={i} variant="outline" className="font-medium">
-                          {df.CarFeature?.name ?? 'Feature'}
-                        </Item>
-                      ))
-                    ) : (
-                      <Item variant="muted">No features listed</Item>
-                    )}
-                  </>
-                )}
-              </ItemGroup>
+                  <ItemGroup className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    <Item variant="muted">No features listed</Item>
+                  </ItemGroup>
+                )
+              ) : loadingFeatures ? (
+                <FeaturesLoading />
+              ) : (
+                <Controller
+                  name="featureIds"
+                  control={form.control}
+                  render={({ field, fieldState }) => (
+                    <Field data-invalid={fieldState.invalid}>
+                      <ItemGroup className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                        {(allFeatures?.carFeatures || []).map(feature => (
+                          <Item key={feature.id} variant="outline" className="flex font-medium">
+                            <Checkbox
+                              id={`feature-checkbox-${feature.id}`}
+                              checked={field.value?.includes(feature.id)}
+                              onCheckedChange={(_, checked) =>
+                                field.onChange(toggleArrayValue(field.value, feature.id, checked === true))
+                              }
+                            />
+                            <FieldLabel
+                              htmlFor={`feature-checkbox-${feature.id}`}
+                              className="flex-1 cursor-pointer"
+                              onClick={() => field.onChange(toggleArrayValue(field.value, feature.id))}
+                            >
+                              {feature.name}
+                            </FieldLabel>
+                          </Item>
+                        ))}
+                      </ItemGroup>
+                    </Field>
+                  )}
+                />
+              )}
             </CardContent>
           </Card>
         </form>
       </div>
     </div>
   )
+}
+
+function FeaturesLoading() {
+  return (
+    <>
+      <Skeleton className="h-[54px]" />
+      <Skeleton className="h-[54px]" />
+      <Skeleton className="h-[54px]" />
+      <Skeleton className="h-[54px]" />
+    </>
+  )
+}
+
+function toggleArrayValue<T>(arr: T[] | null | undefined, value: T, included?: boolean): T[] {
+  arr = arr || []
+  if (typeof included === 'undefined') return arr.includes(value) ? arr.filter(v => v !== value) : arr.concat([value])
+  else if (included && !arr.includes(value)) return arr.concat([value])
+  else if (!included && arr.includes(value)) return arr.filter(v => v !== value)
+  else return arr
 }

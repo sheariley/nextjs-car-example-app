@@ -31,6 +31,8 @@ import { DataLoadErrorAlert } from './cars-data-load-error-alert'
 import { columnsFactory } from './cars-data-table-columns'
 import { CarDataTablePager } from './cars-data-table-pager'
 
+const TOAST_ID_DELETING_CAR = 'deleting-car'
+
 export default function CarsDataTable() {
   const dispatch = useAppDispatch()
   const { loading: loadingMakes, error: makesLoadingError, data: allMakes } = useQuery(GET_CAR_MAKES)
@@ -172,10 +174,10 @@ export default function CarsDataTable() {
       })
       if (dialogResult === 'confirm') {
         const selectedIds = selectedRows.values().toArray()
-        const loadingToastId = toast.loading(`Attempting to delete ${selectedIds.length} cars...`)
+        toast.loading(`Attempting to delete ${selectedIds.length} cars...`, { id: TOAST_ID_DELETING_CAR })
         try {
           const result = await deleteCarDetails({ variables: { ids: selectedIds } })
-          toast.dismiss(loadingToastId)
+          toast.dismiss(TOAST_ID_DELETING_CAR)
           const deletedCount = result.data?.deleteCarDetails
           if (deletedCount === 0) {
             toast.error('No cars were deleted!', {
@@ -200,7 +202,7 @@ export default function CarsDataTable() {
             description: 'Failed to delete the selected car(s).',
           })
         } finally {
-          if (toast.getToasts().some(x => x.id === loadingToastId)) toast.dismiss(loadingToastId)
+          toast.dismiss(TOAST_ID_DELETING_CAR)
         }
       }
     }

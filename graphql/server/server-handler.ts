@@ -35,7 +35,7 @@ export function formatError(formattedError: GraphQLFormattedError, error: unknow
   if (originalError instanceof PrismaClientKnownRequestError) {
     if (originalError.code === 'P2002') {
       return new GraphQLError(
-        'Unique constraint failed on the fields: ' + (originalError.meta?.target as string[]).join(', '),
+        'Unique constraint failed on the fields: ' + (originalError.meta?.target as string[] || []).join(', '),
         {
           extensions: {
             code: 'BAD_USER_INPUT',
