@@ -276,7 +276,7 @@ export default function CarsDataTable() {
               ),
             }}
           />
-          {loadingCarDetails || deletingCarDetails && (
+          {(loadingCarDetails || deletingCarDetails) && (
             <div className="absolute inset-0 z-10 bg-muted/60 flex flex-col justify-center items-center [--radius:1rem]">
               <Item variant="outline" className="bg-background">
                 <ItemMedia>
