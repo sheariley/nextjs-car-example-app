@@ -69,6 +69,8 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
     formState: { isDirty, isValid },
   } = form
 
+  const formValues = form.watch()
+
   React.useEffect(() => {
     // if a valid UUID was passed in the props, try to load the CarDetail record using it.
     if (uuidValidate(carDetailId)) {
@@ -87,8 +89,10 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
       } catch {
         // swallow it
       }
-    } else if (carDetailId !== 'NEW') {
+    } else if (carDetailId.toUpperCase() !== 'NEW') {
       return notFound()
+    } else {
+      setIsEditing(true)
     }
   }, [carDetailId, fetchCarDetails])
 
@@ -203,17 +207,23 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
   return (
     <div className={cn('container mx-auto space-y-6 py-8', className)} {...props}>
       <div className="flex items-start justify-between gap-4">
-        {loadingDetails || !carDetail ? (
-          <div className="space-y-2">
-            <Skeleton className="h-7 w-64" />
-            <Skeleton className="h-4 w-32" />
-          </div>
+        {!isEditing ? (
+          loadingDetails || !carDetail ? (
+            <div className="space-y-2">
+              <Skeleton className="h-7 w-64" />
+              <Skeleton className="h-4 w-32" />
+            </div>
+          ) : (
+            <div>
+              <h1 className="text-2xl font-semibold">
+                {carDetail.CarMake?.name ?? 'Unknown Make'} {carDetail.CarModel?.name ?? 'Unknown Model'}
+              </h1>
+              <p className="text-muted-foreground text-sm">Year: {carDetail.year}</p>
+            </div>
+          )
         ) : (
           <div>
-            <h1 className="text-2xl font-semibold">
-              {carDetail.CarMake?.name ?? 'Unknown Make'} {carDetail.CarModel?.name ?? 'Unknown Model'}
-            </h1>
-            <p className="text-muted-foreground text-sm">Year: {carDetail.year}</p>
+            <h1 className="text-2xl font-semibold">New Car</h1>
           </div>
         )}
         <div className="flex items-center gap-2">
@@ -233,7 +243,7 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
               <CardDescription>Placeholder for future photos</CardDescription>
             </CardHeader>
             <CardContent>
-              {loadingDetails || !carDetail ? (
+              {loadingDetails || (!isEditing && !carDetail) ? (
                 <>
                   <Skeleton className="bg-muted text-muted-foreground flex aspect-video w-full items-center justify-center rounded-md text-sm" />
                 </>
@@ -342,11 +352,13 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
                               <SelectValue placeholder="Select Model" />
                             </SelectTrigger>
                             <SelectContent position="item-aligned">
-                              {allModels?.carModels.map(item => (
-                                <SelectItem key={item.id} value={item.id}>
-                                  {item.name}
-                                </SelectItem>
-                              ))}
+                              {allModels?.carModels
+                                .filter(x => x.carMakeId === formValues.carMakeId)
+                                .map(item => (
+                                  <SelectItem key={item.id} value={item.id}>
+                                    {item.name}
+                                  </SelectItem>
+                                ))}
                             </SelectContent>
                           </Select>
                         )}
