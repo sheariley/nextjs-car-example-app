@@ -1,8 +1,26 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+This is just an example app that demonstrates how to use Prisma, Apollo Client & Server, shadcn/ui, Tailwind, and NextJS to display data in a data-grid and performing CRUD operations using GraphQL mutations.
+
 ## Getting Started
 
-First, run the development server:
+First, setup your environment variables in the `.env` file in the root of the workspace. This file is ignored by git so that you don't accidentally commit your secrets and push them up to GitHub.
+
+```env
+DATABASE_URL="postgres://<username>:<password>@<db-server>:<db-port>/postgres?sslmode=require"
+```
+
+Next, generate the GraphQL and Prisma generated code:
+```bash
+npm run codegen
+```
+
+Then, seed the database with the data in the `mock-data` folder by running:
+```bash
+npx prisma db seed
+```
+
+Finally, run the development server:
 
 ```bash
 npm run dev
