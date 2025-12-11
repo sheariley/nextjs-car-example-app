@@ -5,12 +5,12 @@ import { CarModelSchema } from './car-model'
 import { CarDetailFeatureSchema } from './car-detail-feature'
 
 export const CarDetailCreateInputSchema = z.object({
-  carMakeId: z.uuidv4(),
-  carModelId: z.uuidv4(),
-  year: z.number()
+  carMakeId: z.uuidv4({ error: 'Required' }),
+  carModelId: z.uuidv4({ error: 'Required' }),
+  year: z.coerce.number<number>({ error: 'Year must be a number.' })
     .int()
-    .min(1908)
-    .max(new Date().getFullYear()),
+    .min(1908, { error: 'Year must be greater than 1907' })
+    .max(new Date().getFullYear(), { error: 'Year cannot be in the future.' }),
   featureIds: z.array(z.string())
     .nullable()
     .optional()
