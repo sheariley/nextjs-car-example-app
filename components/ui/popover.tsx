@@ -19,7 +19,7 @@ function PopoverTrigger({
 
 function PopoverContent({
   className,
-  align = "center",
+  align = 'center',
   sideOffset = 4,
   ...props
 }: React.ComponentProps<typeof PopoverPrimitive.Content>) {
