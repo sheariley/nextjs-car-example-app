@@ -10,5 +10,17 @@
   {
     "id": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
     "name": "Toyota"
+  },
+  {
+    "id": "fefe0aa7-aa85-454a-b008-785c175918dd",
+    "name": "Mazda"
+  },
+  {
+    "id": "d7b533ba-e3af-4577-b15a-826b37757927",
+    "name": "BMW"
+  },
+  {
+    "id": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+    "name": "Dodge"
   }
 ]

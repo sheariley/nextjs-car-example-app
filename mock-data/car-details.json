@@ -82,5 +82,2405 @@
 		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
 		"carModelId": "4e1e0902-f9cb-4820-a668-4d85ba69ba17",
 		"year": 2025
+	},
+	{
+		"id": "9411675f-6e0f-48ff-abc6-5c1f1bbf8728",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "1d3f5b7a-2c4e-4f6a-8b9c-0d1e2f3a4b5c",
+		"year": 2019
+	},
+	{
+		"id": "aeebc831-038a-4245-84a7-80ecb4392c0e",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "3b5d7f9a-4c6e-4f8a-9b1c-2d3e4f5a6b7c",
+		"year": 2010
+	},
+	{
+		"id": "e51bf238-f93b-464d-a904-c0e21de11676",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 2002
+	},
+	{
+		"id": "59e7e2a1-1cf5-40b9-92c0-c521c873cf11",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 2005
+	},
+	{
+		"id": "b6521a14-6a3d-40de-907d-e43ef0625ac5",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "1d3f5b7a-2c4e-4f6a-8b9c-0d1e2f3a4b5c",
+		"year": 2010
+	},
+	{
+		"id": "2c2c4a3a-dea2-47a1-8bbf-af674fb0e2b6",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "0a1b2c3d-8e9f-4a3b-9d7e-5e6f7a8b9c0d",
+		"year": 2014
+	},
+	{
+		"id": "a26c44d3-ad13-4e92-926f-fa883223b111",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2011
+	},
+	{
+		"id": "d6f8b102-c255-4e6f-bebf-0225b61366d4",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 2011
+	},
+	{
+		"id": "6b8715f0-1878-4f77-96fa-7c9e7f48a5a4",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "f6a8b0c2-7d9e-4f2a-8c6b-4d5e6f7a8b9c",
+		"year": 1998
+	},
+	{
+		"id": "6bf840f3-9fab-445c-86d9-7fa5d1fd0b82",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "1b2c3d4e-9f0a-4b4c-8e8f-6f7a8b9c0d1e",
+		"year": 2004
+	},
+	{
+		"id": "ed73668b-bfa5-4bc5-80e8-000065957ec3",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4e1e0902-f9cb-4820-a668-4d85ba69ba17",
+		"year": 2018
+	},
+	{
+		"id": "403ce4d0-3560-415e-8178-f60fecd98b91",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 1995
+	},
+	{
+		"id": "d18e70ab-7c96-4ca0-b401-150fabbcbff4",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "0a1b2c3d-8e9f-4a3b-9d7e-5e6f7a8b9c0d",
+		"year": 2001
+	},
+	{
+		"id": "e68169e8-ff6d-4fcc-ac11-6d4d30db04b9",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "1d3f5b7a-2c4e-4f6a-8b9c-0d1e2f3a4b5c",
+		"year": 1997
+	},
+	{
+		"id": "8ed7e11c-f6f9-4238-93e0-dcf6d4ba5d3c",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "6e8f1a3b-7f9a-4c2b-8e1d-5a6b7c8d9e0f",
+		"year": 2018
+	},
+	{
+		"id": "ff4e1219-2799-4b65-923f-87b06dfd4d11",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "b2c4d6e8-3f5a-4b7c-8e2d-0f1a2b3c4d5e",
+		"year": 1997
+	},
+	{
+		"id": "a8afa5ac-f85f-42a1-82f8-ecded5ee0528",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "f6a8b0c2-7d9e-4f2a-8c6b-4d5e6f7a8b9c",
+		"year": 2008
+	},
+	{
+		"id": "5f83c4fa-75da-4a79-ab6d-b2922e16d937",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "ce2552ac-f0d9-4301-b3f8-91d137588ab5",
+		"year": 1996
+	},
+	{
+		"id": "eaf31773-a6c4-433f-99fb-3e1cdf776e57",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2019
+	},
+	{
+		"id": "5048162e-de76-402c-b669-99fe49f084dd",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 2004
+	},
+	{
+		"id": "cfdde75b-05d5-48f0-9a26-ddb9316949c1",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2022
+	},
+	{
+		"id": "c865a5c5-a3e4-43eb-ac74-292ea5617228",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2019
+	},
+	{
+		"id": "90424949-aa63-4f3f-bb42-811093b94f44",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2022
+	},
+	{
+		"id": "7ac71115-3f65-427e-bb30-896a88141554",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "9f2b1cde-3a4b-4a5b-9c1d-0a1b2c3d4e5f",
+		"year": 2018
+	},
+	{
+		"id": "372390e1-856d-4b3f-b6f9-da32989712b3",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2017
+	},
+	{
+		"id": "4691eee8-32f7-40b1-9d78-97d0de01f746",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2013
+	},
+	{
+		"id": "cab3b6c3-eccf-4401-b41c-70a33f3f3b80",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 2006
+	},
+	{
+		"id": "be713e5a-5a2b-4ec8-941d-db51b1cf0348",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2006
+	},
+	{
+		"id": "39c22785-7b97-4f96-a921-ba370dc1ec06",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "1d3f5b7a-2c4e-4f6a-8b9c-0d1e2f3a4b5c",
+		"year": 2025
+	},
+	{
+		"id": "fbb490d1-2e0b-4209-881c-f1aa7905627e",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2004
+	},
+	{
+		"id": "a649609d-e943-4a30-a41f-bee692cac392",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "f6a8b0c2-7d9e-4f2a-8c6b-4d5e6f7a8b9c",
+		"year": 2020
+	},
+	{
+		"id": "efdca1fd-a7db-4e70-9a95-d0292d815837",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 2023
+	},
+	{
+		"id": "7e265279-b4f1-476f-b0d1-c80cf08519a5",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2009
+	},
+	{
+		"id": "6bdfcd5a-46e3-4afb-8fdd-df34344a4a04",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2020
+	},
+	{
+		"id": "c314a406-7413-4487-998d-55795af72547",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2002
+	},
+	{
+		"id": "46a72a0a-becf-4f6d-a7a4-0c85bc2e4f5b",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "3b5d7f9a-4c6e-4f8a-9b1c-2d3e4f5a6b7c",
+		"year": 2014
+	},
+	{
+		"id": "e59d8b23-8a18-4868-8cdd-11f22894e6af",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 2002
+	},
+	{
+		"id": "79b02021-a4df-4f06-8174-d4bf2b5109e8",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4e1e0902-f9cb-4820-a668-4d85ba69ba17",
+		"year": 2025
+	},
+	{
+		"id": "0a58a6a4-a7a3-44a8-ae1f-8228b1535f8d",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 2012
+	},
+	{
+		"id": "8293676b-87bc-4ee7-a847-ffcffadae658",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "3b5d7f9a-4c6e-4f8a-9b1c-2d3e4f5a6b7c",
+		"year": 2000
+	},
+	{
+		"id": "928c51e6-535f-42f8-adac-15b95150836a",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 2024
+	},
+	{
+		"id": "846d68ca-9987-4c6c-87cf-b92acf46ca1f",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "b2c4d6e8-3f5a-4b7c-8e2d-0f1a2b3c4d5e",
+		"year": 1995
+	},
+	{
+		"id": "05b56605-34c5-4dad-9ce3-371330e80770",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2004
+	},
+	{
+		"id": "942b6d03-c001-4798-97a6-f86d496ddfac",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 2024
+	},
+	{
+		"id": "083614fc-6f67-4a5b-811b-634b281a092b",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 1997
+	},
+	{
+		"id": "7aa64291-e5a3-4b4e-9dd0-fcf793b78941",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 2006
+	},
+	{
+		"id": "9b7d50e7-8b10-4404-8073-55a8a6e8ff99",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "3b5d7f9a-4c6e-4f8a-9b1c-2d3e4f5a6b7c",
+		"year": 2001
+	},
+	{
+		"id": "d64de25d-1548-4606-8ee5-916c500bb9eb",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 2007
+	},
+	{
+		"id": "338d3521-5ca4-4783-ae73-64deb7baf95f",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2024
+	},
+	{
+		"id": "3c4bd18c-5843-467d-a28e-33081978423a",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "1b2c3d4e-9f0a-4b4c-8e8f-6f7a8b9c0d1e",
+		"year": 2003
+	},
+	{
+		"id": "235b475d-aca6-4195-90ab-725a764c5503",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2012
+	},
+	{
+		"id": "179e675d-c67d-4398-8442-3c5abec573b2",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 1996
+	},
+	{
+		"id": "ced4fb1f-3f81-43ba-8236-116696cd628c",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4e1e0902-f9cb-4820-a668-4d85ba69ba17",
+		"year": 2007
+	},
+	{
+		"id": "92c1753e-139c-4bb9-a8fc-c158f221ea0f",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "1b2c3d4e-9f0a-4b4c-8e8f-6f7a8b9c0d1e",
+		"year": 2013
+	},
+	{
+		"id": "7be69277-01b3-4ada-bcea-7a19a459972b",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2001
+	},
+	{
+		"id": "925703fa-0b59-4c45-a45e-21b0fbb9c1d9",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "ce2552ac-f0d9-4301-b3f8-91d137588ab5",
+		"year": 2000
+	},
+	{
+		"id": "886bc9ef-62c4-4e3e-8e42-fca5fc182371",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2022
+	},
+	{
+		"id": "0b673692-76f8-48f5-9b1f-a311c8672ec6",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 2019
+	},
+	{
+		"id": "fd65c0ed-4d5b-4dcb-b7fc-bc8a01b2992c",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2011
+	},
+	{
+		"id": "a5c380c0-e1f1-4662-b31e-1791b50bcdef",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 2022
+	},
+	{
+		"id": "cd72d34e-6408-4698-8edb-0b29ecc51bc2",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 2013
+	},
+	{
+		"id": "4053e263-b9fe-4c62-9f6a-3ae27dfc690f",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "3b5d7f9a-4c6e-4f8a-9b1c-2d3e4f5a6b7c",
+		"year": 2022
+	},
+	{
+		"id": "addbcfcc-9f7e-4615-871c-141615a8e4fe",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "6e8f1a3b-7f9a-4c2b-8e1d-5a6b7c8d9e0f",
+		"year": 2001
+	},
+	{
+		"id": "c1746394-ce9c-4853-9dad-f118f93da49c",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2020
+	},
+	{
+		"id": "6bc3dd18-2769-4a10-9ccf-0dcae823af0d",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "6e8f1a3b-7f9a-4c2b-8e1d-5a6b7c8d9e0f",
+		"year": 2015
+	},
+	{
+		"id": "47a1aaf3-9663-4942-bd0f-4edb206e6455",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 2013
+	},
+	{
+		"id": "aceb15db-b21b-4c02-91c6-1b2c01e5def4",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 2014
+	},
+	{
+		"id": "1762fcd6-9dc3-4bb1-ada9-40c5cd7a6d52",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2011
+	},
+	{
+		"id": "040a5a25-219c-45cc-a69e-94c7363e7fb8",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "f6a8b0c2-7d9e-4f2a-8c6b-4d5e6f7a8b9c",
+		"year": 1995
+	},
+	{
+		"id": "e6c478c6-f54b-487b-843a-35bedb53f8b7",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 2014
+	},
+	{
+		"id": "f2700e32-6669-4b7b-8c88-c0bc375c4e14",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2002
+	},
+	{
+		"id": "4a33c882-cae1-44e1-9eac-f6f48522334b",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 1995
+	},
+	{
+		"id": "73c3d511-d3b9-4590-b918-543cb3a0a008",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "9f2b1cde-3a4b-4a5b-9c1d-0a1b2c3d4e5f",
+		"year": 2001
+	},
+	{
+		"id": "950350a0-f2c4-4e54-a3ee-0e2b2c1d5667",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "0a1b2c3d-8e9f-4a3b-9d7e-5e6f7a8b9c0d",
+		"year": 2017
+	},
+	{
+		"id": "b2c846af-c9dd-4133-920a-6e8249ac69dd",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4e1e0902-f9cb-4820-a668-4d85ba69ba17",
+		"year": 2011
+	},
+	{
+		"id": "cff05f01-9f23-4016-bdc0-d8ce6dc739e2",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 2000
+	},
+	{
+		"id": "3bc89809-cd73-46b0-a34c-e97d372a0ea7",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "b2c4d6e8-3f5a-4b7c-8e2d-0f1a2b3c4d5e",
+		"year": 1997
+	},
+	{
+		"id": "3cb65bba-a55d-4470-8207-ca58bba9dcde",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 1997
+	},
+	{
+		"id": "9fb7dfb6-b80f-4702-8cea-fb21e319d268",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "ce2552ac-f0d9-4301-b3f8-91d137588ab5",
+		"year": 2012
+	},
+	{
+		"id": "746ce07f-bb9f-4d98-92b0-8cb6246b3acb",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "1b2c3d4e-9f0a-4b4c-8e8f-6f7a8b9c0d1e",
+		"year": 2021
+	},
+	{
+		"id": "6940dc33-699d-41f9-8bff-b8ef250ace04",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "ce2552ac-f0d9-4301-b3f8-91d137588ab5",
+		"year": 2019
+	},
+	{
+		"id": "b44140a0-d098-4df5-9050-e12a39afb0fa",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2005
+	},
+	{
+		"id": "c3ddc31f-fdbc-48ea-a5f5-4acbe70bbe8e",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 2018
+	},
+	{
+		"id": "ccb7db9b-9f81-47c7-89ed-f75f32fb534b",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "9f2b1cde-3a4b-4a5b-9c1d-0a1b2c3d4e5f",
+		"year": 2005
+	},
+	{
+		"id": "1e089c50-f301-4da1-9bc0-fcfc9e729224",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 2016
+	},
+	{
+		"id": "f107d468-0936-4f10-b2d0-e479a67ee4cf",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 1999
+	},
+	{
+		"id": "41d824e7-d64a-44fa-a331-92526e9b4aea",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "3b5d7f9a-4c6e-4f8a-9b1c-2d3e4f5a6b7c",
+		"year": 2004
+	},
+	{
+		"id": "8b06c3af-f58c-4210-b613-2364a0bf5700",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 2018
+	},
+	{
+		"id": "f12d6b42-02d2-4bf9-92b8-22ee84db50af",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 2019
+	},
+	{
+		"id": "8d42c059-2423-4971-8b67-8534a4253f1f",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 2005
+	},
+	{
+		"id": "db9c8504-eb85-4ef5-b85b-ec9366e6e670",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2011
+	},
+	{
+		"id": "fe5dd274-772d-46f2-9435-1f7e7cd0d9c2",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2017
+	},
+	{
+		"id": "d50e5238-f7f1-447e-9efe-09706060899b",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "9f2b1cde-3a4b-4a5b-9c1d-0a1b2c3d4e5f",
+		"year": 2025
+	},
+	{
+		"id": "8aada71a-b179-4a57-960a-b37b4756f454",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4e1e0902-f9cb-4820-a668-4d85ba69ba17",
+		"year": 2014
+	},
+	{
+		"id": "c4f00f48-0be5-40fb-9a97-c94a67ba89a4",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2001
+	},
+	{
+		"id": "7c845f9a-7703-4e71-a287-b7c644ecadce",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2025
+	},
+	{
+		"id": "5449e14d-c9df-48d3-af0b-d33bf82469df",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2022
+	},
+	{
+		"id": "08a4593f-e096-421b-ba1e-2e8e9eff7042",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 2005
+	},
+	{
+		"id": "05e4f2c4-089a-4f0b-9981-b06cd0f13f12",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2018
+	},
+	{
+		"id": "cc89647b-21ee-4611-8df8-22b1a7be8f78",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "1d3f5b7a-2c4e-4f6a-8b9c-0d1e2f3a4b5c",
+		"year": 2013
+	},
+	{
+		"id": "171d6bb3-3e47-4536-a92e-cbea5b2ebb42",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 2009
+	},
+	{
+		"id": "257f76a2-f946-4280-9f98-621e1c6e004d",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "6e8f1a3b-7f9a-4c2b-8e1d-5a6b7c8d9e0f",
+		"year": 2014
+	},
+	{
+		"id": "969434eb-fa77-4e84-8bc6-1fb9bb345279",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2016
+	},
+	{
+		"id": "a71bda14-fcbd-4e18-b470-5403748f00e5",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 2000
+	},
+	{
+		"id": "04487120-bfd2-428e-8c11-dfe5712e230d",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 2005
+	},
+	{
+		"id": "3a55afbd-8fd3-4ba2-bd7a-12c5b9b56eb6",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2001
+	},
+	{
+		"id": "bccae108-23c7-413b-b6ed-7c4ef377d168",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 2013
+	},
+	{
+		"id": "e01e4982-bb8f-457d-a950-d48be2b7d1ae",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2018
+	},
+	{
+		"id": "6e111cff-0d18-4fac-96e8-9c5aa170a393",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2004
+	},
+	{
+		"id": "82e6a002-5c10-4494-a785-139b1af75a91",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "1d3f5b7a-2c4e-4f6a-8b9c-0d1e2f3a4b5c",
+		"year": 2006
+	},
+	{
+		"id": "4cdc547c-b757-47e0-8370-e27a6c003577",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2016
+	},
+	{
+		"id": "66ef4126-8dc0-417a-a043-a2db19c5a4ad",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "9f2b1cde-3a4b-4a5b-9c1d-0a1b2c3d4e5f",
+		"year": 2018
+	},
+	{
+		"id": "027d300c-9b0f-44a2-a84d-bcd19934ac44",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 2006
+	},
+	{
+		"id": "d719090a-965d-4cb5-a415-607e598eeb04",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2019
+	},
+	{
+		"id": "42cb127a-038c-4d3a-bcf6-daf4e523dacd",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "f6a8b0c2-7d9e-4f2a-8c6b-4d5e6f7a8b9c",
+		"year": 2020
+	},
+	{
+		"id": "1b1cc850-2a44-418e-aacb-6577202bece4",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 2013
+	},
+	{
+		"id": "54d9d638-5e51-40a2-9011-0302299f34ec",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "ce2552ac-f0d9-4301-b3f8-91d137588ab5",
+		"year": 2024
+	},
+	{
+		"id": "23566021-ef58-4a27-b246-13558be9e303",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2021
+	},
+	{
+		"id": "559a5837-054b-4abb-8bdf-486faf6954e6",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "1b2c3d4e-9f0a-4b4c-8e8f-6f7a8b9c0d1e",
+		"year": 1999
+	},
+	{
+		"id": "e2baeb71-6cdd-40f8-8bc7-a4b257ff767b",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "b2c4d6e8-3f5a-4b7c-8e2d-0f1a2b3c4d5e",
+		"year": 1998
+	},
+	{
+		"id": "a30eba1d-0f57-49ea-a105-57a09e2f3e5d",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 1996
+	},
+	{
+		"id": "7e2ec0b9-4d6e-490b-abca-b952172b94b1",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2019
+	},
+	{
+		"id": "f6aeb5e8-1962-44b8-b554-12674ff80437",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2011
+	},
+	{
+		"id": "418f1504-c8bd-4ea7-9944-bfa7558da4f3",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 2003
+	},
+	{
+		"id": "dc0f89e4-f421-4e9a-9928-92379461b4a9",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 2022
+	},
+	{
+		"id": "46f0ea23-084a-4ccf-9108-eecec0a4114c",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "1d3f5b7a-2c4e-4f6a-8b9c-0d1e2f3a4b5c",
+		"year": 2008
+	},
+	{
+		"id": "20a8fda2-5988-493a-856e-11b2059bbee0",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "1b2c3d4e-9f0a-4b4c-8e8f-6f7a8b9c0d1e",
+		"year": 2005
+	},
+	{
+		"id": "e8b0f829-01f9-4d54-89ea-f65feafa55df",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2013
+	},
+	{
+		"id": "d3ce7c5b-edaa-4b1f-9517-d12e73bd2bb7",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "9f2b1cde-3a4b-4a5b-9c1d-0a1b2c3d4e5f",
+		"year": 2009
+	},
+	{
+		"id": "ce64eeeb-b489-4fee-9a89-bc673732a193",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "b2c4d6e8-3f5a-4b7c-8e2d-0f1a2b3c4d5e",
+		"year": 2001
+	},
+	{
+		"id": "927b7b05-3da7-4a2d-84d6-7123a00d9440",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 1999
+	},
+	{
+		"id": "8e8481f9-cc90-4156-882d-e54d54844e04",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 2013
+	},
+	{
+		"id": "90493ea5-f136-417c-9310-474b68452844",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 2021
+	},
+	{
+		"id": "6b0225ba-6a64-4a1f-8dd5-17f4ccbafef6",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 2018
+	},
+	{
+		"id": "85276b29-4076-4202-bf07-09b63852d1c1",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "b2c4d6e8-3f5a-4b7c-8e2d-0f1a2b3c4d5e",
+		"year": 2015
+	},
+	{
+		"id": "8944ce30-d703-4d6b-ab20-02498f8ba5b6",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2025
+	},
+	{
+		"id": "ef767592-1d12-4f11-a609-8dd73fe9bacc",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 2010
+	},
+	{
+		"id": "3a0cd1f5-a4e1-4c0c-bd1a-ea5693b90714",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 2005
+	},
+	{
+		"id": "2672b66a-f1bd-47b3-b36a-2b50de1150b4",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "3b5d7f9a-4c6e-4f8a-9b1c-2d3e4f5a6b7c",
+		"year": 2014
+	},
+	{
+		"id": "49f4377d-deff-4b4f-82d7-6c2b62c447f4",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2023
+	},
+	{
+		"id": "021e0547-91a3-493a-8d6f-38697eb58901",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2023
+	},
+	{
+		"id": "c772427f-2e19-4829-b3d6-13ccef61daf2",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 2021
+	},
+	{
+		"id": "3664d2c5-3825-4895-b8c8-1fd1c6094a2f",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "6e8f1a3b-7f9a-4c2b-8e1d-5a6b7c8d9e0f",
+		"year": 1995
+	},
+	{
+		"id": "0c408359-deb3-49c8-b56c-638968af0ecb",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 2000
+	},
+	{
+		"id": "0e9ba9d9-d70b-47be-bf94-53cd09478a89",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "1d3f5b7a-2c4e-4f6a-8b9c-0d1e2f3a4b5c",
+		"year": 1997
+	},
+	{
+		"id": "10245041-1827-49be-b834-32ac7fd31e7d",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 1995
+	},
+	{
+		"id": "5f7cdcd7-607d-4485-ba60-28f9f6e35599",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "9f2b1cde-3a4b-4a5b-9c1d-0a1b2c3d4e5f",
+		"year": 2005
+	},
+	{
+		"id": "ac82fb9f-2c9b-489c-8df3-86bb188b7663",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "0a1b2c3d-8e9f-4a3b-9d7e-5e6f7a8b9c0d",
+		"year": 1996
+	},
+	{
+		"id": "929d1d61-f633-4feb-a80f-f994eab6d066",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2011
+	},
+	{
+		"id": "fee4bd6d-f61f-4112-a519-31b089d4af48",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2002
+	},
+	{
+		"id": "93e50729-fa97-4e2e-9838-3b617f9079ee",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 1997
+	},
+	{
+		"id": "457f7b1f-1cd5-40bd-979a-49d95f5dd288",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "b2c4d6e8-3f5a-4b7c-8e2d-0f1a2b3c4d5e",
+		"year": 2020
+	},
+	{
+		"id": "d9570bbc-0145-40de-aa52-846160950fdb",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2019
+	},
+	{
+		"id": "738ee36e-e965-41c8-b23d-d9b0fa1959a2",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "a1b3c5d7-2e4f-4a6b-9d1c-9e0f1a2b3c4d",
+		"year": 2025
+	},
+	{
+		"id": "b53b7f55-28c1-4e9d-9f61-027c9eac7692",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "9f2b1cde-3a4b-4a5b-9c1d-0a1b2c3d4e5f",
+		"year": 2005
+	},
+	{
+		"id": "2c7df924-8061-4426-a3f0-b358d36c1e05",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2001
+	},
+	{
+		"id": "796a122c-49a3-4ccb-b4a8-5cf8c02c86ca",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "6e8f1a3b-7f9a-4c2b-8e1d-5a6b7c8d9e0f",
+		"year": 1996
+	},
+	{
+		"id": "431a28d2-91b1-44a2-9873-b79b801b2024",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "b2c4d6e8-3f5a-4b7c-8e2d-0f1a2b3c4d5e",
+		"year": 2024
+	},
+	{
+		"id": "31dcd9a5-e68c-4a36-8934-af98e91044fe",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2007
+	},
+	{
+		"id": "00e46a04-c718-4fdd-9a85-4c682b2a09e4",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 1996
+	},
+	{
+		"id": "9ffe4c9f-5200-4e5a-9a15-57d57d9b450a",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 2012
+	},
+	{
+		"id": "48c12daf-38da-4ef1-99fe-1a6198b49b37",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 1997
+	},
+	{
+		"id": "6b7c9029-91ca-49c2-bcc8-336a981dfbda",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 1998
+	},
+	{
+		"id": "1881b1ac-2410-4327-941e-6de5d6816571",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 1995
+	},
+	{
+		"id": "a4b87038-57af-40f4-8859-210cab707b7f",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 2005
+	},
+	{
+		"id": "ccc29560-8304-4f5e-98e9-6d7f578f1a29",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2004
+	},
+	{
+		"id": "44b4e6e3-fbd7-42d7-a9c5-3644c8f09cca",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 2002
+	},
+	{
+		"id": "b680f835-938d-4cf2-9773-5caff8de667f",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2015
+	},
+	{
+		"id": "2ed637db-1e1e-465b-9bda-87cd007d7287",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2025
+	},
+	{
+		"id": "f0f73e01-881c-420e-a9fd-ff1fdb142ea8",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 2020
+	},
+	{
+		"id": "bf813dc2-71af-4e24-a70d-a1ed260f5de2",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "ce2552ac-f0d9-4301-b3f8-91d137588ab5",
+		"year": 2013
+	},
+	{
+		"id": "a1079494-58d8-45a5-a30e-0f20e9762014",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2024
+	},
+	{
+		"id": "70c2d6ff-aa3e-4c65-9650-db281aa3cb54",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 1998
+	},
+	{
+		"id": "f9ff4d02-822b-4abd-983e-afaa5137a5bc",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "1b2c3d4e-9f0a-4b4c-8e8f-6f7a8b9c0d1e",
+		"year": 2020
+	},
+	{
+		"id": "e8349fa6-c734-47d4-9b10-ce91a0d951b7",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 1998
+	},
+	{
+		"id": "2de3fdfe-6c63-4147-b700-121d9f4e8bd0",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4e1e0902-f9cb-4820-a668-4d85ba69ba17",
+		"year": 2024
+	},
+	{
+		"id": "88c7563c-6416-4e35-91bd-f5d05ecb698d",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 2001
+	},
+	{
+		"id": "eb43269e-c803-4d6d-8436-e66e310ffdba",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2004
+	},
+	{
+		"id": "b3d0c982-e1e5-42e7-9def-52341958b8d8",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "9f2b1cde-3a4b-4a5b-9c1d-0a1b2c3d4e5f",
+		"year": 2009
+	},
+	{
+		"id": "1c956635-ba81-42ee-800c-f30a8c4326be",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "0a1b2c3d-8e9f-4a3b-9d7e-5e6f7a8b9c0d",
+		"year": 2021
+	},
+	{
+		"id": "f06d8ea1-ee6b-4d01-9e44-333120308ba8",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "6e8f1a3b-7f9a-4c2b-8e1d-5a6b7c8d9e0f",
+		"year": 2016
+	},
+	{
+		"id": "cbc96c63-6480-4365-bcf2-8ae4c4460991",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2010
+	},
+	{
+		"id": "30510d91-e753-4e40-9e28-a840fcf83d42",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "f6a8b0c2-7d9e-4f2a-8c6b-4d5e6f7a8b9c",
+		"year": 2022
+	},
+	{
+		"id": "a077b46f-1c3a-4766-9ed5-1b09a158710e",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "6e8f1a3b-7f9a-4c2b-8e1d-5a6b7c8d9e0f",
+		"year": 2011
+	},
+	{
+		"id": "48bc38f3-33bc-4ee5-9e32-c698e74cb983",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2008
+	},
+	{
+		"id": "69f105b3-b2f5-40f9-b783-1953ea76ed1a",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4e1e0902-f9cb-4820-a668-4d85ba69ba17",
+		"year": 2025
+	},
+	{
+		"id": "0b845d4d-a8c7-4636-aa8a-3cc1e123c27a",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "f6a8b0c2-7d9e-4f2a-8c6b-4d5e6f7a8b9c",
+		"year": 2013
+	},
+	{
+		"id": "52d46b17-da79-4634-ab2c-bcd5045645cb",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 1998
+	},
+	{
+		"id": "a613aa58-7848-4ba4-aabf-2f4d756a6b2a",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 2001
+	},
+	{
+		"id": "2aeb02c7-d1af-437d-af92-cfb705cf8fb5",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "1d3f5b7a-2c4e-4f6a-8b9c-0d1e2f3a4b5c",
+		"year": 2025
+	},
+	{
+		"id": "15eb4646-7051-47ea-9f73-a1a90db6d015",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 2021
+	},
+	{
+		"id": "e91128da-300e-4fe6-8701-f16c1f3f9dbf",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "b2c4d6e8-3f5a-4b7c-8e2d-0f1a2b3c4d5e",
+		"year": 2024
+	},
+	{
+		"id": "4b0b5b9c-9e77-418a-ad6e-cc4a1e90bb19",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 2005
+	},
+	{
+		"id": "24de9c24-09b9-43ff-88d9-9e180cdef161",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2000
+	},
+	{
+		"id": "2c446dba-f557-46e8-98d0-33a5962b69ca",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 2009
+	},
+	{
+		"id": "a912b14e-3269-486c-acdb-08e8f1b06f4a",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 2025
+	},
+	{
+		"id": "0ea089d7-88db-46e8-b856-dc5c426be330",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 2020
+	},
+	{
+		"id": "8b30d54c-0b19-44bd-8335-1f5ae774204b",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 2020
+	},
+	{
+		"id": "e7501909-4a33-4027-9db8-58d46bdb0d1c",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 2001
+	},
+	{
+		"id": "5f3a8539-ade7-4597-81ca-bb5b386f55e2",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2020
+	},
+	{
+		"id": "e95f8e47-04be-4da6-9be1-b3794866ae41",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2008
+	},
+	{
+		"id": "8055c397-28b0-4593-9cd3-2ff7afb5d942",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2014
+	},
+	{
+		"id": "c9faa447-986d-477a-9cca-dcd7d4891cb9",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 1998
+	},
+	{
+		"id": "7bdcce70-0dd1-46b5-83ff-8f8d76fb1e18",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2025
+	},
+	{
+		"id": "aa834803-94b4-4ed9-bd3e-0b14112af302",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 1995
+	},
+	{
+		"id": "a686cb28-2238-454b-8ee3-9e184f391ff0",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2010
+	},
+	{
+		"id": "2cf36ca4-8c05-45dd-928a-4df1df128968",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2006
+	},
+	{
+		"id": "9ec9a9f9-3f90-4a28-b7c5-90c670e69f17",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 2004
+	},
+	{
+		"id": "ad80172a-38f6-4ea0-a30c-2a44ab2682a7",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2008
+	},
+	{
+		"id": "321efc6d-7ebd-4007-8980-26c3a85ec74c",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 1996
+	},
+	{
+		"id": "7830010a-9bb3-43a2-abbb-2f1e0b755ab9",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 2003
+	},
+	{
+		"id": "93cea063-5775-4d42-9742-52a10bf1794b",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2022
+	},
+	{
+		"id": "a84611c7-57e1-415f-b42f-06920fae1410",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "1b2c3d4e-9f0a-4b4c-8e8f-6f7a8b9c0d1e",
+		"year": 2009
+	},
+	{
+		"id": "b3c6d640-1f3a-4ef3-b572-e834b6bbc376",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2014
+	},
+	{
+		"id": "620bee00-d7ff-4b47-a9f1-b711b7d41c02",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "0a1b2c3d-8e9f-4a3b-9d7e-5e6f7a8b9c0d",
+		"year": 1996
+	},
+	{
+		"id": "d778eee3-343f-4172-a39a-43cb7a2ba908",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2023
+	},
+	{
+		"id": "9a7b6bcf-2e17-4f52-a9a4-333e490ffcd7",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2015
+	},
+	{
+		"id": "cfdc2384-81ed-437a-9bb6-fdc56bed2c1e",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2005
+	},
+	{
+		"id": "8566cff6-4165-4d32-af1d-f779de1c988d",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "ce2552ac-f0d9-4301-b3f8-91d137588ab5",
+		"year": 1998
+	},
+	{
+		"id": "26a64475-ae83-4920-96f5-4aa9166a5a48",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 2020
+	},
+	{
+		"id": "f623105b-5f97-4461-a8ea-c706df5646bf",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2009
+	},
+	{
+		"id": "43ebee20-6631-450e-9f9b-20203686445a",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 1995
+	},
+	{
+		"id": "b23d26f2-bb98-434d-8044-17924bdd4750",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4e1e0902-f9cb-4820-a668-4d85ba69ba17",
+		"year": 2022
+	},
+	{
+		"id": "7021e338-91a9-44a7-886c-9333a1e2006f",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2009
+	},
+	{
+		"id": "978bde9f-daf8-4cee-a135-b4754242be0c",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "a1b3c5d7-2e4f-4a6b-9d1c-9e0f1a2b3c4d",
+		"year": 2024
+	},
+	{
+		"id": "9d779fe3-a146-4faa-aceb-2063641568d0",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "a1b3c5d7-2e4f-4a6b-9d1c-9e0f1a2b3c4d",
+		"year": 2004
+	},
+	{
+		"id": "542a426e-d8b4-4060-8c13-1d5fb2cd0d41",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 2025
+	},
+	{
+		"id": "1a4af751-8e69-4cd9-bb0d-f03c8350dbc9",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2009
+	},
+	{
+		"id": "134aa5b5-ce51-4982-a4ff-ce39118cc29b",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 2011
+	},
+	{
+		"id": "fa3869ba-da6c-4feb-8b83-f5a22d7e8e5c",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "1d3f5b7a-2c4e-4f6a-8b9c-0d1e2f3a4b5c",
+		"year": 2006
+	},
+	{
+		"id": "abfa1b6d-7e19-49f6-96c1-a9679d2e6006",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "ce2552ac-f0d9-4301-b3f8-91d137588ab5",
+		"year": 2013
+	},
+	{
+		"id": "d54b5fca-231a-4c5b-9c69-60173f2eb0ab",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 2003
+	},
+	{
+		"id": "951ad4c9-fd89-47f0-a5dc-5945e8af9c57",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2009
+	},
+	{
+		"id": "be1e8a6c-1d06-4a3c-be1c-46c4b548a100",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2016
+	},
+	{
+		"id": "5dd334ed-c25f-42af-92cd-d5b71fb77ac3",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 2019
+	},
+	{
+		"id": "12d9db5a-ff15-44ca-8650-da8ed9ba946d",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2016
+	},
+	{
+		"id": "8d547566-bc49-4942-95f1-d01e2a5e60c5",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2006
+	},
+	{
+		"id": "04f626fc-1b0c-4428-ba74-662c51a76c7c",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2006
+	},
+	{
+		"id": "700f6d4a-a08f-42b7-a0a9-fdb6fdc3ff4b",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 2009
+	},
+	{
+		"id": "e11af3a5-5046-4bbb-86af-e9c265127157",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 2019
+	},
+	{
+		"id": "8c79688a-87cf-46c2-9b71-b9060e97add0",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "0a1b2c3d-8e9f-4a3b-9d7e-5e6f7a8b9c0d",
+		"year": 2004
+	},
+	{
+		"id": "4f9c33fa-ce28-43c9-802b-70744b93e8e5",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 1998
+	},
+	{
+		"id": "eec6c2b4-43f1-446a-9b97-a20eec43d71f",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2022
+	},
+	{
+		"id": "806c3252-c924-4ab9-af8d-391856446e5d",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 2007
+	},
+	{
+		"id": "a8fe5064-6793-43aa-b61a-6860d5ad48e9",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 2004
+	},
+	{
+		"id": "ebf7ae48-e436-43f0-ad25-f8fcfecab518",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2004
+	},
+	{
+		"id": "ef850b40-a107-477c-8d99-8406492cfd0f",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2007
+	},
+	{
+		"id": "30a3c0b2-f228-422e-a2a0-633785cdd969",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4e1e0902-f9cb-4820-a668-4d85ba69ba17",
+		"year": 2014
+	},
+	{
+		"id": "199a5a89-b1ad-4228-a3fc-ed9e72adbe24",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "f6a8b0c2-7d9e-4f2a-8c6b-4d5e6f7a8b9c",
+		"year": 2006
+	},
+	{
+		"id": "2e716bdb-ae07-43a3-a1d3-7efed488b13c",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "ce2552ac-f0d9-4301-b3f8-91d137588ab5",
+		"year": 1999
+	},
+	{
+		"id": "8cf4517c-c2ba-4acc-81cc-cc14ec31133c",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 1999
+	},
+	{
+		"id": "27ba2b40-d3cc-4d69-b5bc-b0cc90b05d7e",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 1997
+	},
+	{
+		"id": "c607dcb0-8a3a-47c9-948f-cf9f1fd83e82",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 2002
+	},
+	{
+		"id": "4bf37eb7-f663-4172-ad0a-ae1f37c72bf6",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 1996
+	},
+	{
+		"id": "90f55fa0-ecd4-474d-99c6-135cfe64d77e",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 2020
+	},
+	{
+		"id": "2e2d9b49-e126-42e3-9a37-fadf9db56b0c",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "b2c4d6e8-3f5a-4b7c-8e2d-0f1a2b3c4d5e",
+		"year": 1998
+	},
+	{
+		"id": "4daaabf1-b818-4173-8dc6-9b049f18432d",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2012
+	},
+	{
+		"id": "4e5d6923-1390-4a57-a011-2863f5ed5aa9",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2022
+	},
+	{
+		"id": "3e95e61b-e7ac-40cc-a9cc-9315eb5e49e9",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2010
+	},
+	{
+		"id": "e3430581-b715-4ed8-9227-7e89ca579a20",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2019
+	},
+	{
+		"id": "31860533-5c6f-4e63-9a72-3b23fc3f3cb6",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "0a1b2c3d-8e9f-4a3b-9d7e-5e6f7a8b9c0d",
+		"year": 2020
+	},
+	{
+		"id": "893accdb-ec80-4a12-a66b-97dd6d7d7217",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "f6a8b0c2-7d9e-4f2a-8c6b-4d5e6f7a8b9c",
+		"year": 2018
+	},
+	{
+		"id": "67b57993-3b59-449c-a219-b2f87253a645",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "f6a8b0c2-7d9e-4f2a-8c6b-4d5e6f7a8b9c",
+		"year": 2003
+	},
+	{
+		"id": "88388e70-bd58-4c3a-b467-876fa2c0c38f",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2017
+	},
+	{
+		"id": "e00dde84-c7dd-4ecc-b354-5276126db06c",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 2000
+	},
+	{
+		"id": "3b0a8365-c999-45e2-b796-1af0c30b1ac0",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 2021
+	},
+	{
+		"id": "0f2af463-7c0a-48a3-b516-e31c763479b0",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "f6a8b0c2-7d9e-4f2a-8c6b-4d5e6f7a8b9c",
+		"year": 2004
+	},
+	{
+		"id": "5ec2c4d7-6baf-44e4-bf7e-2ecd6c3c1ea0",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2015
+	},
+	{
+		"id": "4a414d8b-429e-476a-8e08-3bcb83d9060d",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 2004
+	},
+	{
+		"id": "d835775b-f6ce-4503-bc5b-f219e2045e96",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4e1e0902-f9cb-4820-a668-4d85ba69ba17",
+		"year": 1998
+	},
+	{
+		"id": "83db77a9-7e41-49c9-9b76-31db11483918",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "f6a8b0c2-7d9e-4f2a-8c6b-4d5e6f7a8b9c",
+		"year": 2020
+	},
+	{
+		"id": "1bf963aa-88aa-4df6-88aa-0813c68ca797",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 2018
+	},
+	{
+		"id": "171efbe1-a870-458c-83ab-9dc37813d1b7",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2013
+	},
+	{
+		"id": "5bfdee98-d8ed-4d7b-b0bf-b23ad74e6252",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2004
+	},
+	{
+		"id": "5cf1cb25-3005-489e-bfb2-bff4d313c6c9",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 2008
+	},
+	{
+		"id": "7b85d1f5-30ce-4f6a-a24e-5bcc6a7f77db",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "a1b3c5d7-2e4f-4a6b-9d1c-9e0f1a2b3c4d",
+		"year": 2023
+	},
+	{
+		"id": "aaba469b-2f17-4c92-98c2-2524aa0f3dc6",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 2010
+	},
+	{
+		"id": "8261b9f9-2238-4980-b30a-5e8999dd70b2",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "f6a8b0c2-7d9e-4f2a-8c6b-4d5e6f7a8b9c",
+		"year": 2011
+	},
+	{
+		"id": "dac7658d-2e49-4ec5-9eee-8c16e9083276",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 2012
+	},
+	{
+		"id": "1a830698-fc2c-4746-9b1d-c637ed87905a",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "a1b3c5d7-2e4f-4a6b-9d1c-9e0f1a2b3c4d",
+		"year": 1999
+	},
+	{
+		"id": "a397b3a4-ad27-40c2-9b6a-1d873a54dff7",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 2008
+	},
+	{
+		"id": "d8ba8052-5971-41dd-b42b-f0c52682449f",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "1d3f5b7a-2c4e-4f6a-8b9c-0d1e2f3a4b5c",
+		"year": 2023
+	},
+	{
+		"id": "e584197f-ad21-4bcd-bd4b-085771cea47d",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "1b2c3d4e-9f0a-4b4c-8e8f-6f7a8b9c0d1e",
+		"year": 2006
+	},
+	{
+		"id": "9dfe23a3-e115-4c7b-91a3-c0a21c08e66e",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "ce2552ac-f0d9-4301-b3f8-91d137588ab5",
+		"year": 1999
+	},
+	{
+		"id": "48775431-d668-43db-a5fe-0b5e2d23abde",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "3b5d7f9a-4c6e-4f8a-9b1c-2d3e4f5a6b7c",
+		"year": 2003
+	},
+	{
+		"id": "3fa36cc9-03f8-4c97-a38e-3c6d1d9ac0ab",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2001
+	},
+	{
+		"id": "ed38ab5d-39fe-4988-8bc5-72c9975dc413",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 2024
+	},
+	{
+		"id": "e0441e43-2a8c-45cd-940f-70e8a6e00ec1",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 1999
+	},
+	{
+		"id": "028e358a-181f-413d-9500-18b4be5c9039",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "0a1b2c3d-8e9f-4a3b-9d7e-5e6f7a8b9c0d",
+		"year": 2007
+	},
+	{
+		"id": "43576ac5-7654-4d49-8ba5-524e369dd425",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "ce2552ac-f0d9-4301-b3f8-91d137588ab5",
+		"year": 2015
+	},
+	{
+		"id": "e1db1713-94f0-4a9f-a304-c2ce0bd96fb9",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 2008
+	},
+	{
+		"id": "f2c6cbdb-3c39-407a-be3c-8d4dc55b8e46",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "9f2b1cde-3a4b-4a5b-9c1d-0a1b2c3d4e5f",
+		"year": 2019
+	},
+	{
+		"id": "71ae9c17-99e9-4dd5-a642-1e94c5211a93",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "b2c4d6e8-3f5a-4b7c-8e2d-0f1a2b3c4d5e",
+		"year": 2005
+	},
+	{
+		"id": "fef10ff4-55e4-43df-8292-58d7ea68295f",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "1d3f5b7a-2c4e-4f6a-8b9c-0d1e2f3a4b5c",
+		"year": 2010
+	},
+	{
+		"id": "0ccbe055-d99a-4375-846e-04238328e84c",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 2002
+	},
+	{
+		"id": "f63ab3f0-feb3-4f55-b24a-ea1aecb41c7a",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2002
+	},
+	{
+		"id": "0f939519-3ea7-48ff-8056-0fa7dcc86f2b",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "1d3f5b7a-2c4e-4f6a-8b9c-0d1e2f3a4b5c",
+		"year": 1999
+	},
+	{
+		"id": "2c9c4892-4992-483b-8fa1-d4c2f8a810e9",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "b2c4d6e8-3f5a-4b7c-8e2d-0f1a2b3c4d5e",
+		"year": 2002
+	},
+	{
+		"id": "d5e7a3ba-1b1c-45f4-8919-003c808cba9f",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2019
+	},
+	{
+		"id": "fea0b6ff-8e38-4ee0-a9b6-6023e4bf8e50",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "9f2b1cde-3a4b-4a5b-9c1d-0a1b2c3d4e5f",
+		"year": 2004
+	},
+	{
+		"id": "9b2ab9f7-6f59-4c5b-98ae-3d53bf4c4480",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 2000
+	},
+	{
+		"id": "8d49cb5b-4b07-4486-b696-813e1118e888",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2010
+	},
+	{
+		"id": "20c18173-0ffc-425a-86ba-a16017892ec7",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "6e8f1a3b-7f9a-4c2b-8e1d-5a6b7c8d9e0f",
+		"year": 2021
+	},
+	{
+		"id": "f7578160-4c82-4033-a6cd-1fb24f70dee6",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 2015
+	},
+	{
+		"id": "04e57e8b-60f3-4ae3-83cd-676bfc4df38a",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "6e8f1a3b-7f9a-4c2b-8e1d-5a6b7c8d9e0f",
+		"year": 2023
+	},
+	{
+		"id": "54f5c780-8bb0-42b2-8668-806b77cd695d",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2025
+	},
+	{
+		"id": "fd09f5db-fa31-4fdd-b920-df88cf533b06",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2021
+	},
+	{
+		"id": "a553de4a-f8a8-440c-ab3f-66f7d2e3171b",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "1d3f5b7a-2c4e-4f6a-8b9c-0d1e2f3a4b5c",
+		"year": 2020
+	},
+	{
+		"id": "cf972e3f-d668-4b06-968a-9274c3daec01",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "a1b3c5d7-2e4f-4a6b-9d1c-9e0f1a2b3c4d",
+		"year": 2007
+	},
+	{
+		"id": "ee03c288-423b-470f-90d8-577387f4234e",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "ce2552ac-f0d9-4301-b3f8-91d137588ab5",
+		"year": 2019
+	},
+	{
+		"id": "ea2ad7fd-f0d9-4819-92e3-de218d7da29d",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "f6a8b0c2-7d9e-4f2a-8c6b-4d5e6f7a8b9c",
+		"year": 2004
+	},
+	{
+		"id": "6a98bd85-82cb-4d97-b115-796304f26de3",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2013
+	},
+	{
+		"id": "a9e55e6a-9051-4b65-a56f-a91df46f2c70",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2011
+	},
+	{
+		"id": "138737b4-1295-4c62-95a6-9f70f4d823bc",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2012
+	},
+	{
+		"id": "623dcb84-05f1-4bec-aef5-744d9f9ff3f8",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "1b2c3d4e-9f0a-4b4c-8e8f-6f7a8b9c0d1e",
+		"year": 1998
+	},
+	{
+		"id": "fb4bfd7b-c79a-409d-839e-24a8cbb34ec7",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 1995
+	},
+	{
+		"id": "c164e930-3d50-42b3-8bee-33bf75779c0d",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 2004
+	},
+	{
+		"id": "874d6bdb-3fa1-484a-979e-a4d1c206b63f",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "3b5d7f9a-4c6e-4f8a-9b1c-2d3e4f5a6b7c",
+		"year": 2025
+	},
+	{
+		"id": "703531ce-b7b6-4d77-b210-bf39aba5bc3d",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 2008
+	},
+	{
+		"id": "e43c8ab2-ab03-4ca0-9ffa-3c0be914b32d",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2011
+	},
+	{
+		"id": "500c6524-20c4-405a-ab3b-29df2b820187",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 2010
+	},
+	{
+		"id": "59ffd8fb-769a-4de0-9945-59c973e1e95a",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2008
+	},
+	{
+		"id": "28e316cf-badb-4ae6-baef-ce969cc87d02",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 2019
+	},
+	{
+		"id": "d728ebb2-52f6-45fa-a08c-1674bd0f716e",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "a1b3c5d7-2e4f-4a6b-9d1c-9e0f1a2b3c4d",
+		"year": 2002
+	},
+	{
+		"id": "96d6ff03-ae52-4596-ad2d-085ec685d3ae",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2005
+	},
+	{
+		"id": "11812fc1-a9e2-4a63-92be-2e220a464ce2",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 1997
+	},
+	{
+		"id": "e42d2462-4d9d-43dd-b4ba-c48746539f73",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 2009
+	},
+	{
+		"id": "70aff5e5-3a27-453e-b0f4-6d3fe59db852",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 2024
+	},
+	{
+		"id": "33cc9bca-1720-4b84-872b-39db14a41c22",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2003
+	},
+	{
+		"id": "e320db5f-261a-4deb-95a7-5da072b5dfc5",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 2003
+	},
+	{
+		"id": "8c9d116c-c29b-4233-b492-13bb0cc17117",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2000
+	},
+	{
+		"id": "6e7b0b30-e91e-460d-8ef6-e8cba41a3bbb",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2020
+	},
+	{
+		"id": "0bc98660-f512-445d-8236-ef92037d32b9",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2002
+	},
+	{
+		"id": "0c3327c2-eb5d-46c2-9f73-124efee69e26",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2019
+	},
+	{
+		"id": "d38cd800-683f-4974-95d2-e532d14d9255",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 2008
+	},
+	{
+		"id": "fe84e38c-21b6-4d68-baf6-65e14e3fb049",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2016
+	},
+	{
+		"id": "3e3cd7d7-9de7-48c5-b171-a4c7f8f76d40",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 1997
+	},
+	{
+		"id": "47b0b807-cbac-4568-b723-0f14e83380c5",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 2015
+	},
+	{
+		"id": "a3071c6c-eb56-47fc-9166-356ca30b44b6",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2009
+	},
+	{
+		"id": "d323f373-8d44-45d8-a044-67728205dd3f",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "b2c4d6e8-3f5a-4b7c-8e2d-0f1a2b3c4d5e",
+		"year": 2014
+	},
+	{
+		"id": "73b79e03-38ca-4930-9817-5017b478368f",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 2000
+	},
+	{
+		"id": "24729495-349e-41bb-939e-701130377f93",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 2001
+	},
+	{
+		"id": "beea36b3-b544-4cdb-a5bb-84708060d561",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 2001
+	},
+	{
+		"id": "df3bafca-a593-48ef-b6b9-3ace901fe0eb",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 1995
+	},
+	{
+		"id": "89a618d6-e122-4d2b-8113-18b3be94395b",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2007
+	},
+	{
+		"id": "c8c0e7b7-5e55-49cc-9ec8-71772813af4e",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "3b5d7f9a-4c6e-4f8a-9b1c-2d3e4f5a6b7c",
+		"year": 2011
+	},
+	{
+		"id": "810835a5-cb3d-49ae-be23-46ea32bf5848",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "9f2b1cde-3a4b-4a5b-9c1d-0a1b2c3d4e5f",
+		"year": 1999
+	},
+	{
+		"id": "f928b808-4abe-471d-bac9-36ccacece79f",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "6e8f1a3b-7f9a-4c2b-8e1d-5a6b7c8d9e0f",
+		"year": 2011
+	},
+	{
+		"id": "cdd09a96-b21a-4063-95e9-cc1f640690de",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "0a1b2c3d-8e9f-4a3b-9d7e-5e6f7a8b9c0d",
+		"year": 2014
+	},
+	{
+		"id": "260e85a9-93e7-4985-8d5d-6ba26d52920b",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2008
+	},
+	{
+		"id": "20afabd3-0413-49a9-8c27-b6785dd0ec12",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 2008
+	},
+	{
+		"id": "d3c45fac-3bf5-4a86-8fa1-c86472ca6fb4",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2006
+	},
+	{
+		"id": "bb319d05-b684-4d8a-b461-f88ff288ec23",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 2005
+	},
+	{
+		"id": "4d756843-a3c5-46ad-bcaa-14b9f004d4f6",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2016
+	},
+	{
+		"id": "7d0b8c88-ce89-4c04-8fee-386830305a9b",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "f6a8b0c2-7d9e-4f2a-8c6b-4d5e6f7a8b9c",
+		"year": 2019
+	},
+	{
+		"id": "270d805e-0ecf-4311-b0df-4a3ccb6b2a4d",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "a1b3c5d7-2e4f-4a6b-9d1c-9e0f1a2b3c4d",
+		"year": 2007
+	},
+	{
+		"id": "9283ac7f-c5ac-4d80-89ba-4dbec48ea7d6",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 2024
+	},
+	{
+		"id": "787006b2-d3d0-4653-9ffc-dd6f4a9411a2",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "a1b3c5d7-2e4f-4a6b-9d1c-9e0f1a2b3c4d",
+		"year": 2013
+	},
+	{
+		"id": "da366b98-6a13-4fdc-8f81-479d000934ad",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2015
+	},
+	{
+		"id": "d9b5246c-4243-4bd8-b2c4-f4b565a58731",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2007
+	},
+	{
+		"id": "4e2de54d-12c6-4e8d-a8c8-c33ee5ebce41",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "8e1f3b5d-9a2c-4e1b-8a3d-7b8c9d0e1f2a",
+		"year": 2000
+	},
+	{
+		"id": "95e746eb-cafc-496c-bb77-c75ab7650e5b",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "0a1b2c3d-8e9f-4a3b-9d7e-5e6f7a8b9c0d",
+		"year": 2015
+	},
+	{
+		"id": "580b2913-1c1e-482a-8290-3e6a16d8e666",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "a1b3c5d7-2e4f-4a6b-9d1c-9e0f1a2b3c4d",
+		"year": 2003
+	},
+	{
+		"id": "ad1bb790-5268-4a73-8637-dae96a045dfc",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4c6e8f1a-5d7f-4a9b-8c1d-3e4f5a6b7c8d",
+		"year": 2002
+	},
+	{
+		"id": "f574520d-eab2-4a0f-bf17-c251247e8e77",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "3b5d7f9a-4c6e-4f8a-9b1c-2d3e4f5a6b7c",
+		"year": 2023
+	},
+	{
+		"id": "1f2b562d-0457-42c7-86b8-fb5769e13a13",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 2012
+	},
+	{
+		"id": "4e911d96-85c0-49a4-ae98-9a76fbef12ec",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "1b2c3d4e-9f0a-4b4c-8e8f-6f7a8b9c0d1e",
+		"year": 2006
+	},
+	{
+		"id": "b048cd7c-5612-4347-a761-a5e6f85d0b01",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "2a4b6c8d-3e5f-4a7b-9c1d-1e2f3a4b5c6d",
+		"year": 2005
+	},
+	{
+		"id": "cda9c6b5-6e0f-44c2-b4db-e0e2c73e9010",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2025
+	},
+	{
+		"id": "3e5dca7e-1e5c-469e-a213-6f11122d3c0e",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "0a1b2c3d-8e9f-4a3b-9d7e-5e6f7a8b9c0d",
+		"year": 1997
+	},
+	{
+		"id": "9244ce6d-73d1-43ec-aeea-4e9096503355",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "d4e6f809-5b7c-4d9e-8a4f-2b3c4d5e6f7a",
+		"year": 2009
+	},
+	{
+		"id": "f5b5e523-f9fa-41ac-a9f0-a907269293af",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 2020
+	},
+	{
+		"id": "ae31b5c7-0c8c-4e5d-9eed-dac1070cb252",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "1b2c3d4e-9f0a-4b4c-8e8f-6f7a8b9c0d1e",
+		"year": 1995
+	},
+	{
+		"id": "166bec54-82cc-4dae-aa06-503b524309e7",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4e1e0902-f9cb-4820-a668-4d85ba69ba17",
+		"year": 2008
+	},
+	{
+		"id": "681297ab-5fdb-41d8-aa7f-f23de9562b86",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "be8e5357-56b1-4f7a-b1e0-4d3b943a05e3",
+		"year": 2023
+	},
+	{
+		"id": "6c6b0033-81be-40ee-87e9-870680b30af7",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "4e1e0902-f9cb-4820-a668-4d85ba69ba17",
+		"year": 2002
+	},
+	{
+		"id": "70fcc11c-171d-4097-8e2f-ec4d531b06ed",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 1998
+	},
+	{
+		"id": "37253799-4b59-4a88-8fad-f7d197fe1566",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "a1b3c5d7-2e4f-4a6b-9d1c-9e0f1a2b3c4d",
+		"year": 2021
+	},
+	{
+		"id": "94d1d340-8d84-442a-83e8-31ba03ba4f87",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "9f2b1cde-3a4b-4a5b-9c1d-0a1b2c3d4e5f",
+		"year": 2014
+	},
+	{
+		"id": "438f3f9c-9418-48c0-9e8d-8d77abf32783",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "7f9a2b4c-8e1f-4d3a-9f2b-6c7d8e9f0a1b",
+		"year": 2002
+	},
+	{
+		"id": "57450ff2-4378-4fdc-9972-9840ca5add0d",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2023
+	},
+	{
+		"id": "9a43891d-d02b-47d7-9324-1307b4b0c062",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 1996
+	},
+	{
+		"id": "bf9df910-0cd5-4739-9698-ec401192865d",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "0a1b2c3d-8e9f-4a3b-9d7e-5e6f7a8b9c0d",
+		"year": 2013
+	},
+	{
+		"id": "d43ef451-e8dd-4aeb-a0be-7265cc5c4e75",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2019
+	},
+	{
+		"id": "8e3ea634-3c50-4964-b4f2-1a44de403c52",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "c3d5e7f9-4a6b-4c8d-9f3e-1a2b3c4d5e6f",
+		"year": 1995
+	},
+	{
+		"id": "4a75ed75-6d73-4d4f-801c-7b5e6436835b",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "dc901726-84dc-456d-9177-b42a2971276c",
+		"year": 1999
+	},
+	{
+		"id": "7591fd33-da30-4f91-b711-aafa68c79ea8",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "1d3f5b7a-2c4e-4f6a-8b9c-0d1e2f3a4b5c",
+		"year": 2018
+	},
+	{
+		"id": "69cc34c0-c0f3-4f96-a435-c9e835244169",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2017
+	},
+	{
+		"id": "1902c41c-299b-4063-9fa6-513432fe51fa",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "ce2552ac-f0d9-4301-b3f8-91d137588ab5",
+		"year": 2000
+	},
+	{
+		"id": "9c2b10b3-6e71-4f9f-b66a-e2948c1050f2",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "6e8f1a3b-7f9a-4c2b-8e1d-5a6b7c8d9e0f",
+		"year": 2012
+	},
+	{
+		"id": "ff3f0af6-beba-486b-bf02-c256fe40c220",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "9a2c4d6e-1b3f-4f2a-9c4e-8d9e0f1a2b3c",
+		"year": 2015
+	},
+	{
+		"id": "2f98ddb9-8426-470a-aa41-47a4eadebcb2",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 1998
+	},
+	{
+		"id": "5c30059e-38f2-467e-811d-987955f5aca9",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "1475fe16-9a30-4e0a-bac3-6589c198ea60",
+		"year": 2025
+	},
+	{
+		"id": "97087152-d1bf-49dd-a1a3-a22510196cdf",
+		"carMakeId": "fefe0aa7-aa85-454a-b008-785c175918dd",
+		"carModelId": "6e8f1a3b-7f9a-4c2b-8e1d-5a6b7c8d9e0f",
+		"year": 2022
+	},
+	{
+		"id": "2114a110-5a25-47c2-bc79-8ead588bb379",
+		"carMakeId": "57c8f724-9197-49e0-9e76-a9b10e83dc76",
+		"carModelId": "9f2b1cde-3a4b-4a5b-9c1d-0a1b2c3d4e5f",
+		"year": 2013
+	},
+	{
+		"id": "a0eb7ecc-f6d6-4f49-b743-57dde96a5064",
+		"carMakeId": "d7b533ba-e3af-4577-b15a-826b37757927",
+		"carModelId": "a1b3c5d7-2e4f-4a6b-9d1c-9e0f1a2b3c4d",
+		"year": 2008
+	},
+	{
+		"id": "b61c9041-304b-4b6f-a8e6-a3d698545bac",
+		"carMakeId": "197a8de6-36cd-44f0-9160-38f3d1ba64db",
+		"carModelId": "e5f7a9b1-6c8d-4e1f-9b5a-3c4d5e6f7a8b",
+		"year": 2019
+	},
+	{
+		"id": "a6bf6dfa-b4de-4814-aa82-9b26e6a23d9f",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "5d7f9a2b-6e8c-4b1a-9d2e-4f5a6b7c8d9e",
+		"year": 1997
+	},
+	{
+		"id": "e1ab0aa3-647c-4757-9612-b9952a979c2d",
+		"carMakeId": "495ae4c6-c8b1-4cbe-b4cf-dd56febb45b3",
+		"carModelId": "b87e8180-ad6d-409f-b52d-06c4194cdb00",
+		"year": 2008
+	},
+	{
+		"id": "8695a67a-9af2-468d-ab99-3a00f43f12b3",
+		"carMakeId": "5b52d459-49cd-45f2-8336-95a20028acb7",
+		"carModelId": "3b5d7f9a-4c6e-4f8a-9b1c-2d3e4f5a6b7c",
+		"year": 2023
 	}
 ]
