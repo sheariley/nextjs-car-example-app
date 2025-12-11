@@ -6,7 +6,7 @@ import React from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { carDataUIActions, carDataUISelectors, useAppDispatch, useAppSelector } from '@/lib/store'
+import { carDataGridUIActions, carDataGridUISelectors, useAppDispatch, useAppSelector } from '@/lib/store'
 import { cn } from '@/lib/utils'
 
 export type CarDataTablePagerProps = React.ComponentProps<'div'> & {
@@ -20,12 +20,12 @@ export function CarDataTablePager({
 }: CarDataTablePagerProps) {
   const dispatch = useAppDispatch()
   
-  const page = useAppSelector(carDataUISelectors.selectPage)
-  const setPage = React.useCallback((value: number) => dispatch(carDataUIActions.setPage(value)), [dispatch])
-  const pageSize = useAppSelector(carDataUISelectors.selectPageSize)
-  const setPageSize = React.useCallback((value: number) => dispatch(carDataUIActions.setPageSize(value)), [dispatch])
-  const totalResultCount = useAppSelector(carDataUISelectors.selectTotalResultCount)
-  const pageCount = useAppSelector(carDataUISelectors.selectPageCount)
+  const page = useAppSelector(carDataGridUISelectors.selectPage)
+  const setPage = React.useCallback((value: number) => dispatch(carDataGridUIActions.setPage(value)), [dispatch])
+  const pageSize = useAppSelector(carDataGridUISelectors.selectPageSize)
+  const setPageSize = React.useCallback((value: number) => dispatch(carDataGridUIActions.setPageSize(value)), [dispatch])
+  const totalResultCount = useAppSelector(carDataGridUISelectors.selectTotalResultCount)
+  const pageCount = useAppSelector(carDataGridUISelectors.selectPageCount)
 
   return (
     <div className={cn('flex gap-3', className)} {...props}>

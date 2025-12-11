@@ -32,8 +32,8 @@ const initialState: CarDataUISliceState = {
   yearRangeFilter: {},
 }
 
-export const carDataUISlice = createSlice({
-  name: 'carDataUI',
+export const carDataGridUISlice = createSlice({
+  name: 'carDataGridUI',
   initialState,
   reducers: {
     setPage(state, action: PayloadAction<number>) {
@@ -92,7 +92,7 @@ export const carDataUISlice = createSlice({
   },
 })
 
-export const carDataUIActions = carDataUISlice.actions
+export const carDataGridUIActions = carDataGridUISlice.actions
 
 function resetPagingState(state: WritableDraft<CarDataUISliceState>) {
   state.page = 1

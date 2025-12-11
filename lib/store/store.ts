@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { confirmationDialogSlice } from './confirmation-dialog-slice'
-import { carDataUISlice } from './car-data-ui-slice'
+import { carDataGridUISlice } from './car-data-grid-ui-slice'
 
 export const makeStore = () => configureStore({
   reducer: {
     confirmationDialog: confirmationDialogSlice.reducer,
-    carDataUI: carDataUISlice.reducer
+    carDataGridUI: carDataGridUISlice.reducer
   }
 })
 

@@ -20,8 +20,8 @@ import {
 import { isTruthy } from '@/lib/functional'
 import { useConfirmationDialog } from '@/lib/hooks'
 import {
-  carDataUIActions,
-  carDataUISelectors,
+  carDataGridUIActions,
+  carDataGridUISelectors,
   NumberRangeFilterValues,
   useAppDispatch,
   useAppSelector,
@@ -55,21 +55,21 @@ export default function CarsDataTable() {
   const [selectedRows, setSelectedRows] = React.useState<ReadonlySet<string>>(new Set<string>())
 
   // filter state
-  const makeFilterValues = useAppSelector(carDataUISelectors.selectMakeFilterValues)
-  const modelFilterValues = useAppSelector(carDataUISelectors.selectModelFilterValues)
-  const featureFilterValues = useAppSelector(carDataUISelectors.selectFeatureFilterValues)
-  const yearRangeFilterValues = useAppSelector(carDataUISelectors.selectYearRangeFilter)
+  const makeFilterValues = useAppSelector(carDataGridUISelectors.selectMakeFilterValues)
+  const modelFilterValues = useAppSelector(carDataGridUISelectors.selectModelFilterValues)
+  const featureFilterValues = useAppSelector(carDataGridUISelectors.selectFeatureFilterValues)
+  const yearRangeFilterValues = useAppSelector(carDataGridUISelectors.selectYearRangeFilter)
   const setYearRangeFilter = React.useCallback(
-    (values: NumberRangeFilterValues) => dispatch(carDataUIActions.setYearRangeFilter(values)),
+    (values: NumberRangeFilterValues) => dispatch(carDataGridUIActions.setYearRangeFilter(values)),
     [dispatch]
   )
 
   // pagination state
-  const page = useAppSelector(carDataUISelectors.selectPage)
-  const pageSize = useAppSelector(carDataUISelectors.selectPageSize)
-  const totalResultCount = useAppSelector(carDataUISelectors.selectTotalResultCount)
+  const page = useAppSelector(carDataGridUISelectors.selectPage)
+  const pageSize = useAppSelector(carDataGridUISelectors.selectPageSize)
+  const totalResultCount = useAppSelector(carDataGridUISelectors.selectTotalResultCount)
   const setTotalResultCount = React.useCallback(
-    (value: number) => dispatch(carDataUIActions.setTotalResultCount(value)),
+    (value: number) => dispatch(carDataGridUIActions.setTotalResultCount(value)),
     [dispatch]
   )
 
@@ -77,7 +77,7 @@ export default function CarsDataTable() {
   const [sortColumns, setSortColumns] = React.useState<SortColumn[]>([])
 
   // map local filter options to GraphQL filter input variables
-  const requestFilter = useAppSelector(carDataUISelectors.selectRequestFilter)
+  const requestFilter = useAppSelector(carDataGridUISelectors.selectRequestFilter)
 
   // server query for fetching car details
   const {
@@ -144,9 +144,9 @@ export default function CarsDataTable() {
         featureFilterOptions,
         featureFilterValues,
         onToggleMakeFilter: makeId =>
-          dispatch(carDataUIActions.toggleSelectedCarMakeFilter({ allModels: allModels?.carModels || [], makeId })),
-        onToggleModelFilter: modelId => dispatch(carDataUIActions.toggleSelectedCarModelFilter(modelId)),
-        onToggleFeatureFilter: featureId => dispatch(carDataUIActions.toggleSelectedCarFeatureFilter(featureId)),
+          dispatch(carDataGridUIActions.toggleSelectedCarMakeFilter({ allModels: allModels?.carModels || [], makeId })),
+        onToggleModelFilter: modelId => dispatch(carDataGridUIActions.toggleSelectedCarModelFilter(modelId)),
+        onToggleFeatureFilter: featureId => dispatch(carDataGridUIActions.toggleSelectedCarFeatureFilter(featureId)),
         yearRangeFilterValues,
         onYearRangeFilterChange: rangeValues => setYearRangeFilter(rangeValues),
       }),
