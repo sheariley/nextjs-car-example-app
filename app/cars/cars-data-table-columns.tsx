@@ -16,9 +16,12 @@ export type ColumnsFactoryProps = {
   modelFilterValues: string[]
   featureFilterOptions: DataGridListFilterOption<string>[]
   featureFilterValues: string[]
-  onToggleMakeFilter: (value: string) => void
-  onToggleModelFilter: (value: string) => void
-  onToggleFeatureFilter: (value: string) => void
+  // onToggleMakeFilter: (value: string) => void
+  onMakeFilterChange: (values: string[]) => void
+  // onToggleModelFilter: (value: string) => void
+  onModelFilterChange: (value: string[]) => void
+  // onToggleFeatureFilter: (value: string) => void
+  onFeatureFilterChange: (value: string[]) => void
   yearRangeFilterValues: NumberRangeFilterValues
   onYearRangeFilterChange: (range: NumberRangeFilterValues) => void
 }
@@ -30,9 +33,9 @@ export function columnsFactory({
   modelFilterValues,
   featureFilterOptions,
   featureFilterValues,
-  onToggleMakeFilter,
-  onToggleModelFilter,
-  onToggleFeatureFilter,
+  onMakeFilterChange,
+  onModelFilterChange,
+  onFeatureFilterChange,
   yearRangeFilterValues: yearRangeFilter,
   onYearRangeFilterChange,
 }: ColumnsFactoryProps): Column<CarDetail>[] {
@@ -55,7 +58,7 @@ export function columnsFactory({
           labelRenderer={() => renderHeaderCell(cellHeaderProps)}
           options={modelFilterOptions}
           selectedOptions={modelFilterValues}
-          onToggleOption={onToggleModelFilter}
+          onFilterChange={onModelFilterChange}
         />
       ),
     },
@@ -70,7 +73,7 @@ export function columnsFactory({
           labelRenderer={() => renderHeaderCell(cellHeaderProps)}
           options={makeFilterOptions}
           selectedOptions={makeFilterValues}
-          onToggleOption={onToggleMakeFilter}
+          onFilterChange={onMakeFilterChange}
         />
       ),
     },
@@ -99,7 +102,7 @@ export function columnsFactory({
           labelRenderer={() => renderHeaderCell(cellHeaderProps)}
           options={featureFilterOptions}
           selectedOptions={featureFilterValues}
-          onToggleOption={onToggleFeatureFilter}
+          onFilterChange={onFeatureFilterChange}
         />
       ),
     },

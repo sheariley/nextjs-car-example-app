@@ -1,7 +1,7 @@
 'use client'
 
 import { DropdownMenuArrow } from '@radix-ui/react-dropdown-menu'
-import { Filter } from 'lucide-react'
+import { Filter, FunnelXIcon } from 'lucide-react'
 import React, { FormEvent, JSX, useEffect } from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -14,7 +14,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
-import { cn } from '@/lib/utils'
+import { cn, toggleArrayValue } from '@/lib/utils'
 
 export type DataGridListFilterProps<TKey extends DataGridListFilterOptionKey = string> =
   React.ComponentPropsWithoutRef<'div'> & {
@@ -22,7 +22,7 @@ export type DataGridListFilterProps<TKey extends DataGridListFilterOptionKey = s
     labelRenderer?: () => string | JSX.Element
     options: DataGridListFilterOption<TKey>[]
     selectedOptions: TKey[]
-    onToggleOption?: (key: TKey) => void
+    onFilterChange: (keys: TKey[]) => void
   }
 
 export type DataGridListFilterOptionKey = string | number | Date
@@ -38,7 +38,7 @@ export default function DataGridListFilter<TKey extends DataGridListFilterOption
   selectedOptions,
   className,
   labelRenderer,
-  onToggleOption,
+  onFilterChange,
   ...props
 }: DataGridListFilterProps<TKey>) {
   const [searchTerm, setSearchTerm] = React.useState('')
@@ -54,10 +54,13 @@ export default function DataGridListFilter<TKey extends DataGridListFilterOption
   }, [searchTerm])
 
   const handleToggleOption = React.useCallback(
-    (key: TKey) => {
-      if (typeof onToggleOption === 'function') onToggleOption(key)
+    (key: TKey, event: React.MouseEvent) => {
+      event.stopPropagation()
+      event.preventDefault()
+      const updatedSelections = toggleArrayValue(selectedOptions, key)
+      onFilterChange(updatedSelections)
     },
-    [onToggleOption]
+    [onFilterChange, selectedOptions]
   )
 
   const handleSearchInput = React.useCallback((event: FormEvent<HTMLInputElement>) => {
@@ -81,17 +84,33 @@ export default function DataGridListFilter<TKey extends DataGridListFilterOption
   )
 
   return (
-    <div className={cn('flex justify-between items-center gap-2 *:first:gap-2 *:first:items-center', className)} {...props}>
+    <div
+      className={cn('flex items-center justify-between gap-2 *:first:items-center *:first:gap-2', className)}
+      {...props}
+    >
       {labelRenderer ? labelRenderer() : <span className="font-medium">{filterTitle}</span>}
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="icon" aria-label={`Filter ${filterTitle}`}>
+        <DropdownMenuTrigger asChild onClick={e => e.stopPropagation()}>
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label={`Filter ${filterTitle}`}
+            className={selectedOptions.length ? 'text-primary' : ''}
+          >
             <Filter className="size-4" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56 p-2" align="start">
-          <DropdownMenuArrow />
-          <DropdownMenuLabel>Filter {filterTitle}</DropdownMenuLabel>
+        <DropdownMenuContent className="w-56 p-2" align="start" onClick={e => e.stopPropagation()}>
+          <DropdownMenuArrow className="fill-card stroke-muted-foreground" />
+          <DropdownMenuLabel className="flex justify-between items-center">
+            <span>Filter {filterTitle}</span>
+            <Button
+              variant="ghost"
+              onClick={() => onFilterChange([])}
+            >
+              <FunnelXIcon className="size-4" />
+            </Button>
+          </DropdownMenuLabel>
           <div className="py-1">
             <Input
               placeholder={`Search ${filterTitle}`}
@@ -109,7 +128,7 @@ export default function DataGridListFilter<TKey extends DataGridListFilterOption
               <DropdownMenuCheckboxItem
                 key={String(o.key)}
                 textValue={o.label}
-                onClick={() => handleToggleOption(o.key)}
+                onClick={e => handleToggleOption(o.key, e)}
                 checked={selectedOptions.includes(o.key)}
                 onPointerLeave={cancelPointerEventWhenSearchFocused}
                 onPointerMove={cancelPointerEventWhenSearchFocused}

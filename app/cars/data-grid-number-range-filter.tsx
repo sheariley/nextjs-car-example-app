@@ -35,12 +35,10 @@ export default function DataGridNumberRangeFilter({
   className,
   ...props
 }: DataGridNumberRangeFilterProps) {
-  const [min, setMin] = React.useState<number | null>(
-    typeof minValue === 'number' ? minValue : null
-  )
-  const [max, setMax] = React.useState<number | null>(
-    typeof maxValue === 'number' ? maxValue : null
-  )
+  const filterActive = typeof minValue === 'number' || typeof maxValue === 'number'
+
+  const [min, setMin] = React.useState<number | null>(typeof minValue === 'number' ? minValue : null)
+  const [max, setMax] = React.useState<number | null>(typeof maxValue === 'number' ? maxValue : null)
 
   React.useEffect(() => {
     setMin(typeof minValue === 'number' ? minValue : null)
@@ -83,21 +81,21 @@ export default function DataGridNumberRangeFilter({
   }
 
   return (
-    <div className={cn('flex justify-between items-center gap-2 *:first:gap-2 *:first:items-center', className)} {...props}>
-      { labelRenderer
-        ? labelRenderer()
-        : <span className="font-medium">{filterTitle}</span>
-      }
+    <div
+      className={cn('flex items-center justify-between gap-2 *:first:items-center *:first:gap-2', className)}
+      {...props}
+    >
+      {labelRenderer ? labelRenderer() : <span className="font-medium">{filterTitle}</span>}
 
       <Popover>
-        <PopoverTrigger asChild>
+        <PopoverTrigger asChild onClick={e => e.stopPropagation()} className={filterActive ? 'text-primary' : ''}>
           <Button variant="ghost" size="icon" aria-label={`Filter ${filterTitle}`}>
             <Filter className="size-4" />
           </Button>
         </PopoverTrigger>
 
-        <PopoverContent className="w-64 p-4" align="start">
-          <PopoverArrow />
+        <PopoverContent className="w-64 p-4" align="start" onClick={e => e.stopPropagation()}>
+          <PopoverArrow className="fill-card stroke-muted-foreground" />
 
           <div className="space-y-2">
             <div className="flex flex-col gap-1">
@@ -112,12 +110,7 @@ export default function DataGridNumberRangeFilter({
                   aria-label={minLabel}
                 />
                 {min !== (typeof minValue === 'number' ? minValue : null) && (
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={handleResetMin}
-                    aria-label="Reset min"
-                  >
+                  <Button variant="ghost" size="icon" onClick={handleResetMin} aria-label="Reset min">
                     <RotateCcw className="size-4" />
                   </Button>
                 )}
@@ -136,12 +129,7 @@ export default function DataGridNumberRangeFilter({
                   aria-label={maxLabel}
                 />
                 {max !== (typeof maxValue === 'number' ? maxValue : null) && (
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={handleResetMax}
-                    aria-label="Reset max"
-                  >
+                  <Button variant="ghost" size="icon" onClick={handleResetMax} aria-label="Reset max">
                     <RotateCcw className="size-4" />
                   </Button>
                 )}

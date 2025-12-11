@@ -1,14 +1,16 @@
 'use client'
 
 import { useMutation, useQuery } from '@apollo/client/react'
-import { PlusSquare, Trash2 } from 'lucide-react'
+import { FilterXIcon, PlusSquare, Trash2 } from 'lucide-react'
+import Link from 'next/link'
 import React, { MouseEvent } from 'react'
 import { DataGrid, RenderCheckboxProps, SortColumn } from 'react-data-grid'
 import { toast } from 'sonner'
 
 import { Button } from '@/components/ui/button'
 import { Checkbox, CheckboxChangeHandler } from '@/components/ui/checkbox'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Item, ItemContent, ItemMedia, ItemTitle } from '@/components/ui/item'
+import { Spinner } from '@/components/ui/spinner'
 import { SortDirection } from '@/graphql/generated/client/graphql'
 import {
   DELETE_CAR_DETAILS,
@@ -30,7 +32,6 @@ import { CarDetail } from '@/types/car-detail'
 import { DataLoadErrorAlert } from './cars-data-load-error-alert'
 import { columnsFactory } from './cars-data-table-columns'
 import { CarDataTablePager } from './cars-data-table-pager'
-import Link from 'next/link'
 
 const TOAST_ID_DELETING_CAR = 'deleting-car'
 
@@ -101,8 +102,16 @@ export default function CarsDataTable() {
           : undefined,
     },
   })
+  const [displayedRows, setDisplayedRows] = React.useState<CarDetail[]>([])
 
-  // keep result count in sync with data from server
+  // smart-sync between carDetailData and displayedRows to avoid excessive UI flashing
+  React.useEffect(() => {
+    if (!loadingCarDetails) {
+      setDisplayedRows(carDetailData?.carDetails.items ?? [])
+    }
+  }, [carDetailData, loadingCarDetails])
+
+  // keep result total-count in sync with data from server
   React.useEffect(() => {
     const { carDetails: { totalCount: newTotal } = {} } = carDetailData || {}
     if (typeof newTotal !== 'undefined') {
@@ -146,10 +155,10 @@ export default function CarsDataTable() {
         modelFilterValues,
         featureFilterOptions,
         featureFilterValues,
-        onToggleMakeFilter: makeId =>
-          dispatch(carDataGridUIActions.toggleSelectedCarMakeFilter({ allModels: allModels?.carModels || [], makeId })),
-        onToggleModelFilter: modelId => dispatch(carDataGridUIActions.toggleSelectedCarModelFilter(modelId)),
-        onToggleFeatureFilter: featureId => dispatch(carDataGridUIActions.toggleSelectedCarFeatureFilter(featureId)),
+        onMakeFilterChange: values =>
+          dispatch(carDataGridUIActions.setMakeFilterValues({ values, allModels: allModels?.carModels || [] })),
+        onModelFilterChange: values => dispatch(carDataGridUIActions.setModelFilterValues(values)),
+        onFeatureFilterChange: values => dispatch(carDataGridUIActions.setFeatureFilterValues(values)),
         yearRangeFilterValues,
         onYearRangeFilterChange: rangeValues => setYearRangeFilter(rangeValues),
       }),
@@ -209,6 +218,12 @@ export default function CarsDataTable() {
     }
   }
 
+  const handleClearFilters = () => {
+    dispatch(carDataGridUIActions.clearAllFilters())
+    setSelectedRows(new Set())
+    setSortColumns([])
+  }
+  
   return (
     <div className="container mx-auto space-y-6 py-10">
       {/* Action Buttons */}
@@ -224,36 +239,56 @@ export default function CarsDataTable() {
         <Button
           asChild
           aria-label="Add a Car"
-          disabled={!selectedRows?.size || deletingCarDetails || loadingAnyData}
         >
           <Link href="/cars/new">
             <PlusSquare className="size-4" /> Add Car
           </Link>
         </Button>
+        <Button
+          className="justify-self-end ml-auto"
+          variant="secondary"
+          aria-label="Clear Filters"
+          onClick={handleClearFilters}
+        >
+          <FilterXIcon className="size-4" /> Clear Filters
+        </Button>
       </div>
 
       {/* Data Grid */}
-      {loadingCarDetails ? (
-        <Skeleton className="h-[350px] w-full" />
-      ) : anyLoadingError ? (
+      {anyLoadingError ? (
         <div className="container m-auto">
           <DataLoadErrorAlert />
         </div>
       ) : (
-        <DataGrid
-          columns={columns}
-          rows={(carDetailData?.carDetails?.items as CarDetail[]) || []}
-          rowKeyGetter={carRowKeyGetter}
-          selectedRows={selectedRows}
-          onSelectedRowsChange={setSelectedRows}
-          sortColumns={sortColumns}
-          onSortColumnsChange={setSortColumns}
-          renderers={{
-            renderCheckbox: ({ disabled, ...props }) => (
-              <DataTableCheckbox disabled={disabled || deletingCarDetails} {...props} />
-            ),
-          }}
-        />
+        <div className="relative">
+          <DataGrid
+            columns={columns}
+            rows={displayedRows}
+            rowKeyGetter={carRowKeyGetter}
+            selectedRows={selectedRows}
+            onSelectedRowsChange={setSelectedRows}
+            isRowSelectionDisabled={() => deletingCarDetails || loadingAnyData}
+            sortColumns={sortColumns}
+            onSortColumnsChange={setSortColumns}
+            renderers={{
+              renderCheckbox: ({ disabled, ...props }) => (
+                <DataTableCheckbox disabled={disabled || deletingCarDetails} {...props} />
+              ),
+            }}
+          />
+          {loadingCarDetails && (
+            <div className="absolute inset-0 z-10 bg-muted/60 flex flex-col justify-center items-center [--radius:1rem]">
+              <Item variant="outline" className="bg-background">
+                <ItemMedia>
+                  <Spinner />
+                </ItemMedia>
+                <ItemContent>
+                  <ItemTitle className="line-clamp-1">Loading...</ItemTitle>
+                </ItemContent>
+              </Item>
+            </div>
+          )}
+        </div>
       )}
 
       {/* Paging */}

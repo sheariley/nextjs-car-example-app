@@ -49,9 +49,10 @@ export const carDataGridUISlice = createSlice({
     setSortColumns(state, action: PayloadAction<ColumnSortInput[]>) {
       state.sortColumns = action.payload
     },
-    setMakeFilterValues(state, action: PayloadAction<string[]>) {
+    setMakeFilterValues(state, { payload: { values, allModels } }: PayloadAction<{ values: string[], allModels: CarModel[]}>) {
       resetPagingState(state)
-      state.makeFilterValues = action.payload
+      state.makeFilterValues = values
+      syncMakeModelFilterValues(state, allModels)
     },
     setModelFilterValues(state, action: PayloadAction<string[]>) {
       resetPagingState(state)
@@ -75,20 +76,17 @@ export const carDataGridUISlice = createSlice({
 
       if (filterMakeIds.includes(makeId)) filterMakeIds = filterMakeIds.filter(f => f !== makeId)
       else filterMakeIds = filterMakeIds.concat([makeId])
-
-      // remove filter models that are outside the bounds of the selected make filters
-      let filterModelIds = state.modelFilterValues || []
-      if (filterModelIds.length && filterMakeIds.length) {
-        filterModelIds = allModels
-          .filter(m => filterModelIds.includes(m.id) && filterMakeIds.includes(m.carMakeId))
-          .map(m => m.id)
-      }
-
       state.makeFilterValues = filterMakeIds
-      state.modelFilterValues = filterModelIds
+      syncMakeModelFilterValues(state, allModels)
     },
     toggleSelectedCarModelFilter: toggleSelectedListFilterOptions('modelFilterValues'),
-    toggleSelectedCarFeatureFilter: toggleSelectedListFilterOptions('featureFilterValues')
+    toggleSelectedCarFeatureFilter: toggleSelectedListFilterOptions('featureFilterValues'),
+    clearAllFilters(state) {
+      state.makeFilterValues = []
+      state.modelFilterValues = []
+      state.featureFilterValues = []
+      state.yearRangeFilter = {}
+    }
   },
 })
 
@@ -112,4 +110,16 @@ function toggleSelectedListFilterOptions(
 
     state[stateKey] = filterValues
   }
+}
+
+function syncMakeModelFilterValues(state: WritableDraft<CarDataUISliceState>, allModels: CarModel[]) {
+  // remove model filter values that are outside the bounds of the selected make filters
+  const filterMakeIds = state.makeFilterValues || []
+  let filterModelIds = state.modelFilterValues || []
+  if (filterModelIds.length && filterMakeIds.length) {
+    filterModelIds = allModels
+      .filter(m => filterModelIds.includes(m.id) && filterMakeIds.includes(m.carMakeId))
+      .map(m => m.id)
+  }
+  state.modelFilterValues = filterModelIds
 }

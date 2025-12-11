@@ -27,7 +27,7 @@ import {
   GET_CAR_MODELS,
   UPDATE_CAR_DETAIL,
 } from '@/graphql/operations'
-import { cn } from '@/lib/utils'
+import { cn, toggleArrayValue } from '@/lib/utils'
 import { CarDetail, CarDetailCreateInput } from '@/types/car-detail'
 import { CarDetailCreateInputSchema } from '@/validation/schemas/car-detail'
 
@@ -75,20 +75,20 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
     // if a valid UUID was passed in the props, try to load the CarDetail record using it.
     if (uuidValidate(carDetailId)) {
       async function fetchDetails() {
-        const loadResult = await fetchCarDetails({
-          variables: { id: carDetailId },
-        })
-
-        if (!loadResult.error && !loadResult.data?.carDetail) {
-          return notFound()
+        try {
+          const loadResult = await fetchCarDetails({
+            variables: { id: carDetailId },
+          })
+  
+          if (!loadResult.error && !loadResult.data?.carDetail) {
+            return notFound()
+          }
+        } catch {
+          // swallow it (ignores operation canceled error)
         }
       }
 
-      try {
-        fetchDetails()
-      } catch {
-        // swallow it
-      }
+      fetchDetails()
     } else if (carDetailId.toUpperCase() !== 'NEW') {
       return notFound()
     } else {
@@ -471,10 +471,3 @@ function FeaturesLoading() {
   )
 }
 
-function toggleArrayValue<T>(arr: T[] | null | undefined, value: T, included?: boolean): T[] {
-  arr = arr || []
-  if (typeof included === 'undefined') return arr.includes(value) ? arr.filter(v => v !== value) : arr.concat([value])
-  else if (included && !arr.includes(value)) return arr.concat([value])
-  else if (!included && arr.includes(value)) return arr.filter(v => v !== value)
-  else return arr
-}
