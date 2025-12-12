@@ -11,3 +11,8 @@ export const selectPassword = createSelector(
   (state: RootState) => state.auth,
   state => state.password
 )
+
+export const selectAuthenticated = createSelector(
+  (state: RootState) => state.auth,
+  state => state.authenticated
+)

@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export type AuthSliceState = {
   password: string | null
+  authenticated: boolean
 }
 
 export const initialState: AuthSliceState = {
-  password: null
+  password: null,
+  authenticated: false
 }
 
 export const authSlice = createSlice({
