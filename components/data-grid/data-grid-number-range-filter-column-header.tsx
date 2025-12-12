@@ -22,7 +22,7 @@ export type DataGridNumberRangeFilterProps = React.ComponentPropsWithoutRef<'div
   onChange?: (values: NumberRangeFilterValues) => void
 }
 
-export default function DataGridNumberRangeFilter({
+export function DataGridNumberRangeFilterColumnHeader({
   filterTitle = 'Range',
   labelRenderer,
   minLabel = 'Min',

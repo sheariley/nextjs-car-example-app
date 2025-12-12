@@ -8,7 +8,7 @@ type CarDetailViewProps = {
 }
 
 export default async function CarDetailPage({ params }: CarDetailViewProps) {
-  const carId = (await params).id
+  const { id: carId }= await params
 
   return (
     <CarsDataProvider>

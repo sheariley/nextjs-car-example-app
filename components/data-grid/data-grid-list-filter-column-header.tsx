@@ -32,7 +32,7 @@ export type DataGridListFilterOption<TKey extends DataGridListFilterOptionKey = 
   label: string
 }
 
-export default function DataGridListFilter<TKey extends DataGridListFilterOptionKey = string>({
+export function DataGridListFilterColumnHeader<TKey extends DataGridListFilterOptionKey = string>({
   filterTitle,
   options,
   selectedOptions,

@@ -4,6 +4,9 @@ import Link from 'next/link'
 import React from 'react'
 import { Column, renderHeaderCell, RenderHeaderCellProps, SelectColumn } from 'react-data-grid'
 
+import { DataGridListFilterColumnHeader } from '@/components/data-grid/data-grid-list-filter-column-header'
+import { DataGridNumberRangeFilterColumnHeader } from '@/components/data-grid/data-grid-number-range-filter-column-header'
+import { DataGridSimpleInputEditor } from '@/components/data-grid/data-grid-simple-input-editor'
 import { Button } from '@/components/ui/button'
 import {
   carDataGridUIActions,
@@ -12,8 +15,6 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '@/lib/store'
-import DataGridListFilter from './data-grid-list-filter'
-import DataGridNumberRangeFilter from './data-grid-number-range-filter'
 
 import { Spinner } from '@/components/ui/spinner'
 import { GET_CAR_FEATURES } from '@/graphql/operations'
@@ -32,6 +33,8 @@ export function columnsFactory({ allMakes, allModels }: ColumnsFactoryProps): Co
     {
       name: 'Model',
       key: 'CarModel',
+      sortable: true,
+      editable: true,
       renderCell: props => (
         <Button asChild variant="link" className="flex w-full justify-between" title="View Details">
           <Link href={`/cars/${props.row.id}`}>
@@ -39,14 +42,14 @@ export function columnsFactory({ allMakes, allModels }: ColumnsFactoryProps): Co
           </Link>
         </Button>
       ),
-      sortable: true,
       renderHeaderCell: cellHeaderProps => <CarModelColumnHeader allModels={allModels} {...cellHeaderProps} />,
     },
     {
       name: 'Make',
       key: 'CarMake',
-      renderCell: props => props.row.CarMake?.name,
       sortable: true,
+      editable: true,
+      renderCell: props => props.row.CarMake?.name,
       renderHeaderCell: cellHeaderProps => (
         <CarMakeColumnHeader allModels={allModels} allMakes={allMakes} {...cellHeaderProps} />
       ),
@@ -55,11 +58,14 @@ export function columnsFactory({ allMakes, allModels }: ColumnsFactoryProps): Co
       name: 'Year',
       key: 'year',
       sortable: true,
+      editable: true,
       renderHeaderCell: cellHeaderProps => <YearColumnHeader {...cellHeaderProps} />,
+      renderEditCell: editorProps => <DataGridSimpleInputEditor type="number" {...editorProps} />
     },
     {
       name: 'Features',
       key: 'CarDetailFeatures',
+      sortable: false,
       renderCell: props => {
         const cellText = !props.row.CarDetailFeatures?.length
           ? 'None'
@@ -70,7 +76,6 @@ export function columnsFactory({ allMakes, allModels }: ColumnsFactoryProps): Co
           </span>
         )
       },
-      sortable: false,
       renderHeaderCell: cellHeaderProps => <CarFeatureColumnHeader {...cellHeaderProps} />,
     },
   ]
@@ -91,7 +96,7 @@ function CarModelColumnHeader({
   const onFilterChange = (values: string[]) => dispatch(carDataGridUIActions.setModelFilterValues(values))
 
   return (
-    <DataGridListFilter
+    <DataGridListFilterColumnHeader
       filterTitle="Model"
       labelRenderer={() => renderHeaderCell(cellHeaderProps)}
       options={filterOptions}
@@ -116,7 +121,7 @@ function CarMakeColumnHeader({
   const onFilterChange = (values: string[]) => dispatch(carDataGridUIActions.setMakeFilterValues({ values, allModels }))
 
   return (
-    <DataGridListFilter
+    <DataGridListFilterColumnHeader
       filterTitle="Make"
       labelRenderer={() => renderHeaderCell(cellHeaderProps)}
       options={filterOptions}
@@ -159,7 +164,7 @@ function CarFeatureColumnHeader(cellHeaderProps: RenderHeaderCellProps<CarDetail
   }
 
   return (
-    <DataGridListFilter
+    <DataGridListFilterColumnHeader
       filterTitle="Features"
       labelRenderer={() => renderHeaderCell(cellHeaderProps)}
       options={filterOptions}
@@ -175,7 +180,7 @@ function YearColumnHeader(cellHeaderProps: RenderHeaderCellProps<CarDetail>) {
   const onFilterChange = (values: NumberRangeFilterValues) => dispatch(carDataGridUIActions.setYearRangeFilter(values))
 
   return (
-    <DataGridNumberRangeFilter
+    <DataGridNumberRangeFilterColumnHeader
       filterTitle="Year"
       labelRenderer={() => renderHeaderCell(cellHeaderProps)}
       rangeValues={filterValues}
