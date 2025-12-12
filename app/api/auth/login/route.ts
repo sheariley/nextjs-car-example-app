@@ -1,7 +1,8 @@
+import { verifyAuthToken } from '@/lib/auth'
 import 'server-only'
 
 export async function POST(request: Request) {
-	let body: { password?: string } = {}
+	let body: { token?: string } = {}
 	try {
 		body = await request.json()
 	} catch {
@@ -9,9 +10,9 @@ export async function POST(request: Request) {
 		body = {}
 	}
 
-	const { password } = body
+	const { token } = body
 
-	const isMatch = typeof password === 'string' && password === process.env.MOCK_AUTH_PASSWORD
+	const isMatch = verifyAuthToken(token)
 
   if (isMatch) {
     return new Response(JSON.stringify({ success: true }), {

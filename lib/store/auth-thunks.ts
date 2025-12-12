@@ -22,7 +22,7 @@ export const submitLogin = createAsyncThunk<boolean, void, AuthThunkConfig>(
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ password })
+      body: JSON.stringify({ token: password })
     })
     return response.ok
   },{

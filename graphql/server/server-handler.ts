@@ -9,6 +9,8 @@ import { resolvers } from '@/graphql/generated/resolvers.generated'
 import { typeDefs } from '@/graphql/generated/typeDefs.generated'
 import prisma from '@/prisma/client'
 
+import { verifyAuthToken } from '@/lib/auth'
+import { NextRequest } from 'next/server'
 import type { GQLServerContext } from './context.type'
 
 export function createGraphQLServerHandler() {
@@ -28,7 +30,33 @@ export function createGraphQLServerHandler() {
       })
     })
 
-  return handler
+  const handlerWithAuth = (req: NextRequest, res?: undefined) => {
+    // not authenticated?
+    const authHeaderValue = req.headers.get('Authorization') as string | null | undefined
+    if (!authHeaderValue?.length) {
+      throw new GraphQLError('Access denied', {
+        extensions: {
+          code: 'UNAUTHENTICATED',
+          http: { status: 401 }
+        }
+      })
+    }
+
+    const tokenValue = authHeaderValue.replace('Bearer ', '').replace('bearer ', '')
+    // invalid token
+    if (!verifyAuthToken(tokenValue)) {
+      throw new GraphQLError('Access denied', {
+        extensions: {
+          code: 'FORBIDDEN',
+          http: { status: 403 }
+        }
+      })
+    }
+
+    return handler(req, res)
+  }
+
+  return handlerWithAuth
 }
 
 // convert prisma errors to GraphQL friendly errors

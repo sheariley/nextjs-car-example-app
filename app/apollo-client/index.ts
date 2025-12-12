@@ -9,7 +9,7 @@ export function createApolloClient(authToken: string) {
     link: new HttpLink({
       uri: '/api/graphql', fetch,
       headers: {
-        'Authentication': `Bearer ${authToken}`
+        'Authorization': `Bearer ${authToken}`
       }
     }),
     cache: new InMemoryCache(),
