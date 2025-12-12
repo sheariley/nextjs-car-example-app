@@ -4,9 +4,13 @@ This is just an example app that demonstrates how to use Prisma, Apollo Client &
 
 ## Getting Started
 
-First, setup your environment variables in the `.env` file in the root of the workspace. This file is ignored by git so that you don't accidentally commit your secrets and push them up to GitHub.
+First, setup your environment variables in the `.env` file in the root of the workspace. This file is ignored by git so that you don't accidentally commit your secrets and push them up to GitHub. If you plan on deploying this to a server, you'll need to configure these in the hosting provider's management portal or set them in your server environment.
 
 ```env
+# Use this to login
+MOCK_AUTH_TOKEN=mY_sUpe$ecr3t_t0k3n
+
+# Configure with your postgres server details
 DATABASE_URL="postgres://<username>:<password>@<db-server>:<db-port>/postgres?sslmode=require"
 ```
 
