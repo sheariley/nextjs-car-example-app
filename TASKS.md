@@ -21,4 +21,5 @@
 - [ ] Setup and use local containerized postgres instance
 - [x] Add clear button to data-grid-list-filter
 - [ ] Use icons to represent car features in data-grid column
-- [ ] Add inline editing to the data-grid
+- [x] Add inline editing to the data-grid
+- [ ] Replace Model cell editor with multi-level dropdown menu that lets you change the Make and Model at the same time.
