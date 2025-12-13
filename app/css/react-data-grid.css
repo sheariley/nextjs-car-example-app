@@ -36,7 +36,7 @@
   --rdg-color-scheme: dark;
 }
 
-.rdg-simple-input-editor {
+.rdg-input-editor {
   @apply bg-background text-foreground appearance-none box-border align-top;
 
   inline-size: 100%;

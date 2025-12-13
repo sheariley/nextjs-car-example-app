@@ -6,7 +6,7 @@ import { Column, renderHeaderCell, RenderHeaderCellProps, SelectColumn } from 'r
 
 import { DataGridListFilterColumnHeader } from '@/components/data-grid/data-grid-list-filter-column-header'
 import { DataGridNumberRangeFilterColumnHeader } from '@/components/data-grid/data-grid-number-range-filter-column-header'
-import { DataGridSimpleInputEditor } from '@/components/data-grid/data-grid-simple-input-editor'
+import { DataGridSimpleInputCellEditor } from '@/components/data-grid/data-grid-simple-input-cell-editor'
 import { Button } from '@/components/ui/button'
 import {
   carDataGridUIActions,
@@ -21,6 +21,7 @@ import { GET_CAR_FEATURES } from '@/graphql/operations'
 import { CarDetail } from '@/types/car-detail'
 import { CarMake } from '@/types/car-make'
 import { CarModel } from '@/types/car-model'
+import { DataGridDropdownCellEditor } from '@/components/data-grid/data-grid-dropdown-cell-editor'
 
 export type ColumnsFactoryProps = {
   allMakes: CarMake[]
@@ -53,6 +54,16 @@ export function columnsFactory({ allMakes, allModels }: ColumnsFactoryProps): Co
       renderHeaderCell: cellHeaderProps => (
         <CarMakeColumnHeader allModels={allModels} allMakes={allMakes} {...cellHeaderProps} />
       ),
+      renderEditCell: editorProps => (
+        <DataGridDropdownCellEditor
+          options={allMakes.map(mapCellEditorListOption)}
+          multiple={false}
+          valueRenderer={value => allMakes.find(m => m.id === value)?.name ?? ''}
+          valueGetter={row => row.carMakeId}
+          valueSetter={(value, row) => ({...row, carMakeId: value})}
+          {...editorProps}
+        />
+      ),
     },
     {
       name: 'Year',
@@ -60,7 +71,7 @@ export function columnsFactory({ allMakes, allModels }: ColumnsFactoryProps): Co
       sortable: true,
       editable: true,
       renderHeaderCell: cellHeaderProps => <YearColumnHeader {...cellHeaderProps} />,
-      renderEditCell: editorProps => <DataGridSimpleInputEditor type="number" {...editorProps} />
+      renderEditCell: editorProps => <DataGridSimpleInputCellEditor type="number" {...editorProps} />,
     },
     {
       name: 'Features',
@@ -192,6 +203,13 @@ function YearColumnHeader(cellHeaderProps: RenderHeaderCellProps<CarDetail>) {
 function mapFilterListOption(item: { id: string; name: string }) {
   return {
     key: item.id,
+    label: item.name,
+  }
+}
+
+function mapCellEditorListOption(item: { id: string; name: string }) {
+  return {
+    value: item.id,
     label: item.name,
   }
 }
