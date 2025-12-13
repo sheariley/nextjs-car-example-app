@@ -77,8 +77,7 @@ export function DataGridDropdownCellEditor<
   valueRenderer = defaultValueRenderer,
   valueGetter = defaultValueGetter,
   valueSetter = defaultValueSetter,
-  onRowChange,
-  onClose,
+  onRowChange
 }: DataGridDropdownCellEditorProps<TValue, TRow, TSummaryRow>) {
   const [searchTerm, setSearchTerm] = React.useState('')
   const [debouncedSearchTerm, setDebouncedSearchTerm] = React.useState(searchTerm)
