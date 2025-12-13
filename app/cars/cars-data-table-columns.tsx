@@ -37,13 +37,26 @@ export function columnsFactory({ allMakes, allModels }: ColumnsFactoryProps): Co
       sortable: true,
       editable: true,
       renderCell: props => (
-        <Button asChild variant="link" className="flex w-full justify-between" title="View Details">
-          <Link href={`/cars/${props.row.id}`}>
-            {props.row.CarModel?.name} <ArrowRightCircle />
-          </Link>
-        </Button>
+        <div className="flex justify-between items-center">
+          <span>{props.row.CarModel?.name}</span>
+          <Button asChild variant="link" size="icon-sm" title="View Details">
+            <Link href={`/cars/${props.row.id}`}>
+              <ArrowRightCircle />
+            </Link>
+          </Button>
+        </div>
       ),
       renderHeaderCell: cellHeaderProps => <CarModelColumnHeader allModels={allModels} {...cellHeaderProps} />,
+      renderEditCell: editorProps => (
+        <DataGridDropdownCellEditor
+          options={allModels.filter(x => x.carMakeId === editorProps.row.carMakeId).map(mapCellEditorListOption)}
+          multiple={false}
+          valueRenderer={value => allModels.find(m => m.id === value)?.name ?? ''}
+          valueGetter={row => row.carModelId}
+          valueSetter={(value, row) => ({ ...row, carModelId: value })}
+          {...editorProps}
+        />
+      ),
     },
     {
       name: 'Make',
@@ -60,7 +73,7 @@ export function columnsFactory({ allMakes, allModels }: ColumnsFactoryProps): Co
           multiple={false}
           valueRenderer={value => allMakes.find(m => m.id === value)?.name ?? ''}
           valueGetter={row => row.carMakeId}
-          valueSetter={(value, row) => ({...row, carMakeId: value})}
+          valueSetter={(value, row) => ({ ...row, carMakeId: value })}
           {...editorProps}
         />
       ),
