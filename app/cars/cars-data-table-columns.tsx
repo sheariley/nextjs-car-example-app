@@ -60,7 +60,8 @@ export function columnsFactory({ allMakes, allModels, allFeatures }: ColumnsFact
       name: 'Make',
       key: 'CarMake',
       sortable: true,
-      editable: true,
+      // TODO: Add a multi-level dropdown editor for choosing a make and then model. Otherwise, you can end up with a make/model mismatch.
+      editable: false,
       renderCell: props => props.row.CarMake?.name,
       renderHeaderCell: cellHeaderProps => (
         <CarMakeColumnHeader allModels={allModels} allMakes={allMakes} {...cellHeaderProps} />

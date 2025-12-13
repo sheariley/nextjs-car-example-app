@@ -9,8 +9,9 @@ extend type Query {
 }
 
 extend type Mutation {
-  createCarDetail(year: Int!, carMakeId: ID!, carModelId: ID!, featureIds: [ID!]): CarDetail!
-  updateCarDetail(id: ID!, year: Int, carMakeId: ID, carModelId: ID, featureIds: [ID!]): CarDetail!
+  createCarDetail(input: CarDetailCreateInput!): CarDetail!
+  updateCarDetail(input: CarDetailUpdateInput!): CarDetail!
+  updateCarDetails(input: [CarDetailUpdateInput!]!): [CarDetail!]
   deleteCarDetails(ids: [ID!]!): Int!
 }
 
@@ -35,4 +36,19 @@ input CarDetailFilterInput {
 type CarDetailPage {
   items: [CarDetail!]!
   totalCount: Int!
+}
+
+input CarDetailCreateInput {
+  year: Int!
+  carMakeId: ID!
+  carModelId: ID!
+  featureIds: [ID!]
+}
+
+input CarDetailUpdateInput {
+  id: ID!
+  year: Int!
+  carMakeId: ID!
+  carModelId: ID!
+  featureIds: [ID!]
 }

@@ -12,9 +12,9 @@ export const updateCarDetail: NonNullable<MutationResolvers['updateCarDetail']> 
   let featureIdsToDelete: string[] = []
   let featureIdsToAdd: string[] = []
 
-  if (Array.isArray(_arg.featureIds)) {
+  if (Array.isArray(_arg.input.featureIds)) {
     const existing = await _ctx.dbClient.carDetail.findUniqueOrThrow({
-      where: { id: _arg.id },
+      where: { id: _arg.input.id },
       include: {
         CarDetailFeatures: true
       }
@@ -31,13 +31,13 @@ export const updateCarDetail: NonNullable<MutationResolvers['updateCarDetail']> 
 
     const existingFeatureIds = existing.CarDetailFeatures.map(x => x.featureId)
   
-    featureIdsToDelete = !_arg.featureIds.length
+    featureIdsToDelete = !_arg.input.featureIds.length
       // delete all
       ? existingFeatureIds
       // delete ones that weren't sent in request
-      : existingFeatureIds.filter(x => !_arg.featureIds!.includes(x))
+      : existingFeatureIds.filter(x => !_arg.input.featureIds!.includes(x))
 
-    featureIdsToAdd = !_arg.featureIds.length ? [] : _arg.featureIds
+    featureIdsToAdd = !_arg.input.featureIds.length ? [] : _arg.input.featureIds
       .filter(x => !existingFeatureIds.includes(x))
   }
 
@@ -45,7 +45,7 @@ export const updateCarDetail: NonNullable<MutationResolvers['updateCarDetail']> 
     if (featureIdsToDelete.length) {
       await tx.carDetailFeature.deleteMany({
         where: {
-          carDetailId: _arg.id,
+          carDetailId: _arg.input.id,
           featureId: { in: featureIdsToDelete || [] }
         }
       })
@@ -53,16 +53,16 @@ export const updateCarDetail: NonNullable<MutationResolvers['updateCarDetail']> 
   
     if (featureIdsToAdd.length) {
       await tx.carDetailFeature.createMany({
-        data: featureIdsToAdd.map(featureId => ({ carDetailId: _arg.id, featureId })) || []
+        data: featureIdsToAdd.map(featureId => ({ carDetailId: _arg.input.id, featureId })) || []
       })
     }
     
     const result = await tx.carDetail.update({
-      where: { id: _arg.id },
+      where: { id: _arg.input.id },
       data: {
-        carMakeId: _arg.carMakeId || undefined,
-        carModelId: _arg.carModelId || undefined,
-        year: _arg.year || undefined
+        carMakeId: _arg.input.carMakeId || undefined,
+        carModelId: _arg.input.carModelId || undefined,
+        year: _arg.input.year || undefined
       },
       select: {
         id: true,

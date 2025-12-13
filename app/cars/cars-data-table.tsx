@@ -4,7 +4,7 @@ import { useMutation, useQuery } from '@apollo/client/react'
 import { FilterXIcon, PlusSquare, Trash2 } from 'lucide-react'
 import Link from 'next/link'
 import React, { MouseEvent } from 'react'
-import { DataGrid, RenderCheckboxProps, SortColumn } from 'react-data-grid'
+import { DataGrid, RenderCheckboxProps, RowsChangeData, SortColumn } from 'react-data-grid'
 import { toast } from 'sonner'
 
 import { Button } from '@/components/ui/button'
@@ -12,11 +12,11 @@ import { Checkbox, CheckboxChangeHandler } from '@/components/ui/checkbox'
 import { Item, ItemContent, ItemMedia, ItemTitle } from '@/components/ui/item'
 import { Spinner } from '@/components/ui/spinner'
 import { SortDirection } from '@/graphql/generated/client/graphql'
-import { DELETE_CAR_DETAILS, GET_CAR_DETAILS, GET_CAR_FEATURES, GET_CAR_MAKES, GET_CAR_MODELS } from '@/graphql/operations'
+import { DELETE_CAR_DETAILS, GET_CAR_DETAILS, GET_CAR_FEATURES, GET_CAR_MAKES, GET_CAR_MODELS, UPDATE_CAR_DETAILS } from '@/graphql/operations'
 import { isTruthy } from '@/lib/functional'
 import { useConfirmationDialog } from '@/lib/hooks'
 import { carDataGridUIActions, carDataGridUISelectors, useAppDispatch, useAppSelector } from '@/lib/store'
-import { CarDetail } from '@/types/car-detail'
+import { CarDetail, CarDetailUpdateInput } from '@/types/car-detail'
 import { DataLoadErrorAlert } from './cars-data-load-error-alert'
 import { columnsFactory } from './cars-data-table-columns'
 import { CarDataTablePager } from './cars-data-table-pager'
@@ -28,6 +28,7 @@ export default function CarsDataTable() {
   const { loading: loadingMakes, error: makesLoadingError, data: allMakes } = useQuery(GET_CAR_MAKES)
   const { loading: loadingModels, error: modelsLoadingError, data: allModels } = useQuery(GET_CAR_MODELS)
   const { loading: loadingFeatures, error: featuresLoadError, data: allFeatures } = useQuery(GET_CAR_FEATURES)
+  const [updateCarDetails, { loading: updatingCarDetails }] = useMutation(UPDATE_CAR_DETAILS)
 
   const { showDialog: showConfirmationDialog } = useConfirmationDialog()
   const [deleteCarDetails, { loading: deletingCarDetails }] = useMutation(DELETE_CAR_DETAILS, {
@@ -159,6 +160,38 @@ export default function CarsDataTable() {
     setSortColumns([])
   }
 
+  const indicateSaveError = () => {
+    toast.error('An error occurred', { description: 'Failed to save changes.' })
+  }
+
+  const handleRowsChange = async (rows: CarDetail[], changeData: RowsChangeData<CarDetail>) => {
+    const changedRows = rows.filter((_, idx) => changeData.indexes.includes(idx))
+    const updateInputs = changedRows.map(x => ({
+      id: x.id,
+      carMakeId: x.carMakeId,
+      carModelId: x.carModelId,
+      year: x.year,
+      featureIds: x.CarDetailFeatures?.map(f => f.featureId)
+    } as CarDetailUpdateInput))
+
+    try {
+      const results = await updateCarDetails({ variables: { input: updateInputs } })
+      if (results.error) {
+        indicateSaveError()
+      } else {
+        const updatedRows = displayedRows.map(r => {
+          const inUpdateResult = results.data?.updateCarDetails?.find(x => x.id === r.id)
+          return inUpdateResult ?? r
+        })
+        setDisplayedRows(updatedRows)
+        toast.success('Car(s) saved!', { description: 'The car was saved successfully!' })
+      }
+    } catch {
+      indicateSaveError()
+    }
+    
+  }
+
   return (
     <div className="container mx-auto space-y-6 py-10">
       {/* Action Buttons */}
@@ -202,13 +235,14 @@ export default function CarsDataTable() {
             isRowSelectionDisabled={() => deletingCarDetails || loadingAnyData}
             sortColumns={sortColumns}
             onSortColumnsChange={setSortColumns}
+            onRowsChange={handleRowsChange}
             renderers={{
               renderCheckbox: ({ disabled, ...props }) => (
                 <DataTableCheckbox disabled={disabled || deletingCarDetails} {...props} />
               ),
             }}
           />
-          {(loadingCarDetails || deletingCarDetails) && (
+          {(loadingCarDetails || deletingCarDetails || updatingCarDetails) && (
             <div className="bg-muted/60 absolute inset-0 z-10 flex flex-col items-center justify-center [--radius:1rem]">
               <Item variant="outline" className="bg-background">
                 <ItemMedia>

@@ -151,14 +151,14 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
   }
 
   function indicateSaveSuccess() {
-    toast.success('Car saved!', { description: 'The new car was saved successfully!' })
+    toast.success('Car saved!', { description: 'The car was saved successfully!' })
   }
 
   async function submitUpdate(data: CarDetailCreateInput) {
     showSavingIndicator()
 
     try {
-      const result = await updateCarDetail({ variables: { ...data, id: carDetailId } })
+      const result = await updateCarDetail({ variables: { input: {...data, id: carDetailId } } })
       dismissSavingIndicator()
       if (result.error) {
         indicateSaveError()
@@ -176,7 +176,7 @@ export function CarDetailView({ carDetailId, className, ...props }: CarDetailVie
     showSavingIndicator()
 
     try {
-      const result = await createCarDetail({ variables: { ...data } })
+      const result = await createCarDetail({ variables: { input: {...data } } })
       dismissSavingIndicator()
       if (result.error) {
         indicateSaveError()

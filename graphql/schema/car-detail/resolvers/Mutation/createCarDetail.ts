@@ -4,9 +4,9 @@ export const createCarDetail: NonNullable<MutationResolvers['createCarDetail']> 
   return await _ctx.dbClient.$transaction(async tx => {
     const createCarDetailResult = await tx.carDetail.create({
       data: {
-        carMakeId: _arg.carMakeId,
-        carModelId: _arg.carModelId,
-        year: _arg.year,
+        carMakeId: _arg.input.carMakeId,
+        carModelId: _arg.input.carModelId,
+        year: _arg.input.year,
         // CarDetailFeatures: {
         //   create: _arg.featureIds?.map(featureId => ({ featureId }))
         // }
@@ -29,7 +29,7 @@ export const createCarDetail: NonNullable<MutationResolvers['createCarDetail']> 
     })
     
     await tx.carDetailFeature.createMany({
-      data: _arg.featureIds?.map(featureId => ({ carDetailId: createCarDetailResult.id, featureId })) || []
+      data: _arg.input.featureIds?.map(featureId => ({ carDetailId: createCarDetailResult.id, featureId })) || []
     })
   
     return createCarDetailResult

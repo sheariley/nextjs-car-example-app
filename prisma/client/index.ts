@@ -4,7 +4,7 @@ import { PrismaPg } from '@prisma/adapter-pg'
 
 import { PrismaClient } from '@/prisma/generated/client'
 import { CarDetailCreateInputSchema } from '@/validation/schemas/car-detail'
-import { CarDetailFeatureCreateInputSchema } from '@/validation/schemas/car-detail-feature'
+import { CarDetailFeatureInputSchema } from '@/validation/schemas/car-detail-feature'
 import { CarFeatureCreateInputSchema } from '@/validation/schemas/car-feature'
 import { CarMakeCreateInputSchema } from '@/validation/schemas/car-make'
 import { CarModelCreateInputSchema } from '@/validation/schemas/car-model'
@@ -80,20 +80,20 @@ const prisma = globalForPrisma.prisma || new PrismaClient({
     },
     carDetailFeature: {
       create({ args, query }) {
-        args.data = CarDetailFeatureCreateInputSchema.parse(args.data)
+        args.data = CarDetailFeatureInputSchema.parse(args.data)
         return query(args)
       },
       update({ args, query }) {
-        args.data = CarDetailFeatureCreateInputSchema.partial().parse(args.data)
+        args.data = CarDetailFeatureInputSchema.partial().parse(args.data)
         return query(args)
       },
       updateMany({ args, query }) {
-        args.data = CarDetailFeatureCreateInputSchema.partial().parse(args.data)
+        args.data = CarDetailFeatureInputSchema.partial().parse(args.data)
         return query(args)
       },
       upsert({ args, query }) {
-        args.create = CarDetailFeatureCreateInputSchema.parse(args.create)
-        args.update = CarDetailFeatureCreateInputSchema.partial().parse(args.update)
+        args.create = CarDetailFeatureInputSchema.parse(args.create)
+        args.update = CarDetailFeatureInputSchema.partial().parse(args.update)
         return query(args)
       }
     },
