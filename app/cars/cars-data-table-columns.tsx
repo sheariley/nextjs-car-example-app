@@ -1,9 +1,8 @@
-import { useLazyQuery } from '@apollo/client/react'
-import { ArrowRightCircle, RefreshCw } from 'lucide-react'
+import { ArrowRightCircle } from 'lucide-react'
 import Link from 'next/link'
-import React from 'react'
 import { Column, renderHeaderCell, RenderHeaderCellProps, SelectColumn } from 'react-data-grid'
 
+import { DataGridDropdownCellEditor } from '@/components/data-grid/data-grid-dropdown-cell-editor'
 import { DataGridListFilterColumnHeader } from '@/components/data-grid/data-grid-list-filter-column-header'
 import { DataGridNumberRangeFilterColumnHeader } from '@/components/data-grid/data-grid-number-range-filter-column-header'
 import { DataGridSimpleInputCellEditor } from '@/components/data-grid/data-grid-simple-input-cell-editor'
@@ -16,19 +15,18 @@ import {
   useAppSelector,
 } from '@/lib/store'
 
-import { Spinner } from '@/components/ui/spinner'
-import { GET_CAR_FEATURES } from '@/graphql/operations'
 import { CarDetail } from '@/types/car-detail'
+import { CarFeature } from '@/types/car-feature'
 import { CarMake } from '@/types/car-make'
 import { CarModel } from '@/types/car-model'
-import { DataGridDropdownCellEditor } from '@/components/data-grid/data-grid-dropdown-cell-editor'
 
 export type ColumnsFactoryProps = {
   allMakes: CarMake[]
   allModels: CarModel[]
+  allFeatures: CarFeature[]
 }
 
-export function columnsFactory({ allMakes, allModels }: ColumnsFactoryProps): Column<CarDetail>[] {
+export function columnsFactory({ allMakes, allModels, allFeatures }: ColumnsFactoryProps): Column<CarDetail>[] {
   return [
     SelectColumn,
     {
@@ -37,7 +35,7 @@ export function columnsFactory({ allMakes, allModels }: ColumnsFactoryProps): Co
       sortable: true,
       editable: true,
       renderCell: props => (
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <span>{props.row.CarModel?.name}</span>
           <Button asChild variant="link" size="icon-sm" title="View Details">
             <Link href={`/cars/${props.row.id}`}>
@@ -90,17 +88,42 @@ export function columnsFactory({ allMakes, allModels }: ColumnsFactoryProps): Co
       name: 'Features',
       key: 'CarDetailFeatures',
       sortable: false,
+      editable: true,
       renderCell: props => {
         const cellText = !props.row.CarDetailFeatures?.length
           ? 'None'
           : props.row.CarDetailFeatures?.map(df => df.CarFeature!.name).join(', ')
         return (
-          <span className="inline-block max-w-[200px] truncate" title={cellText}>
+          <div className="inline-block max-w-[200px] truncate" title={cellText}>
             {cellText}
-          </span>
+          </div>
         )
       },
-      renderHeaderCell: cellHeaderProps => <CarFeatureColumnHeader {...cellHeaderProps} />,
+      renderHeaderCell: cellHeaderProps => <CarFeatureColumnHeader allFeatures={allFeatures} {...cellHeaderProps} />,
+      renderEditCell: editorProps => (
+        <DataGridDropdownCellEditor
+          options={allFeatures.map(mapCellEditorListOption)}
+          multiple={true}
+          valueRenderer={value => (
+            <div className="inline-block max-w-[180px] truncate">
+              {allFeatures
+                .filter(m => value.includes(m.id))
+                .map(x => x.name)
+                .join(', ')}
+            </div>
+          )}
+          valueGetter={row => row.CarDetailFeatures?.map(x => x.featureId) || []}
+          valueSetter={(value, row) => ({
+            ...row,
+            CarDetailFeatures: value.map(featureId => ({
+              featureId,
+              carDetailId: row.id,
+              CarFeature: allFeatures.find(x => x.id === featureId),
+            })),
+          })}
+          {...editorProps}
+        />
+      ),
     },
   ]
 }
@@ -155,37 +178,16 @@ function CarMakeColumnHeader({
   )
 }
 
-function CarFeatureColumnHeader(cellHeaderProps: RenderHeaderCellProps<CarDetail>) {
+function CarFeatureColumnHeader({
+  allFeatures,
+  ...cellHeaderProps
+}: RenderHeaderCellProps<CarDetail> & {
+  allFeatures: CarFeature[]
+}) {
   const dispatch = useAppDispatch()
-  const [loadOptions, { loading, error: loadError, data: allFeatures }] = useLazyQuery(GET_CAR_FEATURES)
   const selectedValues = useAppSelector(carDataGridUISelectors.selectFeatureFilterValues)
-  const filterOptions = allFeatures?.carFeatures.map(mapFilterListOption) ?? []
+  const filterOptions = allFeatures.map(mapFilterListOption) ?? []
   const onFilterChange = (values: string[]) => dispatch(carDataGridUIActions.setFeatureFilterValues(values))
-
-  React.useEffect(() => {
-    loadOptions()
-  }, [loadOptions])
-
-  if (loading || loadError) {
-    return (
-      <div className="flex items-center justify-between gap-2 *:first:items-center *:first:gap-2">
-        {renderHeaderCell(cellHeaderProps)}
-        {!loadError ? (
-          <Spinner />
-        ) : (
-          <Button
-            variant="destructive"
-            size="icon-sm"
-            className="size-6"
-            title="Retry Loading Filter"
-            onClick={() => loadOptions()}
-          >
-            <RefreshCw />
-          </Button>
-        )}
-      </div>
-    )
-  }
 
   return (
     <DataGridListFilterColumnHeader
