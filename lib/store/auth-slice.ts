@@ -1,8 +1,7 @@
-import { createSlice, PayloadAction, isFulfilled, isPending, isRejected } from '@reduxjs/toolkit'
+import { createSlice, isFulfilled, isPending, isRejected, PayloadAction } from '@reduxjs/toolkit'
 
-import { LoadingStatus } from './loading-status'
 import { submitLogin, SubmitLoginRequestId } from './auth-thunks'
-import overSome from 'lodash/overSome'
+import { LoadingStatus } from './loading-status'
 
 export type AuthSliceState = {
   password: string | null
@@ -13,7 +12,7 @@ export type AuthSliceState = {
 export const initialState: AuthSliceState = {
   password: null,
   authenticated: false,
-  loginStatus: 'idle'
+  loginStatus: 'idle',
 }
 
 export const authSlice = createSlice({
@@ -22,18 +21,30 @@ export const authSlice = createSlice({
   reducers: {
     setPassword(state, { payload }: PayloadAction<string>) {
       state.password = payload
-    }
+    },
   },
   extraReducers(builder) {
     builder
-    .addCase(submitLogin.fulfilled, (state, action) => {
-      state.authenticated = action.payload
-    })
-    .addMatcher(overSome(overSome(isPending, isFulfilled), isRejected), (state, action) => {
-      if (action.meta.requestId === SubmitLoginRequestId) {
-        state.loginStatus = action.meta.requestStatus
-      }
-    })
+      .addCase(submitLogin.fulfilled, (state, action) => {
+        state.authenticated = action.payload
+      })
+      .addMatcher<
+        PayloadAction<
+          undefined,
+          string,
+          {
+            requestId: string
+            requestStatus: LoadingStatus
+          }
+        >
+      >(
+        action => [isPending, isFulfilled, isRejected].some(m => m(action)),
+        (state, action) => {
+          if (action.meta.requestId === SubmitLoginRequestId) {
+            state.loginStatus = action.meta.requestStatus
+          }
+        }
+      )
   },
 })
 
