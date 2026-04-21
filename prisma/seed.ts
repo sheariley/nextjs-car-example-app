@@ -10,7 +10,7 @@ import carMakeRows from '@/mock-data/car-makes.json'
 import carModelRows from '@/mock-data/car-models.json'
 
 const adapter = new PrismaPg({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.PRISMA_DB_DATABASE_URL,
 })
 
 const prisma = new PrismaClient({
